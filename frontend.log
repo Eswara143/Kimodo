@@ -1,0 +1,22 @@
+==============================================
+ Kimodo-G1 UI (Local)  -> http://127.0.0.1:8080
+ Kimodo-G1 UI (Mobile) -> http://10.145.240.172:8080
+ backend API (Mobile)  -> http://10.145.240.172:8000
+ Ctrl-C to stop
+==============================================
+backend: reachable
+Serving HTTP on 0.0.0.0 port 8080 (http://0.0.0.0:8080/) ...
+127.0.0.1 - - [29/Sep/2026 14:58:12] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [29/Sep/2026 14:58:12] "GET /config.js HTTP/1.1" 200 -
+127.0.0.1 - - [29/Sep/2026 14:58:12] code 404, message File not found
+127.0.0.1 - - [29/Sep/2026 14:58:12] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [29/Sep/2026 14:58:36] "HEAD / HTTP/1.1" 200 -
+127.0.0.1 - - [29/Sep/2026 14:59:54] code 404, message File not found
+127.0.0.1 - - [29/Sep/2026 14:59:54] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [29/Sep/2026 15:34:55] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [29/Sep/2026 15:34:55] "GET /config.js HTTP/1.1" 304 -
+127.0.0.1 - - [29/Sep/2026 15:44:00] code 404, message File not found
+127.0.0.1 - - [29/Sep/2026 15:44:00] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [29/Sep/2026 16:01:19] "HEAD / HTTP/1.1" 200 -
+.1" 404 -
+127.0.0.1 - - [29/Sep/2026 16:01:19] "HEAD / HTTP/1.1" 200 -

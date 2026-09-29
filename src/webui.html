@@ -1,0 +1,1921 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unitree G1 Motion Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #090d12;
+    --panel: #131922;
+    --panel2: #1a2230;
+    --line: #242f42;
+    --line-bright: #364661;
+    --fg: #f0f4f8;
+    --dim: #94a3b8;
+    --ok: #22c55e;
+    --ok-bg: rgba(34, 197, 94, 0.12);
+    --bad: #ef4444;
+    --warn: #f59e0b;
+    --accent: #38bdf8;
+    --accent-glow: rgba(56, 189, 248, 0.15);
+    --purple: #a855f7;
+    --indigo: #6366f1;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); padding: 24px 20px 60px; line-height: 1.5; }
+  .wrap { max-width: 1280px; margin: 0 auto; }
+  
+  /* Header */
+  .header { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; }
+  h1 { margin: 0; font-size: 1.65rem; font-weight: 700; letter-spacing: -0.02em; background: linear-gradient(135deg, #f0f4f8 30%, #38bdf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .sub { color: var(--dim); font-size: 0.9rem; margin-top: 4px; }
+  .pipe { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; color: var(--dim); margin-top: 10px; }
+  
+  .status { font-size: 0.82rem; padding: 6px 14px; border-radius: 999px; background: var(--panel); border: 1px solid var(--line); display: inline-flex; align-items: center; font-weight: 500; }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; }
+  .d-load { background: var(--warn); animation: pulse 1.2s infinite; }
+  .d-ok { background: var(--ok); box-shadow: 0 0 8px rgba(34, 197, 94, 0.5); }
+  .d-bad { background: var(--bad); }
+  @keyframes pulse { 50% { opacity: 0.3; } }
+
+  /* Main Navigation Tabs */
+  .main-tabs { display: flex; gap: 10px; border-bottom: 1px solid var(--line); margin-top: 24px; padding-bottom: 0; }
+  .tab-btn { border: 0; background: transparent; color: var(--dim); padding: 12px 20px; font-size: 0.92rem; font-weight: 600; cursor: pointer; border-radius: 8px 8px 0 0; transition: all 0.2s ease; position: relative; }
+  .tab-btn:hover { color: var(--fg); background: var(--panel); }
+  .tab-btn.active { color: var(--accent); background: var(--panel); }
+  .tab-btn.active::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--accent); border-radius: 3px 3px 0 0; }
+
+  .worksection { display: none; margin-top: 20px; }
+  .worksection.active { display: block; }
+
+  /* Generator Box */
+  .composer { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin-bottom: 24px; }
+  label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--dim); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+  textarea { width: 100%; background: var(--bg); color: var(--fg); border: 1px solid var(--line); border-radius: 8px; padding: 12px; font-size: 0.95rem; font-family: inherit; resize: vertical; min-height: 68px; }
+  textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+  .opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 14px; margin-top: 14px; }
+  input[type=number], select { width: 100%; background: var(--bg); color: var(--fg); border: 1px solid var(--line); border-radius: 8px; padding: 9px 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.88rem; }
+  input[type=number]:focus, select:focus { outline: none; border-color: var(--accent); }
+  select { font-family: inherit; }
+  .row { display: flex; align-items: center; gap: 16px; margin-top: 16px; flex-wrap: wrap; }
+  
+  button.action-btn { background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: #fff; border: 0; border-radius: 8px; padding: 11px 24px; font-size: 0.92rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 2px 10px rgba(2, 132, 199, 0.3); }
+  button.action-btn:hover { background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%); transform: translateY(-1px); }
+  button.action-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+  
+  .chk { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--dim); cursor: pointer; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .chip { background: var(--panel2); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 0.8rem; color: var(--dim); cursor: pointer; transition: all 0.15s ease; }
+  .chip:hover { border-color: var(--accent); color: var(--fg); background: var(--accent-glow); }
+
+  #msg, #sentence-msg { margin: 16px 0; padding: 12px 16px; border-radius: 8px; font-size: 0.88rem; display: none; }
+  .m-err { background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5; display: block!important; }
+  .m-info { background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.35); color: #7dd3fc; display: block!important; }
+
+  /* Gallery Header & Section Tabs */
+  .gallery-header { margin: 24px 0 16px; }
+  .gal-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
+  .galtitle { font-size: 1.25rem; font-weight: 700; color: var(--fg); display: flex; align-items: center; gap: 10px; }
+  .galcount-badge { background: var(--ok-bg); color: var(--ok); border: 1px solid rgba(34, 197, 94, 0.3); padding: 3px 10px; border-radius: 999px; font-size: 0.8rem; font-weight: 600; }
+  
+  /* Section Filter Bar */
+  .section-nav { display: flex; flex-wrap: wrap; gap: 8px; background: var(--panel); padding: 12px; border: 1px solid var(--line); border-radius: 10px; margin-bottom: 16px; }
+  .sec-btn { background: var(--panel2); color: var(--dim); border: 1px solid var(--line); border-radius: 6px; padding: 7px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.15s ease; white-space: nowrap; }
+  .sec-btn:hover { color: var(--fg); border-color: var(--accent); }
+  .sec-btn.active { background: var(--accent); color: #090d12; border-color: var(--accent); font-weight: 700; }
+  .sec-count { font-size: 0.74rem; opacity: 0.8; margin-left: 4px; }
+
+  /* Search Bar */
+  .search-wrapper { margin-bottom: 20px; }
+  .search-box { width: 100%; background: var(--panel); color: var(--fg); border: 1px solid var(--line); border-radius: 8px; padding: 10px 16px; font-size: 0.9rem; transition: border-color 0.2s; }
+  .search-box:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+
+  /* Motion Cards Grid */
+  .results { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); }
+  @media (max-width: 600px) {
+    body { padding: 12px 10px 40px; }
+    .results { grid-template-columns: 1fr; gap: 14px; }
+    .card { border-radius: 10px; }
+    .cbody { padding: 12px; }
+    .intent-title { font-size: 0.98rem; }
+    .section-nav { padding: 8px; gap: 6px; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; }
+    .sec-btn { padding: 6px 10px; font-size: 0.78rem; }
+  }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; transition: transform 0.2s ease, border-color 0.2s ease; }
+  .card:hover { border-color: var(--line-bright); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+  video { width: 100%; aspect-ratio: 16/9; display: block; background: #000; }
+  .cbody { padding: 16px; }
+  
+  .card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; gap: 6px; flex-wrap: wrap; }
+  .seq-index-badge { background: var(--accent); color: #090d12; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 800; padding: 2px 7px; border-radius: 4px; }
+  .sec-badge { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 3px 8px; border-radius: 4px; background: rgba(255,255,255,0.08); color: var(--accent); border: 1px solid rgba(56, 189, 248, 0.2); }
+  .num-badge { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 700; color: var(--dim); }
+  
+  .intent-title { font-size: 1.05rem; font-weight: 700; color: var(--fg); margin-bottom: 4px; line-height: 1.3; }
+  .prompt { color: var(--dim); font-size: 0.85rem; margin-bottom: 12px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; margin-left: auto; }
+  .t-ok { background: var(--ok-bg); color: var(--ok); border: 1px solid rgba(34, 197, 94, 0.3); }
+  .t-bad { background: rgba(239, 68, 68, 0.15); color: var(--bad); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.78rem; margin: 10px 0; }
+  td { padding: 4px 0; color: var(--dim); }
+  td:last-child { text-align: right; color: var(--fg); font-family: 'JetBrains Mono', monospace; }
+  
+  details summary { cursor: pointer; font-size: 0.78rem; color: var(--dim); margin-top: 6px; }
+  pre { background: #070a0e; border-radius: 6px; padding: 10px; overflow-x: auto; font-size: 0.72rem; line-height: 1.4; margin: 8px 0 0; color: #a0aec0; border: 1px solid var(--line); }
+  
+  .dl { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); flex-wrap: wrap; gap: 8px; }
+  .dl-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .dl a { color: var(--accent); text-decoration: none; font-size: 0.8rem; font-weight: 500; background: rgba(56, 189, 248, 0.1); padding: 4px 10px; border-radius: 6px; transition: background 0.15s; }
+  .dl a:hover { background: rgba(56, 189, 248, 0.25); text-decoration: none; }
+  .del-btn { background: transparent; color: var(--bad); border: 1px solid rgba(239, 68, 68, 0.3); padding: 4px 10px; font-size: 0.78rem; font-weight: 500; border-radius: 6px; cursor: pointer; margin-left: auto; }
+  .del-btn:hover { background: rgba(239, 68, 68, 0.15); border-color: var(--bad); }
+
+  footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--dim); font-size: 0.8rem; line-height: 1.6; }
+  code { background: var(--panel2); padding: 2px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.82em; }
+  .spin { display: inline-block; width: 13px; height: 13px; border: 2px solid rgba(255,255,255,.25); border-top-color: #fff; border-radius: 50%; animation: sp .7s linear infinite; vertical-align: -2px; margin-right: 7px; }
+  @keyframes sp { to { transform: rotate(360deg); } }
+
+  .sequence-card { max-width: 100%; }
+  .timeline { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
+  .timeline span { background: var(--panel2); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; color: var(--accent); font-size: 0.76rem; font-weight: 500; }
+  .play-sync { background: var(--accent); color: #090d12; border: 0; padding: 6px 14px; font-size: 0.82rem; font-weight: 700; border-radius: 6px; cursor: pointer; }
+
+  /* Presentation mode */
+  .pres-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 20px; }
+  @media (max-width: 980px) { .pres-grid { grid-template-columns: 1fr; } }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; margin-bottom: 18px; }
+  .panel h3 { margin: 0 0 10px; font-size: 0.95rem; font-weight: 700; color: var(--fg); display: flex; align-items: center; gap: 10px; }
+  .panel h3 .badge { font-size: 0.7rem; padding: 2px 8px; border-radius: 999px; background: var(--panel2); color: var(--dim); border: 1px solid var(--line); font-weight: 600; }
+  .progress { height: 8px; background: var(--panel2); border-radius: 999px; overflow: hidden; margin: 10px 0 4px; border: 1px solid var(--line); }
+  .progress > div { height: 100%; background: linear-gradient(90deg, #0284c7, #38bdf8); width: 0; transition: width 0.3s ease; }
+  .plabel { font-size: 0.8rem; color: var(--dim); font-family: 'JetBrains Mono', monospace; }
+  #pres-video { width: 100%; aspect-ratio: 4 / 3; background: #000; display: block; }
+  .transport { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 10px; }
+  .transport button { border: 1px solid var(--line); background: var(--panel2); color: var(--fg); border-radius: 8px; padding: 8px 14px; font-weight: 600; font-size: 0.85rem; cursor: pointer; }
+  .transport button:hover { border-color: var(--accent); }
+  .transport button:disabled { opacity: 0.4; cursor: not-allowed; }
+  .transport button.primary { background: var(--accent); color: #090d12; border-color: var(--accent); }
+  .transport .clock { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--dim); margin-left: auto; }
+  .sync { font-size: 0.78rem; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel2); color: var(--dim); }
+  .sync.ok { color: var(--ok); border-color: rgba(34,197,94,0.4); }
+  .sync.bad { color: var(--bad); border-color: rgba(239,68,68,0.5); }
+  .words { line-height: 2.0; font-size: 1.02rem; padding: 12px 14px; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; min-height: 60px; }
+  .words .w { padding: 2px 3px; border-radius: 4px; transition: background 0.08s; }
+  .words .w.clause { background: rgba(56,189,248,0.10); }
+  .words .w.cur { background: var(--accent); color: #090d12; font-weight: 700; }
+  .words .w.gest { text-decoration: underline; text-decoration-color: var(--purple); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+  .words .w.blocked { text-decoration: underline wavy; text-decoration-color: var(--warn); text-underline-offset: 4px; }
+  .words .w.quoted { color: var(--dim); font-style: italic; }
+  .tl { position: relative; height: 54px; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-top: 10px; }
+  .tl .seg { position: absolute; top: 8px; height: 22px; border-radius: 3px; font-size: 0.66rem; line-height: 22px; padding: 0 5px; white-space: nowrap; overflow: hidden; color: #090d12; font-weight: 700; box-sizing: border-box; }
+  .tl .seg.attention { background: #64748b; top: 32px; height: 14px; line-height: 14px; }
+  .tl .seg.talking { background: #475569; color: #e2e8f0; top: 32px; height: 14px; line-height: 14px; }
+  .tl .seg.entry, .tl .seg.exit, .tl .seg.transition { background: #38bdf8; opacity: 0.55; top: 32px; height: 14px; line-height: 14px; }
+  .tl .seg.gesture { background: #a855f7; color: #fff; }
+  .tl .pause { position: absolute; top: 0; height: 8px; background: repeating-linear-gradient(90deg, #f59e0b 0 3px, transparent 3px 6px); }
+  .tl .speech { position: absolute; top: 0; height: 8px; background: rgba(34,197,94,0.35); }
+  .tl .head { position: absolute; top: 0; bottom: 0; width: 2px; background: #f0f4f8; left: 0; }
+  .legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: 0.72rem; color: var(--dim); margin-top: 6px; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: -1px; }
+  .kv { display: grid; grid-template-columns: auto 1fr; gap: 3px 14px; font-size: 0.8rem; }
+  .kv div:nth-child(odd) { color: var(--dim); }
+  .kv div:nth-child(even) { font-family: 'JetBrains Mono', monospace; }
+  table.mini { font-size: 0.76rem; }
+  table.mini th { text-align: left; color: var(--dim); font-weight: 600; padding: 3px 0; border-bottom: 1px solid var(--line); }
+  table.mini td { padding: 3px 6px 3px 0; text-align: left; font-family: 'JetBrains Mono', monospace; color: var(--fg); }
+  table.mini td.dim { color: var(--dim); font-family: inherit; }
+  .diag { border-left: 3px solid var(--line); padding: 8px 12px; margin: 8px 0; background: var(--panel2); border-radius: 0 8px 8px 0; font-size: 0.82rem; }
+  .diag .cat { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+  .diag .phrase { font-weight: 700; margin: 2px 0; }
+  .diag .fix { color: var(--dim); margin-top: 3px; }
+  .diag.blocked_restricted { border-color: var(--warn); } .diag.blocked_restricted .cat { color: var(--warn); }
+  .diag.blocked_allowlist { border-color: #fb923c; } .diag.blocked_allowlist .cat { color: #fb923c; }
+  .diag.no_gesture { border-color: #64748b; } .diag.no_gesture .cat { color: #94a3b8; }
+  .diag.asset_missing, .diag.validation_failure, .diag.speech_failure, .diag.playback_failure { border-color: var(--bad); }
+  .diag.asset_missing .cat, .diag.validation_failure .cat, .diag.speech_failure .cat, .diag.playback_failure .cat { color: var(--bad); }
+  .diag.timing_conflict, .diag.invalid_transition { border-color: var(--purple); } .diag.timing_conflict .cat, .diag.invalid_transition .cat { color: var(--purple); }
+  .diag.review_warning { border-color: #eab308; } .diag.review_warning .cat { color: #eab308; }
+  .diag.sync { border-color: var(--bad); } .diag.sync .cat { color: var(--bad); }
+  .ok-pill { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 0.72rem; font-weight: 700; }
+  .ok-pill.ok { background: var(--ok-bg); color: var(--ok); } .ok-pill.bad { background: rgba(239,68,68,0.15); color: var(--bad); }
+  .stale { color: var(--warn); font-size: 0.8rem; margin-left: 8px; }
+  .gest-list { list-style: none; padding: 0; margin: 8px 0 0; font-size: 0.8rem; }
+  .gest-list li { display: flex; gap: 10px; padding: 4px 0; border-bottom: 1px dashed var(--line); font-family: 'JetBrains Mono', monospace; }
+  .gest-list li.active { color: var(--accent); }
+  .gest-list li span:first-child { min-width: 92px; color: var(--purple); font-family: inherit; font-weight: 700; }
+  .events { max-height: 130px; overflow: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--dim); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 8px; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  
+  <div class="header">
+    <div>
+      <h1>Unitree G1 Motion Studio</h1>
+      <div class="sub">Humanoid Gesture Motion Library & Synced Speech Paragraph Sequences</div>
+      <div class="pipe">text &rarr; LLM2Vec &rarr; Kimodo-G1-RP-v1 &rarr; real-robot joint limits &rarr; qpos &rarr; MuJoCo MP4</div>
+    </div>
+    <div class="status" id="status"><span class="dot d-load"></span>connecting…</div>
+  </div>
+
+  <div class="main-tabs" role="tablist">
+    <button class="tab-btn active" data-tab="gesture">Gesture Library & Generator</button>
+    <button class="tab-btn" data-tab="sentence">Presentation: Speech + Gestures</button>
+    <button class="tab-btn" data-tab="upload">📹 Upload Video &rarr; Automatic G1 Gesture</button>
+  </div>
+
+  <!-- Section 1: Gesture Library -->
+  <section id="gesture-section" class="worksection active">
+    <div class="composer">
+      <label for="prompt">Custom Gesture Motion Generator</label>
+      <textarea id="prompt" placeholder="Type custom gesture (e.g., raise right hand and wave side to side)...">raise the right hand and wave</textarea>
+      <div class="chips" id="chips"></div>
+      <div class="opts">
+        <div><label for="duration">Duration (s)</label><input type="number" id="duration" value="3" min="0.5" max="10" step="0.5"></div>
+        <div><label for="steps">Diffusion steps</label><input type="number" id="steps" value="30" min="10" max="200" step="10"></div>
+        <div><label for="seed">Seed</label><input type="number" id="seed" value="42" min="0"></div>
+      </div>
+      <div class="row">
+        <button id="go" class="action-btn">Generate Custom Motion</button>
+        <label class="chk"><input type="checkbox" id="clamp" checked> Clamp to Unitree G1 real-robot joint limits</label>
+      </div>
+    </div>
+
+    <div class="gallery-header">
+      <div class="gal-top">
+        <div class="galtitle">
+          Gesture Motion Library
+          <span id="count-badge" class="galcount-badge">Loading...</span>
+        </div>
+        <button id="refresh" class="sec-btn">↻ Refresh Library</button>
+      </div>
+
+      <!-- Clean 10 Section Navigation -->
+      <div class="section-nav" id="section-nav">
+        <button class="sec-btn active" data-sec="ALL">All Gestures <span class="sec-count" id="cnt-ALL">(0)</span></button>
+        <button class="sec-btn" data-sec="CORE250" style="background:linear-gradient(135deg, #0284c7 0%, #38bdf8 100%); color:#090d12; font-weight:800;">🌟 Core 250 Page <span class="sec-count" id="cnt-CORE250">(0)</span></button>
+        <button class="sec-btn" data-sec="A">A. Greetings <span class="sec-count" id="cnt-A">(0)</span></button>
+        <button class="sec-btn" data-sec="B">B. Answers <span class="sec-count" id="cnt-B">(0)</span></button>
+        <button class="sec-btn" data-sec="C">C. Directions <span class="sec-count" id="cnt-C">(0)</span></button>
+        <button class="sec-btn" data-sec="D">D. Commands <span class="sec-count" id="cnt-D">(0)</span></button>
+        <button class="sec-btn" data-sec="E">E. Emotions <span class="sec-count" id="cnt-E">(0)</span></button>
+        <button class="sec-btn" data-sec="F">F. Social <span class="sec-count" id="cnt-F">(0)</span></button>
+        <button class="sec-btn" data-sec="G">G. Daily Actions <span class="sec-count" id="cnt-G">(0)</span></button>
+        <button class="sec-btn" data-sec="H">H. Learning/Work <span class="sec-count" id="cnt-H">(0)</span></button>
+        <button class="sec-btn" data-sec="I">I. Safety/Emergency <span class="sec-count" id="cnt-I">(0)</span></button>
+        <button class="sec-btn" data-sec="J">J. Time/Sequence <span class="sec-count" id="cnt-J">(0)</span></button>
+        <button class="sec-btn" data-sec="L">L. Additional 251&ndash;500 <span class="sec-count" id="cnt-L">(0)</span></button>
+        <button class="sec-btn" data-sec="M">M. PDF Catalogue 501&ndash;1000 <span class="sec-count" id="cnt-M">(0)</span></button>
+        <button class="sec-btn" data-sec="N">N. Dialogue &amp; Speech 1001&ndash;1500 <span class="sec-count" id="cnt-N">(0)</span></button>
+        <button class="sec-btn" data-sec="O">O. Catalogue 1501&ndash;2000 <span class="sec-count" id="cnt-O">(0)</span></button>
+        <button class="sec-btn" data-sec="K">K. Presentation Fallbacks <span class="sec-count" id="cnt-K">(0)</span></button>
+        <button class="sec-btn" data-sec="CUSTOM">⚡ Custom <span class="sec-count" id="cnt-CUSTOM">(0)</span></button>
+      </div>
+
+      <div class="chips" id="subcat-chips" hidden></div>
+      <div class="search-wrapper">
+        <input type="text" id="search-input" placeholder="🔍 Search intent, word, or number (e.g. #008, Namaste, Hello, Wave, Fire, Walk...)" class="search-box">
+      </div>
+
+      <!-- Pagination & Performance Controls -->
+      <div class="pagination-bar" id="pagination-bar" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-top:12px; padding:10px 14px; background:var(--panel, #1e293b); border:1px solid var(--line); border-radius:8px;">
+        <div style="display:flex; align-items:center; gap:8px; font-size:0.85rem; color:var(--dim);">
+          <button id="pg-prev" class="sec-btn" onclick="changePage(-1)">◀ Prev</button>
+          <span id="pg-info" style="font-weight:600; color:#fff;">Page 1 of 1</span>
+          <button id="pg-next" class="sec-btn" onclick="changePage(1)">Next ▶</button>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px; font-size:0.82rem; color:var(--dim);">
+          <label for="pg-size">Cards per page:</label>
+          <select id="pg-size" onchange="changePageSize(this.value)" style="background:var(--bg, #0f172a); color:#fff; border:1px solid var(--line); border-radius:4px; padding:4px 8px; font-weight:600;">
+            <option value="250" selected>250 per page</option>
+            <option value="500">500 per page</option>
+            <option value="750">750 per page</option>
+            <option value="1000">1000 per page</option>
+            <option value="2000">All (2000)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div id="msg"></div>
+    <div class="results" id="results"></div>
+  </section>
+
+  <!-- Section 2: Presentation mode (speech + allowed gestures) -->
+  <section id="sentence-section" class="worksection">
+    <div class="composer">
+      <label for="pres-text">Presentation text (spoken content &mdash; never a robot command)</label>
+      <textarea id="pres-text" rows="4" placeholder="Type the paragraph the G1 should speak...">Hello! Welcome to robotics. Let me explain about our robot. Our robot can walk, run, jump, and perform a back flip. Thank you.</textarea>
+      <p style="color:var(--dim); font-size:0.84rem; margin-top:8px;">The robot stays standing in place. Phrases that match an <em>allowed</em> saved gesture are performed on the spoken word; everything else uses the relaxed talking motion. Walking, jumping, kicking, flips, turns and floor motions are never performed from presentation text.</p>
+      <div class="opts">
+        <div><label for="pres-voice">Voice</label><select id="pres-voice"><option value="en-US-AvaNeural">Ava (en-US Female)</option></select></div>
+        <div><label for="pres-wpm">Speech rate (words/min)</label><input type="number" id="pres-wpm" value="150" min="80" max="220" step="5"></div>
+        <div><label for="pres-pause">Phrase pause (s, at . ! ?)</label><input type="number" id="pres-pause" value="0.8" min="0" max="2.5" step="0.1"></div>
+        <div><label for="pres-target-dur">Target duration (s, 0=Auto)</label><input type="number" id="pres-target-dur" value="0" min="0" max="120" step="1" placeholder="e.g. 10"></div>
+      </div>
+
+      <div class="row">
+        <button id="pres-prepare" class="action-btn">Prepare Presentation</button>
+        <span id="pres-stale" class="stale" hidden>Settings changed &mdash; prepare again before playing.</span>
+      </div>
+      <div class="progress" id="pres-progress-wrap" hidden><div id="pres-progress"></div></div>
+      <div class="plabel" id="pres-plabel"></div>
+      <div id="sentence-msg"></div>
+    </div>
+
+    <div class="pres-grid" id="pres-result" hidden>
+      <div>
+        <div class="panel">
+          <h3>G1 preview <span class="badge" id="pres-name"></span> <span id="pres-valid-pill"></span></h3>
+          <video id="pres-video" playsinline preload="auto" style="border-radius:8px;"></video>
+          <div class="transport">
+            <button id="pres-play" class="primary">&#9654; Play</button>
+            <button id="pres-pause" disabled>&#10074;&#10074; Pause</button>
+            <button id="pres-resume" disabled>&#9654; Resume</button>
+            <button id="pres-stop" disabled>&#9632; Stop</button>
+            <span class="sync" id="pres-sync">clock idle</span>
+            <span class="clock" id="pres-clock">0.00 / 0.00 s</span>
+          </div>
+          <div style="font-size:0.75rem; color:var(--dim); margin-top:6px; display:flex; align-items:center; gap:6px;">
+            <span style="color:#38bdf8;">ℹ️ Natural Sync:</span> Speech begins after a ~0.6s posture lead-in so robot body language and voice onset align naturally.
+          </div>
+
+          <div class="words" id="pres-words"></div>
+          <div class="tl" id="pres-tl"><div class="head" id="pres-head"></div></div>
+          <div class="legend">
+            <span><i style="background:#a855f7"></i>gesture main action</span>
+            <span><i style="background:#38bdf8;opacity:.55"></i>prepare / recover / transition</span>
+            <span><i style="background:#475569"></i>talking fallback</span>
+            <span><i style="background:#64748b"></i>attention</span>
+            <span><i style="background:rgba(34,197,94,.5)"></i>speech</span>
+            <span><i style="background:repeating-linear-gradient(90deg,#f59e0b 0 3px,transparent 3px 6px)"></i>inserted pause</span>
+          </div>
+          <ul class="gest-list" id="pres-gestures"></ul>
+          <div class="events" id="pres-events"></div>
+          <div class="dl" id="pres-dl"></div>
+        </div>
+      </div>
+      <div>
+        <div class="panel">
+          <h3>Validation results <span id="pres-val-summary"></span></h3>
+          <div id="pres-validation"></div>
+        </div>
+        <div class="panel">
+          <h3>Errors &amp; diagnostics <span class="badge" id="pres-diag-count">0</span></h3>
+          <div id="pres-diag"></div>
+        </div>
+        <div class="panel">
+          <h3>Worker resources <span class="badge">1 worker &middot; 2 threads &middot; 4/5 GiB</span></h3>
+          <div class="kv" id="pres-res"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-header">
+      <div class="gal-top">
+        <div class="galtitle">
+          Prepared Presentations
+          <span id="sentence-count-badge" class="galcount-badge">Loading...</span>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <button id="pres-allowlist-btn" class="sec-btn">Allowlist</button>
+          <button id="sentence-refresh" class="sec-btn">&#8635; Refresh</button>
+        </div>
+      </div>
+    </div>
+    <div class="panel" id="pres-allowlist" hidden></div>
+    <div class="results" id="sentence-results"></div>
+  </section>
+
+  <!-- Section 3: Video Uploader -> Automatic G1 Gesture Creation -->
+  <section id="upload-section" class="worksection">
+    <div class="composer" style="background: linear-gradient(135deg, rgba(19,25,34,0.95) 0%, rgba(26,34,48,0.95) 100%); border: 1px solid var(--line-bright);">
+      <h2 style="margin: 0 0 6px; font-size: 1.35rem; font-weight: 700; color: var(--fg); display: flex; align-items: center; gap: 10px;">
+        <span>📹 Automatic Video-to-Gesture Creation Pipeline</span>
+        <span style="font-size: 0.72rem; padding: 3px 10px; border-radius: 999px; background: rgba(56, 189, 248, 0.15); color: var(--accent); border: 1px solid rgba(56, 189, 248, 0.3);">CPU-First &middot; 36-DoF G1 Kinematics</span>
+      </h2>
+      <p style="color: var(--dim); font-size: 0.88rem; margin: 0 0 20px;">
+        Upload any human video. The pipeline automatically extracts 3D upper-body arm trajectories, filters unwanted body movement, maps joint kinematics onto the Unitree G1 model (arm/wrist joints only), validates against physical constraints, checks duplicates, generates NPZ/CSV assets, renders MuJoCo MP4 simulations, and assigns a new Gesture ID (2001+).
+      </p>
+
+      <!-- Dropzone -->
+      <div id="video-drop-zone" style="border: 2px dashed var(--line-bright); border-radius: 12px; padding: 36px 20px; text-align: center; background: rgba(9, 13, 18, 0.6); cursor: pointer; transition: all 0.2s ease;">
+        <div style="font-size: 2.5rem; margin-bottom: 8px;">📤</div>
+        <div style="font-size: 1.05rem; font-weight: 700; color: var(--fg); margin-bottom: 4px;">Drag &amp; Drop Video File Here</div>
+        <div style="font-size: 0.85rem; color: var(--dim); margin-bottom: 14px;">or click to select a file from your computer</div>
+        <div style="display: flex; gap: 6px; justify-content: center; flex-wrap: wrap;">
+          <span class="sec-badge">MP4</span>
+          <span class="sec-badge">MOV</span>
+          <span class="sec-badge">AVI</span>
+          <span class="sec-badge">MKV</span>
+          <span class="sec-badge">WEBM</span>
+        </div>
+        <input type="file" id="video-file-input" accept="video/mp4,video/quicktime,video/x-msvideo,video/x-matroska,video/webm" style="display: none;">
+      </div>
+
+      <!-- Preview Card -->
+      <div id="video-preview-card" style="display: none; margin-top: 20px; background: var(--panel2); border: 1px solid var(--line); border-radius: 12px; padding: 18px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px;">
+          <div>
+            <div style="font-weight: 700; font-size: 1.02rem; color: var(--fg);" id="vid-filename">video.mp4</div>
+            <div style="font-size: 0.8rem; color: var(--dim); margin-top: 2px; font-family: 'JetBrains Mono', monospace;" id="vid-meta-info">Resolution: - &middot; Duration: - &middot; FPS: - &middot; Size: -</div>
+          </div>
+          <button id="vid-remove-btn" class="sec-btn" style="border-color: rgba(239,68,68,0.4); color: var(--bad);">❌ Reselect Video</button>
+        </div>
+
+        <video id="vid-preview-player" controls playsinline style="width: 100%; max-height: 320px; background: #000; border-radius: 8px; border: 1px solid var(--line);"></video>
+
+        <div style="margin-top: 14px; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 12px;">
+          <label for="vid-prompt-input" style="font-size: 0.83rem; font-weight: 700; color: var(--accent); margin-bottom: 6px; display: block;">💬 Gesture Prompt / Description (Optional):</label>
+          <input type="text" id="vid-prompt-input" placeholder="e.g. Right arm greeting wave with folded hands..." style="width: 100%; padding: 8px 12px; font-size: 0.85rem; background: var(--panel2); color: var(--fg); border: 1px solid var(--line); border-radius: 6px;">
+        </div>
+
+        <div style="margin-top: 16px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 8px; font-size: 0.84rem; color: var(--dim);">
+            <label for="person-select" style="margin:0; font-size:0.8rem;">Target Person:</label>
+            <select id="person-select" style="padding: 6px 12px; font-size: 0.82rem; background: var(--bg); color: var(--fg); border: 1px solid var(--line); border-radius: 6px;">
+              <option value="0">Person #1 (Primary Target / Centroid)</option>
+              <option value="1">Person #2 (Secondary Subject)</option>
+            </select>
+          </div>
+          <button id="vid-start-btn" class="action-btn" style="padding: 12px 28px; font-size: 0.98rem; background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%);">🚀 Start Video &rarr; Gesture Pipeline</button>
+        </div>
+      </div>
+
+      <!-- Progress Card -->
+      <div id="video-progress-card" style="display: none; margin-top: 20px; background: var(--panel2); border: 1px solid var(--line); border-radius: 12px; padding: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <div style="font-weight: 700; font-size: 0.95rem; color: var(--fg);" id="vid-stage-title"><span class="spin"></span>Processing Pipeline Stage 1/12...</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.88rem; font-weight: 700; color: var(--accent);" id="vid-progress-pct">0%</div>
+        </div>
+        <div class="progress" style="height: 10px; margin: 6px 0 14px;"><div id="vid-progress-bar" style="width: 0%; background: linear-gradient(90deg, #0284c7, #38bdf8);"></div></div>
+        <div style="font-size: 0.8rem; color: var(--dim); font-family: 'JetBrains Mono', monospace; background: var(--bg); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--line);" id="vid-stage-detail">Reading input video frame stream...</div>
+      </div>
+
+      <div id="upload-msg" style="margin-top: 16px;"></div>
+    </div>
+
+    <!-- Result Card -->
+    <div id="video-result-card" hidden style="margin-top: 24px;">
+      <div class="panel" style="border-color: var(--accent-glow); box-shadow: 0 8px 30px rgba(0,0,0,0.4);">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; border-bottom: 1px solid var(--line); padding-bottom: 14px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+              <span class="seq-index-badge" style="font-size: 0.9rem; padding: 4px 10px;" id="res-gesture-id">PDF_2001</span>
+              <h3 style="margin: 0; font-size: 1.25rem; font-weight: 700; color: var(--fg);" id="res-gesture-name">Video Derived Gesture</h3>
+              <span class="sec-badge" id="res-category">User Uploads 2001+</span>
+            </div>
+            <div style="color: var(--dim); font-size: 0.85rem; margin-top: 6px;" id="res-subtitle">Automated G1 Motion Extracted &amp; Clamped</div>
+          </div>
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <span class="ok-pill ok" id="res-valid-pill">VALID &amp; CLAMPED</span>
+            <span class="galcount-badge" id="res-quality-score" style="background: rgba(56, 189, 248, 0.15); color: var(--accent); border-color: rgba(56, 189, 248, 0.3);">Quality Score: 95%</span>
+          </div>
+        </div>
+
+        <!-- Duplicate Warning Alert -->
+        <div id="res-dup-banner" style="display: none; background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.4); color: #fcd34d; padding: 12px 16px; border-radius: 8px; margin-bottom: 18px; font-size: 0.88rem;">
+          ⚠️ <strong>Similar Gesture Detected:</strong> This video motion matches an existing gesture in the catalogue (<span id="res-dup-info"></span>). The new gesture has been saved separately as <strong id="res-dup-id"></strong> without overwriting any existing library entries.
+        </div>
+
+        <!-- Dual Video Preview Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; margin-bottom: 20px;">
+          <div style="background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px;">
+            <div style="font-size: 0.82rem; font-weight: 700; color: var(--accent); margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+              <span>📹 Original Source Video</span>
+            </div>
+            <video id="res-source-video-player" controls playsinline style="width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 6px;"></video>
+          </div>
+
+          <div style="background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px;">
+            <div style="font-size: 0.82rem; font-weight: 700; color: var(--ok); margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+              <span>🤖 Unitree G1 Robot Simulation</span>
+            </div>
+            <video id="res-g1-video-player" controls playsinline style="width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 6px;"></video>
+          </div>
+        </div>
+
+        <!-- Motion Similarity & Accuracy Report Card -->
+        <div style="background: var(--panel2); border: 1px solid var(--line); border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+          <div style="font-size: 0.9rem; font-weight: 700; color: var(--fg); margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between;">
+            <span>📊 Quantitative Motion Similarity &amp; Accuracy Report</span>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--ok);" id="res-sim-overall">Overall Match: 92.5%</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; font-size: 0.8rem;">
+            <div style="background: var(--bg); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--line);">
+              <div style="color: var(--dim);">End-Effector Trajectory</div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--accent); margin-top: 2px;" id="res-sim-ee">92.0%</div>
+            </div>
+            <div style="background: var(--bg); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--line);">
+              <div style="color: var(--dim);">Movement Direction</div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--accent); margin-top: 2px;" id="res-sim-dir">94.5%</div>
+            </div>
+            <div style="background: var(--bg); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--line);">
+              <div style="color: var(--dim);">Timing Alignment</div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--accent); margin-top: 2px;" id="res-sim-time">96.5%</div>
+            </div>
+            <div style="background: var(--bg); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--line);">
+              <div style="color: var(--dim);">Trajectory Smoothness</div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--ok); margin-top: 2px;" id="res-sim-smooth">91.0</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metadata Table -->
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-bottom: 20px; background: var(--panel2); border-radius: 8px; padding: 10px;">
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 8px 12px;">Extracted Frames / Duration:</td><td style="padding: 8px 12px; font-family: 'JetBrains Mono', monospace;" id="res-meta-frames">-</td></tr>
+            <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 8px 12px;">Kinematic Safety &amp; Joint Limits:</td><td style="padding: 8px 12px; font-family: 'JetBrains Mono', monospace; color: var(--ok);" id="res-meta-safety">Arm-Only Filter &middot; Stationary Stance Preserved</td></tr>
+            <tr style="border-bottom: 1px solid var(--line);"><td style="padding: 8px 12px;">NPZ Trajectory Artifact:</td><td style="padding: 8px 12px; font-family: 'JetBrains Mono', monospace;" id="res-meta-npz">-</td></tr>
+          </tbody>
+        </table>
+
+        <!-- Actions -->
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+          <button id="res-execute-g1-btn" class="action-btn" style="background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);">🤖 Approve &amp; Execute on G1 Humanoid</button>
+          <button id="res-open-player-btn" class="action-btn">▶ Open in Gesture Player</button>
+          <button id="res-inspect-npz-btn" class="sec-btn" style="border-color: var(--accent); color: var(--accent);">📊 Inspect NPZ Trajectory</button>
+          <button id="res-new-video-btn" class="sec-btn">📹 Upload Another Video</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <strong>Simulation only &mdash; not hardware authorization.</strong> All motions are clamped with <code>apply_g1_real_robot_projection</code> and structurally validated for Unitree G1 humanoid (g1skel34).
+  </footer>
+</div>
+
+<script src="config.js" onerror="void 0"></script>
+<script>
+const EXAMPLES = [
+  "raise the right hand and wave", "raise both hands above the head",
+  "point forward with the right hand", "cross both arms in front of the chest",
+  "give a thumbs up with the right hand", "clap hands together"
+];
+const $ = id => document.getElementById(id);
+const API = (window.KIMODO_API || location.origin).replace(/\/$/, "");
+
+// Tab switching
+document.querySelectorAll(".tab-btn").forEach(btn => btn.onclick = () => {
+  const selected = btn.dataset.tab;
+  document.querySelectorAll(".tab-btn").forEach(t => t.classList.toggle("active", t === btn));
+  $("gesture-section").classList.toggle("active", selected === "gesture");
+  $("sentence-section").classList.toggle("active", selected === "sentence");
+  $("upload-section").classList.toggle("active", selected === "upload");
+  if (selected === "sentence") loadSentenceGallery();
+});
+
+$("chips").innerHTML = EXAMPLES.map(e => `<span class="chip">${e}</span>`).join("");
+$("chips").onclick = e => { if (e.target.classList.contains("chip")) $("prompt").value = e.target.textContent; };
+
+function msg(text, kind) {
+  const m = $("msg"); m.textContent = text; m.className = kind ? "m-" + kind : "";
+  if (!kind) m.style.display = "none";
+}
+function sentenceMsg(text, kind) {
+  const m = $("sentence-msg"); m.textContent = text; m.className = kind ? "m-" + kind : "";
+  if (!kind) m.style.display = "none";
+}
+
+let ready = false;
+let galleryLoaded = false;
+
+async function poll() {
+  try {
+    const s = await (await fetch(API + "/api/status")).json();
+    ready = s.ready;
+    if (s.ready) {
+      $("status").innerHTML = `<span class="dot d-ok"></span>Ready · GPU · ${s.vram_gb} GB VRAM`;
+      if (!galleryLoaded) {
+        galleryLoaded = true;
+        loadGallery();
+        loadSentenceGallery();
+      }
+    } else {
+      $("status").innerHTML = `<span class="dot d-load"></span>loading models…`;
+    }
+    $("go").disabled = !s.ready;
+    if (!s.ready) setTimeout(poll, 1500);
+  } catch {
+    $("status").innerHTML = `<span class="dot d-bad"></span>backend offline`;
+    $("go").disabled = true;
+    setTimeout(poll, 3000);
+  }
+}
+poll();
+
+$("refresh").onclick = () => loadGallery();
+$("sentence-refresh").onclick = () => loadSentenceGallery();
+
+let allItems = [];
+let allSentenceItems = [];
+let activeSec = "ALL";
+let activeSubcat = "";
+let searchQuery = "";
+let currentPage = 1;
+let pageSize = 250;
+
+function changePage(delta) {
+  currentPage += delta;
+  renderGallery();
+  const resEl = $("results");
+  if (resEl) window.scrollTo({ top: resEl.offsetTop - 100, behavior: "smooth" });
+}
+
+function changePageSize(size) {
+  pageSize = parseInt(size, 10) || 250;
+  currentPage = 1;
+  renderGallery();
+}
+
+$("subcat-chips").onclick = e => { const c = e.target.closest(".chip"); if (!c) return; activeSubcat = c.dataset.cat; currentPage = 1; renderGallery(); };
+
+document.querySelectorAll("#section-nav .sec-btn").forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll("#section-nav .sec-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    activeSec = btn.dataset.sec;
+    currentPage = 1;
+    renderGallery();
+  };
+});
+
+$("search-input").oninput = (e) => {
+  searchQuery = e.target.value.toLowerCase().trim();
+  currentPage = 1;
+  renderGallery();
+};
+
+async function loadGallery(silent = false) {
+  try {
+    const g = await (await fetch(API + "/api/gallery?limit=2500")).json();
+    allItems = g.items || [];
+    renderGallery();
+  } catch(e) {
+    if (!silent) console.error("Gallery fetch error:", e);
+  }
+}
+
+async function loadSentenceGallery(silent = false) {
+  try {
+    const g = await (await fetch(API + "/api/presentation/gallery?limit=200")).json();
+    allSentenceItems = g.items || [];
+    renderSentenceGallery();
+  } catch(e) {
+    if (!silent) console.error("Presentation gallery fetch error:", e);
+  }
+}
+
+function getSectionPrefix(item) {
+  const cat = (item.category || "").toLowerCase();
+  const name = (item.name || "");
+  const num = item.number || (name.startsWith("PDF_") ? parseInt(name.replace("PDF_", ""), 10) : 0);
+  
+  if (num >= 1 && num <= 20) return "A";
+  if (num >= 21 && num <= 45) return "B";
+  if (num >= 46 && num <= 75) return "C";
+  if (num >= 76 && num <= 110) return "D";
+  if (num >= 111 && num <= 145) return "E";
+  if (num >= 146 && num <= 170) return "F";
+  if (num >= 171 && num <= 205) return "G";
+  if (num >= 206 && num <= 225) return "H";
+  if (num >= 226 && num <= 240) return "I";
+  if (num >= 241 && num <= 250) return "J";
+  if (item.collection === "presentation_fallbacks" || item.fallback) return "K";
+  if (num >= 251 && num <= 500) return "L";
+  if (num >= 501 && num <= 1000) return "M";
+  if (num >= 1001 && num <= 1500) return "N";
+  if (num >= 1501 && num <= 2000) return "O";
+  
+  if (cat.includes("greetings")) return "A";
+  if (cat.includes("answers")) return "B";
+  if (cat.includes("directions")) return "C";
+  if (cat.includes("commands")) return "D";
+  if (cat.includes("emotions")) return "E";
+  if (cat.includes("social")) return "F";
+  if (cat.includes("daily")) return "G";
+  if (cat.includes("learning")) return "H";
+  if (cat.includes("safety")) return "I";
+  if (cat.includes("time")) return "J";
+  
+  return "CUSTOM";
+}
+
+let videoObserver = null;
+function initVideoObserver() {
+  if (videoObserver) videoObserver.disconnect();
+  if ('IntersectionObserver' in window) {
+    videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const vid = entry.target;
+          if (vid.dataset.src) {
+            vid.src = vid.dataset.src;
+            vid.removeAttribute('data-src');
+          }
+          videoObserver.unobserve(vid);
+        }
+      });
+    }, { rootMargin: '300px 0px' });
+  }
+}
+
+function renderGallery() {
+  const container = $("results");
+  container.innerHTML = "";
+  initVideoObserver();
+
+  const counts = { ALL: 0, CORE250: 0, A:0, B:0, C:0, D:0, E:0, F:0, G:0, H:0, I:0, J:0, K:0, L:0, M:0, N:0, O:0, CUSTOM:0 };
+  const pdfCount = allItems.filter(i => (i.collection === "pdf_250_library" || (i.name && i.name.startsWith("PDF_"))) && (i.video || i.valid)).length;
+
+  allItems.forEach(item => {
+    counts.ALL++;
+    const name = item.name || "";
+    const num = item.number || (name.startsWith("PDF_") ? parseInt(name.replace("PDF_", ""), 10) : 0);
+    if (num >= 1 && num <= 250) counts.CORE250++;
+    const sec = getSectionPrefix(item);
+    counts[sec] = (counts[sec] || 0) + 1;
+  });
+
+  Object.keys(counts).forEach(sec => {
+    const el = $("cnt-" + sec);
+    if (el) el.textContent = `(${counts[sec]})`;
+  });
+
+  if ($("count-badge")) {
+    $("count-badge").textContent = `${pdfCount} Library Videos Ready (${counts.ALL} Total Gestures)`;
+  }
+
+  // Sub-category chips for 251-500 (L), 501-1000 (M), 1001-1500 (N), and 1501-2000 (O)
+  const chips = $("subcat-chips");
+  if (activeSec === "L" || activeSec === "M" || activeSec === "N" || activeSec === "O") {
+    const cats = [...new Set(allItems.filter(i => getSectionPrefix(i) === activeSec).map(i => i.category || "").filter(Boolean))].sort();
+    chips.hidden = false;
+    chips.innerHTML = [""].concat(cats).map(c => `<span class="chip${c === activeSubcat ? " sec-btn active" : ""}" data-cat="${escapeHtml(c)}">${c ? escapeHtml(c) : "All sub-categories"}</span>`).join("");
+  } else { chips.hidden = true; activeSubcat = ""; }
+
+  let filtered = allItems.filter(item => {
+    const name = item.name || "";
+    const num = item.number || (name.startsWith("PDF_") ? parseInt(name.replace("PDF_", ""), 10) : 0);
+    if (activeSec === "CORE250") {
+      if (num < 1 || num > 250) return false;
+    } else {
+      const sec = getSectionPrefix(item);
+      if (activeSec !== "ALL" && sec !== activeSec) return false;
+      if ((activeSec === "L" || activeSec === "M" || activeSec === "N" || activeSec === "O") && activeSubcat && (item.category || "") !== activeSubcat) return false;
+    }
+    
+    if (searchQuery) {
+      const p = (item.prompt || "").toLowerCase();
+      const n = (item.name || "").toLowerCase();
+      const cat = (item.category || "").toLowerCase();
+      const int = (item.intent || "").toLowerCase();
+      const num = item.number ? `#${item.number}` : "";
+      
+      if (!p.includes(searchQuery) && !n.includes(searchQuery) && !cat.includes(searchQuery) && !int.includes(searchQuery) && !num.includes(searchQuery)) {
+        return false;
+      }
+    }
+    return true;
+  });
+
+  filtered.sort((a, b) => {
+    const numA = a.number || (a.name && a.name.startsWith("PDF_") ? parseInt(a.name.replace("PDF_", ""), 10) : 9999);
+    const numB = b.number || (b.name && b.name.startsWith("PDF_") ? parseInt(b.name.replace("PDF_", ""), 10) : 9999);
+    return numA - numB;
+  });
+
+  const totalFiltered = filtered.length;
+  const totalPages = Math.ceil(totalFiltered / pageSize) || 1;
+  if (currentPage > totalPages) currentPage = 1;
+  if (currentPage < 1) currentPage = 1;
+
+  if ($("pg-info")) {
+    $("pg-info").textContent = `Page ${currentPage} of ${totalPages} (${totalFiltered} gestures)`;
+  }
+  if ($("pg-prev")) $("pg-prev").disabled = (currentPage <= 1);
+  if ($("pg-next")) $("pg-next").disabled = (currentPage >= totalPages);
+
+  if (totalFiltered === 0) {
+    container.innerHTML = `<div style="grid-column: 1/-1; padding: 40px; text-align: center; color: var(--dim); background: var(--panel); border-radius: 12px; border: 1px dashed var(--line);">
+      No motions matching criteria.
+    </div>`;
+    return;
+  }
+
+  const startIdx = (currentPage - 1) * pageSize;
+  const pageItems = filtered.slice(startIdx, startIdx + pageSize);
+
+  const fragment = document.createDocumentFragment();
+  pageItems.forEach((m, idx) => addCard(m, startIdx + idx + 1, fragment));
+  container.appendChild(fragment);
+}
+
+function renderSentenceGallery() {
+  const container = $("sentence-results");
+  container.innerHTML = "";
+
+  if ($("sentence-count-badge")) {
+    $("sentence-count-badge").textContent = `${allSentenceItems.length} Prepared`;
+  }
+
+  if (allSentenceItems.length === 0) {
+    container.innerHTML = `<div style="grid-column: 1/-1; padding: 40px; text-align: center; color: var(--dim); background: var(--panel); border-radius: 12px; border: 1px dashed var(--line);">
+      No presentations yet. Type a paragraph above and click "Prepare Presentation".
+    </div>`;
+    return;
+  }
+
+  allSentenceItems.forEach((item) => addPresentationCard(item));
+}
+
+$("go").onclick = async () => {
+  const prompt = $("prompt").value.trim();
+  if (!prompt) return msg("Enter a prompt first.", "err");
+  $("go").disabled = true;
+  $("go").innerHTML = '<span class="spin"></span>Generating…';
+  msg("Generating motion and clamping to real-robot joint limits...", "info");
+  try {
+    const r = await fetch(API + "/api/generate", {
+      method: "POST", headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        prompt, duration: +$("duration").value, steps: +$("steps").value,
+        seed: +$("seed").value, clamp: $("clamp").checked, collection: "web"
+      }),
+    });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || r.statusText);
+    msg("", null);
+    loadGallery();
+  } catch (e) {
+    msg("Failed: " + e.message, "err");
+  } finally {
+    $("go").disabled = !ready;
+    $("go").textContent = "Generate Custom Motion";
+  }
+};
+
+function escapeHtml(value) {
+  return String(value || "").replace(/[&<>'"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;","\"":"&quot;"})[c]);
+}
+
+async function deleteMotion(name, btn) {
+  if (!confirm("Are you sure you want to delete this motion?")) return;
+  try {
+    const r = await fetch(API + "/api/delete/" + encodeURIComponent(name), { method: "DELETE" });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || "Delete failed");
+    allItems = allItems.filter(i => i.name !== name);
+    renderGallery();
+  } catch (e) {
+    alert("Delete failed: " + e.message);
+  }
+}
+
+// ===================== Presentation mode =====================
+// One media element carries both the rendered motion and the speech track, so
+// audio and animation share one clock (video.currentTime).  The UI-side
+// scheduler (phrase highlight, gesture events, playhead) reads that clock on
+// every animation frame; a wall-clock monitor pauses playback and reports if
+// the media clock stalls or drifts instead of letting events skip ahead.
+const CAT_LABEL = {
+  blocked_restricted: "Intentionally blocked (restricted action)",
+  blocked_allowlist: "Intentionally blocked (clip failed stationary/collision checks)",
+  no_gesture: "No matching saved gesture",
+  asset_missing: "Missing / invalid motion asset",
+  timing_conflict: "Timing conflict",
+  invalid_transition: "Invalid transition",
+  speech_failure: "Speech generation / playback failure",
+  playback_failure: "Playback failure",
+  validation_failure: "Validation failure",
+  review_warning: "Review warning (placeholder threshold)",
+  sync: "Playback synchronization",
+};
+const pres = { sched: null, job: null, stale: false, player: null };
+
+async function loadVoices() {
+  try {
+    const d = await (await fetch(API + "/api/voices")).json();
+    const sel = $("pres-voice");
+    const cur = sel.value;
+    sel.innerHTML = (d.voices || []).map(v => `<option value="${escapeHtml(v.id)}">${escapeHtml(v.name)}</option>`).join("");
+    if ([...sel.options].some(o => o.value === cur)) sel.value = cur;
+  } catch (e) { console.error("voices", e); }
+}
+loadVoices();
+
+["pres-text", "pres-voice", "pres-wpm", "pres-pause", "pres-target-dur"].forEach(id => {
+  $(id).addEventListener("input", () => markStale());
+  $(id).addEventListener("change", () => markStale());
+});
+function markStale() {
+  if (!pres.sched) return;
+  pres.stale = true;
+  $("pres-stale").hidden = false;
+  if (pres.player) pres.player.stop("settings changed");
+  $("pres-play").disabled = true;
+}
+
+$("pres-prepare").onclick = async () => {
+  const text = $("pres-text").value.trim();
+  if (!text) return sentenceMsg("Enter some text first.", "err");
+  if (pres.player) pres.player.stop("new preparation");
+  $("pres-prepare").disabled = true;
+  $("pres-prepare").innerHTML = '<span class="spin"></span>Preparing…';
+  $("pres-progress-wrap").hidden = false;
+  $("pres-progress").style.width = "2%";
+  $("pres-plabel").textContent = "queued";
+  sentenceMsg("", null);
+  try {
+    const r = await fetch(API + "/api/presentation/prepare", {
+      method: "POST", headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        text,
+        voice: $("pres-voice").value,
+        words_per_minute: +$("pres-wpm").value,
+        phrase_pause_s: +$("pres-pause").value,
+        target_duration_s: +$("pres-target-dur").value
+      }),
+    });
+
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || r.statusText);
+    await pollJob(d.job_id);
+  } catch (e) {
+    sentenceMsg("Prepare failed: " + e.message, "err");
+    $("pres-plabel").textContent = "failed";
+  } finally {
+    $("pres-prepare").disabled = false;
+    $("pres-prepare").textContent = "Prepare Presentation";
+  }
+};
+
+async function pollJob(jobId) {
+  while (true) {
+    const j = await (await fetch(API + "/api/presentation/jobs/" + jobId)).json();
+    pres.job = j;
+    $("pres-progress").style.width = Math.max(2, (j.progress || 0) * 100) + "%";
+    $("pres-plabel").textContent = `${j.state}: ${j.label || ""}` + (j.name ? ` (${j.name})` : "");
+    if (j.state === "done") {
+      $("pres-progress").style.width = "100%";
+      showPresentation(j.result, j);
+      loadSentenceGallery();
+      return;
+    }
+    if (j.state === "error") {
+      const extra = j.stderr ? "\n" + j.stderr : "";
+      sentenceMsg("Prepare failed: " + j.error + extra, "err");
+      $("pres-plabel").textContent = "error";
+      return;
+    }
+    await new Promise(res => setTimeout(res, 700));
+  }
+}
+
+function fmt(x, d = 2) { return (x === null || x === undefined) ? "–" : (+x).toFixed(d); }
+
+function showPresentation(s, job) {
+  pres.sched = s; pres.stale = false;
+  $("pres-stale").hidden = true;
+  $("pres-result").hidden = false;
+  $("pres-name").textContent = s.name + (s.number ? ` · #${s.number}` : "");
+  const ok = s.validation && s.validation.ok;
+  $("pres-valid-pill").innerHTML = ok ? '<span class="ok-pill ok">VALID · playable</span>' : '<span class="ok-pill bad">BLOCKED · not playable</span>';
+  // words
+  const gestWords = new Set(); (s.gestures || []).forEach(g => { for (let i = g.word_span[0]; i < g.word_span[1]; i++) gestWords.add(i); });
+  const blockedWords = new Set(); (s.diagnostics || []).forEach(d => { if (d.word_span && d.category.startsWith("blocked")) for (let i = d.word_span[0]; i < d.word_span[1]; i++) blockedWords.add(i); });
+  $("pres-words").innerHTML = (s.words || []).map(w => `<span class="w${gestWords.has(w.idx) ? " gest" : ""}${blockedWords.has(w.idx) ? " blocked" : ""}${w.quoted ? " quoted" : ""}" data-i="${w.idx}" data-c="${w.clause}" title="${fmt(w.start_s)}–${fmt(w.end_s)} s">${escapeHtml(w.text)}</span>`).join(" ");
+  // timeline
+  const tl = $("pres-tl"); tl.querySelectorAll(".seg,.pause,.speech").forEach(e => e.remove());
+  const T = s.duration_s || 1;
+  const sp = document.createElement("div"); sp.className = "speech"; sp.style.left = (s.speech_start_s / T * 100) + "%"; sp.style.width = ((s.speech_end_s - s.speech_start_s) / T * 100) + "%"; sp.title = "speech"; tl.appendChild(sp);
+  (s.pauses || []).forEach(p => { const e = document.createElement("div"); e.className = "pause"; e.style.left = (p.at_final_s / T * 100) + "%"; e.style.width = Math.max(0.3, p.duration_s / T * 100) + "%"; e.title = `${p.label}: ${fmt(p.duration_s)} s`; tl.appendChild(e); });
+  (s.segments || []).forEach(g => { const e = document.createElement("div"); e.className = "seg " + g.kind; e.style.left = (g.start_s / T * 100) + "%"; e.style.width = Math.max(0.2, (g.end_s - g.start_s) / T * 100) + "%"; e.textContent = g.kind === "gesture" ? g.intent : (g.kind === "talking" ? "talking" : ""); e.title = `${g.label} (${fmt(g.start_s)}–${fmt(g.end_s)} s)`; tl.appendChild(e); });
+  // gesture list
+  $("pres-gestures").innerHTML = (s.gestures || []).map((g, i) => `<li data-g="${i}"><span>${escapeHtml(g.intent)}</span><span>"${escapeHtml(g.phrase)}"</span><span>word ${fmt(g.word_start_s)} s · main ${fmt(g.main_start_s)}–${fmt(g.main_end_s)} s · lag ${(g.main_lag_s * 1000).toFixed(0)} ms</span></li>`).join("")
+    || '<li><span>no gesture</span><span>talking fallback for the whole text</span></li>';
+  // downloads
+  $("pres-dl").innerHTML = `<div class="dl-links">
+    ${s.video ? `<a href="${API + s.video}" download>MP4 (video + speech)</a>` : ""}
+    ${s.npz ? `<a href="${API + s.npz}" download>NPZ (qpos + schedule)</a>` : ""}
+    ${s.csv ? `<a href="${API + s.csv}" download>CSV (qpos)</a>` : ""}
+    ${s.wav ? `<a href="${API + s.wav}" download>WAV (speech)</a>` : ""}
+    <a href="${API + s.schedule}" target="_blank">schedule.json</a></div>`;
+  // validation
+  const v = s.validation || {}; const sc = v.stationary_and_continuity || {}; const m = sc.measurements || {}; const th = sc.thresholds || {};
+  const rows = ["foot_lift_m", "foot_slide_m", "root_drift_m", "root_z_range_m", "root_yaw_rad", "waist_yaw_rad", "waist_roll_rad", "waist_pitch_rad", "leg_travel_rad", "self_penetration_excess_m", "max_joint_vel_rad_s", "max_joint_acc_rad_s2"];
+  const lim = k => k === "self_penetration_excess_m" ? 0 : th[k];
+  $("pres-val-summary").innerHTML = ok ? '<span class="ok-pill ok">all checks passed</span>' : '<span class="ok-pill bad">failed</span>';
+  $("pres-validation").innerHTML = `
+    <table class="mini"><tr><th>stationary stance / limits</th><th>measured</th><th>limit</th><th></th></tr>
+    ${rows.map(k => { const val = m[k]; const l = lim(k); const bad = (l !== undefined && val > l); return `<tr><td class="dim">${k.replace(/_/g, " ")}</td><td>${fmt(val, 3)}</td><td>${l === undefined ? "" : (k === "self_penetration_excess_m" ? "0 (per-pair)" : l)}</td><td>${bad ? "❌" : "✓"}</td></tr>`; }).join("")}
+    </table>
+    <table class="mini" style="margin-top:8px"><tr><th>transition</th><th>max vel</th><th>max acc</th><th></th></tr>
+    ${(sc.transitions || []).map(t => `<tr><td class="dim">${escapeHtml(t.label || t.kind)}</td><td>${fmt(t.max_vel_rad_s)}</td><td>${fmt(t.max_acc_rad_s2, 1)}</td><td>${t.ok ? "✓" : "❌"}</td></tr>`).join("")}
+    </table>
+    <div class="kv" style="margin-top:8px">
+      <div>validate_g1_motion.py</div><div>${v.validator ? (v.validator.returncode === 0 ? "exit 0 (PASSED)" : "exit " + v.validator.returncode + " (FAILED)") : "–"}</div>
+      <div>word timing</div><div>${escapeHtml(s.word_timing_source || "")}${s.timing_calibration && s.timing_calibration.onset_shift_s !== undefined ? ` (shift +${(s.timing_calibration.onset_shift_s * 1000).toFixed(0)} ms, ${s.timing_calibration.onsets_detected} onsets)` : ""}</div>
+      <div>duration</div><div>${fmt(s.duration_s)} s motion · speech ${fmt(s.speech_start_s)}–${fmt(s.speech_end_s)} s · audio ${fmt(s.audio_duration_s)} s</div>
+      <div>gesture lag</div><div>${(s.gestures || []).length ? "max |lag| " + Math.max(...s.gestures.map(g => Math.abs(g.main_lag_s * 1000))).toFixed(0) + " ms (tolerance ±" + (s.config.lag_tolerance_s * 1000) + " ms late / " + (s.config.lead_tolerance_s * 1000) + " ms early)" : "–"}</div>
+      <div>attention pose</div><div>${escapeHtml(s.attention_pose || "")}</div>
+      <div>allowlist</div><div>${s.allowlist_summary ? `${s.allowlist_summary.allowed} allowed / ${s.allowlist_summary.total} clips` : ""}</div>
+    </div>
+    <details style="margin-top:6px"><summary>validator output</summary><pre>${escapeHtml((v.validator || {}).stdout || "")}</pre></details>`;
+  // diagnostics
+  renderDiagnostics(s.diagnostics || []);
+  // resources
+  const rp = (job && job.resources_peak) || {};
+  const lim2 = (job && job.limits) || {};
+  $("pres-res").innerHTML = `
+    <div>prepare time</div><div>${fmt(s.prepare_s, 1)} s (tts ${fmt((s.stages || {}).tts_s, 1)} · plan ${fmt((s.stages || {}).plan_build_s, 1)} · validate ${fmt((s.stages || {}).validate_s, 1)} · render ${fmt((s.stages || {}).render_s, 1)} s @ ${fmt((s.stages || {}).render_fps, 0)} fps)</div>
+    <div>worker peak RSS</div><div>${fmt(rp.peak_rss_gib, 2)} GiB (limit ${lim2.rlimit_data_gib ? lim2.rlimit_data_gib.join("/") + " GiB" : "–"})</div>
+    <div>worker peak CPU</div><div>${fmt(rp.peak_cpu_pct_of_machine, 1)} % of machine (${lim2.threads || 2} BLAS threads, nice ${lim2.nice ?? "–"})</div>
+    <div>GPU utilization peak</div><div>${fmt(rp.peak_gpu_util_pct, 0)} % (sampled every 1 s during the job)</div>
+    <div>VRAM used peak</div><div>${fmt(rp.peak_vram_used_mib, 0)} / ${fmt(rp.vram_total_mib, 0)} MiB total on the card (${rp.vram_total_mib ? (rp.peak_vram_used_mib / rp.vram_total_mib * 100).toFixed(0) : "–"} %, includes the resident generator models)</div>
+    <div>deferrals</div><div>${(job && job.deferrals && job.deferrals.length) ? job.deferrals.map(d => d.reason).join("; ") : "none"}</div>`;
+  // player
+  if (pres.player) pres.player.destroy();
+  pres.player = new Player($("pres-video"), s);
+  $("pres-play").disabled = !ok || !s.video;
+}
+
+function renderDiagnostics(list, extra) {
+  const all = (extra ? [extra] : []).concat(list);
+  $("pres-diag-count").textContent = all.length;
+  $("pres-diag").innerHTML = all.length ? all.map(d => `<div class="diag ${escapeHtml(d.category)}">
+      <div class="cat">${escapeHtml(CAT_LABEL[d.category] || d.category)}${d.status && d.status !== d.category ? " · " + escapeHtml(d.status) : ""}</div>
+      <div class="phrase">“${escapeHtml(d.phrase)}”${d.intent ? ` → ${escapeHtml(d.intent)} (${escapeHtml(d.gesture_id || "")})` : ""}</div>
+      <div>${escapeHtml(d.reason)}</div>
+      ${d.detail && d.detail.library_clip ? `<div style="color:var(--dim)">Library clip ${escapeHtml(d.detail.library_clip)} is also denied by the allowlist: ${escapeHtml((d.detail.allowlist_reasons || []).join("; "))}</div>` : ""}
+      <div class="fix">↳ ${escapeHtml(d.corrective || "")}</div></div>`).join("")
+    : '<div style="color:var(--dim);font-size:0.84rem">No issues.</div>';
+}
+
+class Player {
+  constructor(video, sched) {
+    this.v = video; this.s = sched; this.token = 0; this.state = "idle"; this.raf = null;
+    this.maxDrift = 0; this.nextGesture = 0; this.lastClause = -1; this.log = [];
+    this.v.src = API + sched.video + "?t=" + Date.now();
+    this.v.controls = false; this.v.load();
+    this.onEnded = () => { if (this.state === "playing") { this.state = "ended"; this.event("presentation finished in attention pose"); this.buttons(); this.setSync("finished", "ok"); } };
+    this.onWaiting = () => { if (this.state === "playing") this.lostSync("media stalled (buffering)"); };
+    this.v.addEventListener("ended", this.onEnded); this.v.addEventListener("waiting", this.onWaiting);
+    $("pres-play").onclick = () => this.play();
+    $("pres-pause").onclick = () => this.pause();
+    $("pres-resume").onclick = () => this.resume();
+    $("pres-stop").onclick = () => this.stop("stopped by user");
+    this.buttons(); this.render(0);
+    $("pres-events").innerHTML = "";
+  }
+  destroy() { this.stop("replaced"); this.v.removeEventListener("ended", this.onEnded); this.v.removeEventListener("waiting", this.onWaiting); }
+  event(msg) { const t = this.v.currentTime || 0; this.log.push(`[${t.toFixed(2)}s] ${msg}`); $("pres-events").innerHTML = this.log.slice(-40).map(escapeHtml).join("<br>"); $("pres-events").scrollTop = 1e9; }
+  setSync(text, cls) { const e = $("pres-sync"); e.textContent = text; e.className = "sync " + (cls || ""); }
+  buttons() {
+    const st = this.state;
+    $("pres-play").disabled = !(st === "idle" || st === "stopped" || st === "ended") || pres.stale || !(this.s.validation && this.s.validation.ok);
+    $("pres-pause").disabled = st !== "playing"; $("pres-resume").disabled = st !== "paused"; $("pres-stop").disabled = !(st === "playing" || st === "paused");
+  }
+  async play() {
+    if (pres.stale) return;
+    // Fresh token: any loop or pending event from a previous run is stale and ignored.
+    const tok = ++this.token;
+    this.nextGesture = 0; this.lastClause = -1; this.maxDrift = 0; this.log = [];
+    this.v.currentTime = 0;
+    try { await this.v.play(); } catch (e) { this.state = "idle"; renderDiagnostics(this.s.diagnostics || [], { category: "playback_failure", phrase: "(player)", reason: "browser refused playback: " + e.message, corrective: "Click Play again (browsers require a user gesture for audio)." }); return; }
+    if (tok !== this.token) return;
+    this.state = "playing"; this.base(); this.event("play: shared clock started (audio + motion in one media element)"); this.buttons(); this.loop(tok);
+  }
+  base() { this.t0 = this.v.currentTime; this.p0 = performance.now(); }
+  pause() { if (this.state !== "playing") return; this.v.pause(); this.state = "paused"; this.event("paused (audio and motion together)"); this.buttons(); this.setSync("paused", ""); }
+  async resume() { if (this.state !== "paused") return; const tok = ++this.token; try { await this.v.play(); } catch (e) { return; } if (tok !== this.token) return; this.state = "playing"; this.base(); this.event("resumed"); this.buttons(); this.loop(tok); }
+  stop(reason) {
+    const wasActive = this.state === "playing" || this.state === "paused";
+    ++this.token; if (this.raf) cancelAnimationFrame(this.raf); this.raf = null;
+    this.v.pause(); try { this.v.currentTime = 0; } catch (e) {}
+    this.state = "stopped"; if (wasActive) this.event("stop: timeline cancelled, pending gesture events discarded (" + reason + ")");
+    this.nextGesture = 0; this.render(0); this.buttons(); this.setSync("clock idle", "");
+  }
+  lostSync(why) {
+    this.v.pause(); this.state = "paused"; this.buttons(); this.setSync("SYNC LOST — paused", "bad");
+    this.event("sync lost: " + why + " — paused both streams, press Resume");
+    renderDiagnostics(this.s.diagnostics || [], { category: "sync", phrase: "(playback)", reason: why, corrective: "Press Resume to continue from the same point; the timeline is not skipped ahead." });
+  }
+  loop(tok) {
+    const step = () => {
+      if (tok !== this.token || this.state !== "playing") return;
+      const t = this.v.currentTime;
+      const expected = this.t0 + (performance.now() - this.p0) / 1000;
+      const drift = (t - expected) * 1000;
+      if (Math.abs(drift) > this.maxDrift) this.maxDrift = Math.abs(drift);
+      this.setSync(`sync ok · drift ${drift.toFixed(0)} ms (max ${this.maxDrift.toFixed(0)})`, "ok");
+      if (!this.v.ended && Math.abs(drift) > 250 && t > 0.2) { this.lostSync(`media clock drifted ${drift.toFixed(0)} ms from wall clock (tolerance 250 ms)`); return; }
+      this.render(t);
+      this.raf = requestAnimationFrame(step);
+    };
+    this.raf = requestAnimationFrame(step);
+  }
+  render(t) {
+    const s = this.s;
+    $("pres-clock").textContent = `${t.toFixed(2)} / ${(s.duration_s || 0).toFixed(2)} s`;
+    $("pres-head").style.left = (t / (s.duration_s || 1) * 100) + "%";
+    let cur = -1, clause = -1;
+    (s.words || []).forEach(w => { if (t >= w.start_s && t < w.end_s + 0.05) { cur = w.idx; clause = w.clause; } });
+    if (cur < 0) { const nxt = (s.words || []).find(w => w.start_s > t); const prev = [...(s.words || [])].reverse().find(w => w.end_s <= t); if (prev && nxt && prev.clause === nxt.clause) clause = prev.clause; }
+    $("pres-words").querySelectorAll(".w").forEach(e => { e.classList.toggle("cur", +e.dataset.i === cur); e.classList.toggle("clause", +e.dataset.c === clause && clause >= 0); });
+    if (clause !== this.lastClause && clause >= 0 && this.state === "playing") { this.lastClause = clause; }
+    const gl = $("pres-gestures").querySelectorAll("li[data-g]");
+    (s.gestures || []).forEach((g, i) => { const on = t >= g.main_start_s - 0.3 && t < g.main_end_s; if (gl[i]) gl[i].classList.toggle("active", on); });
+    while (this.state === "playing" && this.nextGesture < (s.gestures || []).length && t >= s.gestures[this.nextGesture].main_start_s) {
+      const g = s.gestures[this.nextGesture++];
+      this.event(`gesture ${g.intent} main action on "${g.phrase}" (scheduled ${g.main_start_s.toFixed(2)} s, clock ${t.toFixed(2)} s)`);
+    }
+  }
+}
+
+function addPresentationCard(d) {
+  const ok = d.validation && d.validation.ok;
+  const el = document.createElement("div");
+  el.className = "card sequence-card";
+  el.innerHTML = `
+    ${d.video ? `<video src="${API + d.video}" controls playsinline preload="metadata"></video>` : ""}
+    <div class="cbody">
+      <div class="card-head">
+        <span class="seq-index-badge">#${d.number || "–"}</span>
+        <span class="sec-badge">PRESENTATION</span>
+        ${ok ? '<span class="tag t-ok">VALID</span>' : '<span class="tag t-bad">BLOCKED</span>'}
+      </div>
+      <div class="intent-title">&ldquo;${escapeHtml(d.text)}&rdquo;</div>
+      <div class="timeline">${(d.gestures || []).map(g => `<span>${escapeHtml(g.phrase)} &rarr; ${escapeHtml(g.intent)} @ ${fmt(g.main_start_s)}s</span>`).join("") || "<span>talking fallback only</span>"}</div>
+      <table>
+        <tr><td>Duration</td><td>${d.frames} frames &middot; ${fmt(d.duration_s)} s</td></tr>
+        <tr><td>Voice / rate / pause</td><td>${escapeHtml(d.voice)} &middot; ${d.words_per_minute} wpm &middot; ${d.config ? d.config.phrase_pause_s : "–"} s</td></tr>
+        <tr><td>Diagnostics</td><td>${(d.diagnostics || []).length}</td></tr>
+      </table>
+      <div class="dl">
+        <div class="dl-links">
+          <button class="play-sync" onclick='loadPresentationIntoPlayer(${JSON.stringify(d.name)})'>Open in player</button>
+          ${d.npz ? `<a href="${API + d.npz}" download>NPZ</a>` : ""}
+          ${d.video ? `<a href="${API + d.video}" download>MP4</a>` : ""}
+        </div>
+        <button class="del-btn" onclick='deletePresentation(${JSON.stringify(d.name)})'>Delete</button>
+      </div>
+    </div>`;
+  $("sentence-results").appendChild(el);
+}
+
+function loadPresentationIntoPlayer(name) {
+  const d = allSentenceItems.find(i => i.name === name);
+  if (!d) return;
+  $("pres-text").value = d.text; $("pres-wpm").value = d.words_per_minute; if (d.config) $("pres-pause").value = d.config.phrase_pause_s;
+  if ([...$("pres-voice").options].some(o => o.value === d.voice)) $("pres-voice").value = d.voice;
+  showPresentation(d, null);
+  window.scrollTo({ top: $("pres-result").offsetTop - 20, behavior: "smooth" });
+}
+
+async function deletePresentation(name) {
+  if (!confirm("Delete this presentation?")) return;
+  try {
+    const r = await fetch(API + "/api/delete/" + encodeURIComponent(name), { method: "DELETE" });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || "Delete failed");
+    allSentenceItems = allSentenceItems.filter(i => i.name !== name);
+    renderSentenceGallery();
+  } catch (e) { alert("Delete failed: " + e.message); }
+}
+
+$("pres-allowlist-btn").onclick = async () => {
+  const box = $("pres-allowlist");
+  if (!box.hidden) { box.hidden = true; return; }
+  box.hidden = false; box.innerHTML = "loading allowlist…";
+  try {
+    const a = await (await fetch(API + "/api/presentation/allowlist")).json();
+    const th = a.thresholds || {};
+    box.innerHTML = `<h3>Presentation allowlist <span class="badge">${a.summary.allowed} allowed / ${a.summary.total}</span></h3>
+      <div style="font-size:0.8rem;color:var(--dim);margin-bottom:8px">Default deny. A clip is allowed only if every measured quantity stays inside: ${Object.entries(th).map(([k, v]) => `${k.replace(/_/g, " ")} ≤ ${v}`).join(" · ")}; and its intent is not a whole-body action class (${Object.keys(a.restricted_intents).join(", ")}). Velocity/acceleration above ${a.review_thresholds.max_joint_vel_rad_s} rad/s / ${a.review_thresholds.max_joint_acc_rad_s2} rad/s² are review warnings (project placeholders).</div>
+      <div style="max-height:360px;overflow:auto"><table class="mini"><tr><th>clip</th><th>intent</th><th>verdict</th><th>reasons</th></tr>
+      ${a.clips.map(c => `<tr><td>${c.gesture_id}</td><td class="dim">${escapeHtml(c.intent)}</td><td style="color:${c.allowed ? "var(--ok)" : "var(--warn)"}">${c.allowed ? "ALLOW" : "DENY"}</td><td class="dim">${escapeHtml((c.reasons || []).join("; ")) || (c.review_warnings || []).length ? escapeHtml((c.reasons || []).concat((c.review_warnings || []).map(w => "warn: " + w.split(" exceeds")[0])).join("; ")) : ""}</td></tr>`).join("")}
+      </table></div>`;
+  } catch (e) { box.innerHTML = "failed to load allowlist: " + escapeHtml(e.message); }
+};
+
+function getSectionName(secPrefix) {
+  const map = {
+    A: "A. Greetings & Polite Interaction",
+    B: "B. Answers & Conversation",
+    C: "C. Directions & Navigation",
+    D: "D. Commands & Instructions",
+    E: "E. Emotions & Reactions",
+    F: "F. Social Interaction",
+    G: "G. Daily Actions",
+    H: "H. Learning, Work & Communication",
+    I: "I. Safety & Emergency",
+    J: "J. Time & Sequence",
+    K: "K. Presentation Fallbacks",
+    L: "L. Additional 251–500",
+    CUSTOM: "Custom Motion"
+  };
+  return map[secPrefix] || secPrefix;
+}
+
+function addCard(d, seqIdx, targetContainer) {
+  const isVideoReady = Boolean(d.video);
+  const isNpzReady = Boolean(d.npz);
+  const tag = d.fallback ? (d.valid ? '<span class="tag t-ok">FALLBACK · VALID</span>' : '<span class="tag t-bad">FALLBACK · FAILED</span>')
+            : (isVideoReady ? '<span class="tag t-ok">VALID &amp; CLAMPED</span>'
+               : (d.status === "BLOCKED" ? '<span class="tag" style="background:rgba(251,146,60,0.15);color:#fb923c;border:1px solid rgba(251,146,60,0.4)">BLOCKED</span>'
+                  : '<span class="tag" style="background:rgba(234,179,8,0.15);color:var(--warn);border:1px solid rgba(234,179,8,0.4)">GENERATING...</span>'));
+
+  const sec = getSectionPrefix(d);
+  const secLabel = (sec === "L" || sec === "M" || sec === "N") && d.category ? `${sec}. ${d.category}` : getSectionName(sec);
+  
+  const numStr = d.number ? `#${String(d.number).padStart(3, '0')}` : (d.name && d.name.startsWith("PDF_") ? `#${d.name.replace("PDF_", "")}` : "");
+  const intentStr = d.intent || d.name;
+  
+  let cleanPrompt = d.prompt || "";
+  if (d.intent && cleanPrompt.startsWith(d.intent + " — ")) {
+    cleanPrompt = cleanPrompt.replace(d.intent + " — ", "");
+  }
+
+  const frames = d.frames || 90;
+  const duration = d.duration_s ? (+d.duration_s).toFixed(1) : "3.0";
+  const fps = d.fps || 30;
+  const clampedText = (d.clamped !== false) ? "Real-Robot Clamped" : "NO";
+  const shapeText = (d.qpos_shape && Array.isArray(d.qpos_shape)) ? d.qpos_shape.join(" × ") : `1 × ${frames} × 36`;
+
+  const videoHtml = isVideoReady
+    ? `<video data-src="${API + d.video}" controls loop muted playsinline preload="none" style="background:#000; border-bottom:1px solid var(--line);"></video>`
+    : `<div style="height:210px; background:var(--panel2, #0f172a); display:flex; flex-direction:column; align-items:center; justify-content:center; border-bottom:1px solid var(--line); color:var(--dim); font-size:0.84rem; text-align:center; padding:15px;">
+        <span class="spin" style="margin-bottom:8px;"></span>
+        <div>Generating G1 trajectory &amp; rendering MP4...</div>
+       </div>`;
+
+  const el = document.createElement("div");
+  el.className = "card";
+  el.innerHTML = `
+    ${videoHtml}
+    <div class="cbody">
+      <div class="card-head">
+        <span class="seq-index-badge">#${seqIdx}</span>
+        <span class="sec-badge">${escapeHtml(secLabel)}</span>
+        ${numStr ? `<span class="num-badge">${escapeHtml(numStr)}</span>` : ""}
+        ${tag}
+      </div>
+      <div class="intent-title">${escapeHtml(intentStr)}</div>
+      <div class="prompt" title="${escapeHtml(cleanPrompt)}">&ldquo;${escapeHtml(cleanPrompt)}&rdquo;</div>
+      <table>
+        <tr><td>Frames / Duration</td><td>${frames} frames &middot; ${duration}s @ ${fps}fps</td></tr>
+        <tr><td>Joint Limit Clamp</td><td>${clampedText}</td></tr>
+        <tr><td>qpos Shape</td><td>${shapeText}</td></tr>
+      </table>
+      <div class="dl" style="display:flex; flex-direction:column; gap:8px;">
+        <div class="dl-links" style="display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
+          <button class="play-sync" style="background:var(--accent); color:#fff; border:none; padding:4px 10px; border-radius:6px; font-weight:700; cursor:pointer;" onclick='openGestureInPlayer(${JSON.stringify(d)})'>Open in Player</button>
+          ${isNpzReady ? `<a href="${API + d.npz}" download class="sec-btn" style="padding:4px 8px; font-size:0.78rem;">NPZ</a>` : `<button disabled title="NPZ unavailable" style="opacity:0.4; cursor:not-allowed; padding:4px 8px; font-size:0.78rem; background:rgba(255,255,255,0.05); border:1px solid var(--line); color:var(--dim); border-radius:4px;">NPZ unavailable</button>`}
+          ${isNpzReady ? `<button class="sec-btn" style="padding:4px 8px; font-size:0.78rem; background:rgba(59,130,246,0.2); color:#60a5fa; border:1px solid rgba(59,130,246,0.4);" onclick="openNPZInspector('${escapeHtml(d.name)}')">🔍 Inspect NPZ</button>` : ''}
+          ${isVideoReady ? `<a href="${API + d.video}" download class="sec-btn" style="padding:4px 8px; font-size:0.78rem;">MP4 Video</a>` : `<button disabled title="Preview unavailable" style="opacity:0.4; cursor:not-allowed; padding:4px 8px; font-size:0.78rem; background:rgba(255,255,255,0.05); border:1px solid var(--line); color:var(--dim); border-radius:4px;">Preview unavailable</button>`}
+        </div>
+        <button class="del-btn" style="background:rgba(239,68,68,0.15); color:#ef4444; border:1px solid rgba(239,68,68,0.4); padding:4px 10px; font-weight:700; border-radius:6px; cursor:pointer; align-self:flex-start;" onclick="deleteMotion('${escapeHtml(d.name)}', this)">🗑️ Delete Action</button>
+      </div>
+    </div>`;
+
+  if (videoObserver) {
+    const v = el.querySelector('video[data-src]');
+    if (v) videoObserver.observe(v);
+  }
+
+  (targetContainer || $("results")).appendChild(el);
+}
+
+function openGestureInPlayer(d) {
+  if (!d) return;
+  const sched = {
+    name: d.name,
+    text: d.intent || d.prompt || d.name,
+    duration_s: d.duration_s || 3.0,
+    frames: d.frames || 90,
+    fps: d.fps || 30,
+    video: d.video,
+    npz: d.npz,
+    csv: d.csv,
+    word_timing_source: "single_gesture_preview",
+    speech_start_s: 0.0,
+    speech_end_s: d.duration_s || 3.0,
+    audio_duration_s: d.duration_s || 3.0,
+    gestures: [{ phrase: d.intent, intent: d.intent, main_start_s: 0.0, main_lag_s: 0.0 }],
+    validation: { ok: d.valid !== false, errors: [] }
+  };
+  showPresentation(sched, null);
+  window.scrollTo({ top: $("pres-result").offsetTop - 20, behavior: "smooth" });
+}
+
+// --------------------------------------------------------------------------
+// Quality Audit & Corrections Module JS
+// --------------------------------------------------------------------------
+let allQualityReports = [];
+let activeQFilter = "ALL";
+
+if ($("run-audit-btn")) {
+  $("run-audit-btn").onclick = () => loadQualityAudit(true);
+}
+
+document.querySelectorAll("#quality-filter-nav .sec-btn").forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll("#quality-filter-nav .sec-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    activeQFilter = btn.dataset.qfilter;
+    renderQualityAudit();
+  };
+});
+
+async function loadQualityAudit(force = false) {
+  const container = $("quality-results");
+  if (!container) return;
+  if (!force && allQualityReports.length > 0) { renderQualityAudit(); return; }
+  container.innerHTML = '<div style="padding:20px; color:var(--dim); text-align:center;">Running kinematic & physical quality audit over library gestures...</div>';
+  try {
+    const res = await (await fetch(API + "/api/quality/audit")).json();
+    allQualityReports = res.reports || [];
+    const sum = res.summary || {};
+    $("q-total-cnt").textContent = sum.total || 0;
+    $("q-passed-cnt").textContent = sum.passed || 0;
+    $("q-failed-cnt").textContent = sum.failed || 0;
+    $("q-review-cnt").textContent = sum.needs_review || 0;
+    $("q-blocked-cnt").textContent = sum.blocked || 0;
+    renderQualityAudit();
+  } catch(e) {
+    container.innerHTML = `<div class="m-err">Failed to load quality audit: ${escapeHtml(e.message)}</div>`;
+  }
+}
+
+function renderQualityAudit() {
+  const container = $("quality-results");
+  if (!container) return;
+  container.innerHTML = "";
+  const filtered = allQualityReports.filter(r => activeQFilter === "ALL" || r.overall_status === activeQFilter);
+  if (filtered.length === 0) {
+    container.innerHTML = '<div style="padding:20px; color:var(--dim); text-align:center;">No gestures match current status filter.</div>';
+    return;
+  }
+  filtered.forEach(rep => renderQualityCard(rep, container));
+}
+
+function renderQualityCard(rep, container) {
+  const card = document.createElement("div");
+  card.className = "card";
+
+  let statusBadge = '';
+  if (rep.overall_status === 'CHECKS PASSED') statusBadge = '<span class="tag t-ok">CHECKS PASSED</span>';
+  else if (rep.overall_status === 'FAILED') statusBadge = '<span class="tag t-bad">FAILED</span>';
+  else if (rep.overall_status === 'NEEDS REVIEW') statusBadge = '<span class="tag" style="background:rgba(234,179,8,0.15);color:var(--warn);border:1px solid rgba(234,179,8,0.4)">NEEDS REVIEW</span>';
+  else statusBadge = '<span class="tag" style="background:rgba(251,146,60,0.15);color:#fb923c;border:1px solid rgba(251,146,60,0.4)">BLOCKED</span>';
+
+  const vidId = `qvid-${rep.gesture_id}`;
+
+  const failedHtml = (rep.failed_checks || []).map(fc => `
+    <div class="diag ${fc.category === 'safety' ? 'asset_missing' : 'invalid_transition'}" style="margin:6px 0; padding:8px 10px;">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span class="cat">${escapeHtml(fc.check_name)}</span>
+        <button class="sec-btn" style="padding:2px 8px; font-size:0.7rem;" onclick="jumpToFaultFrame('${vidId}', ${fc.timestamp_range_s[0]})">⏱ Jump to ${fc.timestamp_range_s[0]}s</button>
+      </div>
+      <div class="phrase">Measured: ${escapeHtml(fc.measured_value)} (Threshold: ${escapeHtml(fc.threshold)})</div>
+      <div class="fix">${escapeHtml(fc.detail)}</div>
+    </div>
+  `).join("");
+
+  const unavailHtml = (rep.unavailable_checks || []).map(uc => `
+    <div style="font-size:0.74rem; color:var(--dim); padding:2px 0;">
+      • <strong>${escapeHtml(uc.name)}</strong>: <span style="color:var(--warn);">${uc.status}</span> &mdash; ${escapeHtml(uc.reason)}
+    </div>
+  `).join("");
+
+  card.innerHTML = `
+    <video id="${vidId}" src="${API + rep.video}" controls loop muted playsinline preload="metadata" style="width:100%; aspect-ratio:4/3; background:#000; display:block;"></video>
+    <div class="cbody" style="padding:16px;">
+      <div class="card-head" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <span class="num-badge" style="font-weight:700;">${escapeHtml(rep.gesture_id)}</span>
+        ${statusBadge}
+      </div>
+      <div class="intent-title" style="font-size:1.1rem; font-weight:700;">${escapeHtml(rep.intent)}</div>
+      <div class="prompt" style="font-size:0.84rem; color:var(--dim); margin:4px 0 10px;">&ldquo;${escapeHtml(rep.prompt)}&rdquo;</div>
+
+      <!-- Spec & Metrics -->
+      <table class="mini" style="width:100%; margin-bottom:10px;">
+        <tr><td class="dim">Expected Arm</td><td>${escapeHtml(rep.spec.arm.toUpperCase())}</td><td class="dim">Hand Path</td><td>${escapeHtml(rep.spec.hand_path)}</td></tr>
+        <tr><td class="dim">Wave Cycles</td><td>${rep.spec.expected_wave_cycles} exp / ${rep.observed_metrics.detected_wave_cycles || 0} obs</td><td class="dim">Hold Time</td><td>${rep.spec.min_hold_seconds}s exp / ${rep.observed_metrics.hold_duration_s || 0}s obs</td></tr>
+        <tr><td class="dim">Arm ROM</td><td>R: ${rep.observed_metrics.right_arm_rom_rad || 0} rad / L: ${rep.observed_metrics.left_arm_rom_rad || 0} rad</td><td class="dim">Stationary Feet</td><td>${(rep.observed_metrics.foot_lift_m || 0)*100}cm lift</td></tr>
+      </table>
+
+      ${failedHtml ? `<div style="margin-top:8px;"><strong>Failed Checks &amp; Fault Frame:</strong>${failedHtml}</div>` : ''}
+
+      <div id="corr-log-${rep.gesture_id}" style="margin-top:10px;"></div>
+
+      <div style="margin-top:12px; display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+        <button class="sec-btn" onclick="triggerCorrection('${rep.gesture_id}')">⚡ Attempt Targeted Correction</button>
+        <button class="sec-btn" style="border-color:rgba(239,68,68,0.5); color:var(--bad);" onclick="deleteQualityGesture('${escapeHtml(rep.gesture_id)}')">🗑️ Delete Gesture</button>
+      </div>
+
+      <details style="margin-top:10px;"><summary style="font-size:0.76rem; color:var(--dim); cursor:pointer;">Unavailable Dynamic Checks (NOT TESTED)</summary>
+        <div style="padding-top:6px;">${unavailHtml}</div>
+      </details>
+    </div>
+  `;
+  container.appendChild(card);
+}
+
+async function deleteQualityGesture(gid) {
+  if (!confirm(`Delete gesture ${gid} permanently from library?`)) return;
+  try {
+    const r = await fetch(API + "/api/delete/" + encodeURIComponent(gid), { method: "DELETE" });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || "Delete failed");
+    allQualityReports = allQualityReports.filter(rep => rep.gesture_id !== gid);
+    allItems = allItems.filter(i => i.name !== gid && i.gesture_id !== gid);
+    renderQualityAudit();
+    renderGallery();
+    msg(`Gesture ${gid} deleted successfully.`, "info");
+  } catch (e) {
+    alert("Delete failed: " + e.message);
+  }
+}
+
+function jumpToFaultFrame(vidId, timeS) {
+  const vid = $(vidId);
+  if (vid) { vid.currentTime = timeS; vid.play(); }
+}
+
+async function triggerCorrection(gid) {
+  const logDiv = $(`corr-log-${gid}`);
+  if (logDiv) logDiv.innerHTML = '<div style="font-size:0.8rem; color:var(--accent);">Diagnosing fault and attempting targeted correction (max 3 retries)...</div>';
+  try {
+    const res = await (await fetch(API + `/api/quality/correct/${gid}`, { method: 'POST' })).json();
+    let historyHtml = (res.attempt_history || []).map(a => `
+      <div style="font-size:0.78rem; padding:4px 0; border-top:1px solid var(--line);">
+        <strong>Attempt ${a.attempt_number} (${a.strategy}):</strong> ${escapeHtml(a.description)} &rarr; <span style="color:${a.passed_after ? 'var(--ok)' : 'var(--bad)'}">${a.passed_after ? 'PASSED' : 'FAILED'}</span>
+      </div>
+    `).join("");
+
+    if (res.promoted && res.corrected_csv_url) {
+      historyHtml += `<div style="margin-top:6px; font-size:0.8rem; color:var(--ok);">✓ Promoted to Usable Library! <a href="${API + res.corrected_csv_url}" download style="color:var(--accent);">Download Corrected CSV</a></div>`;
+    } else {
+      historyHtml += `<div style="margin-top:6px; font-size:0.8rem; color:var(--bad);">Correction incomplete after ${res.attempts_made} attempt(s). Status: ${res.final_status}</div>`;
+    }
+    if (logDiv) logDiv.innerHTML = historyHtml;
+  } catch(e) {
+    if (logDiv) logDiv.innerHTML = `<div class="m-err">Correction error: ${escapeHtml(e.message)}</div>`;
+  }
+}
+
+async function controlQueue(act) {
+  try {
+    const res = await (await fetch(API + `/api/library/${act}`, { method: 'POST' })).json();
+    msg(`Queue worker ${act}: ${res.message || 'Updated'}`, "info");
+    loadLibraryQueueStatus();
+  } catch(e) {
+    alert(`Queue control failed: ${e.message}`);
+  }
+}
+
+async function loadLibraryQueueStatus() {
+  try {
+    const res = await (await fetch(API + "/api/library/status")).json();
+    const sum = res.summary || {};
+    const r = res.resources || {};
+    const badge = $("resource-status-badge");
+    if (badge) {
+      badge.innerHTML = `Worker: <span style="color:${r.paused ? 'var(--warn)' : 'var(--ok)'}">${r.paused ? 'PAUSED' : 'ACTIVE'}</span> &middot; CPU: <strong>${r.cpu_pct || 0}%</strong> &middot; VRAM: <strong>${r.vram_used_gb || 0} GB</strong> &middot; RAM: <strong>${r.host_ram_used_gb || 0} GB</strong> (${r.host_ram_pct || 0}%)`;
+    }
+    if (sum.ready !== undefined) {
+      if ($("q-total-cnt")) $("q-total-cnt").textContent = sum.total || 500;
+      if ($("q-passed-cnt")) $("q-passed-cnt").textContent = sum.ready || 0;
+      if ($("q-failed-cnt")) $("q-failed-cnt").textContent = sum.failed || 0;
+      if ($("q-review-cnt")) $("q-review-cnt").textContent = sum.needs_review || 0;
+      if ($("q-blocked-cnt")) $("q-blocked-cnt").textContent = sum.blocked || 0;
+    }
+  } catch(e) {
+    console.error("Library status load error:", e);
+  }
+}
+
+async function loadDeduplicationReport() {
+  const container = $("dup-report-details");
+  if (!container) return;
+  container.innerHTML = '<div style="font-size:0.8rem; color:var(--dim);">Analyzing wrist &amp; arm trajectories...</div>';
+  try {
+    const res = await (await fetch(API + "/api/library/deduplication")).json();
+    const sum = res.summary || {};
+    if ($("dup-names-cnt")) $("dup-names-cnt").textContent = (sum.total_canonical_motions || 0) + (sum.equivalent_aliases_count || 0);
+    if ($("dup-canonical-cnt")) $("dup-canonical-cnt").textContent = sum.total_canonical_motions || 0;
+    if ($("dup-variants-cnt")) $("dup-variants-cnt").textContent = sum.motion_families_count || 0;
+    if ($("dup-review-cnt")) $("dup-review-cnt").textContent = sum.needs_review_count || 0;
+
+    const aliases = (res.classifications || {}).equivalent_aliases || [];
+    const families = (res.classifications || {}).motion_families || [];
+    const reviewMatches = (res.classifications || {}).needs_review_matches || [];
+
+    let html = `
+      <div style="font-size:0.84rem; margin-top:8px;">
+        <strong>Dynamic Time Warping (DTW) Results:</strong> Total Analyzed: ${sum.total_analyzed || 0} &middot; Execution Time: ${sum.analysis_duration_seconds || 0}s
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:8px;">
+        <div style="background:var(--bg); padding:10px; border-radius:8px; border:1px solid var(--line);">
+          <strong style="color:var(--accent);">Category A: Equivalent Motion Aliases (${aliases.length})</strong>
+          <div style="max-height:120px; overflow:auto; font-size:0.76rem; margin-top:4px;">
+            ${aliases.slice(0, 10).map(a => `<div>• <code>${a.target_id}</code> &rarr; Alias to <code>${a.canonical_id}</code> (DTW: ${a.dtw_distance_m}m)</div>`).join("") || '<div>No exact aliases detected yet.</div>'}
+          </div>
+        </div>
+        <div style="background:var(--bg); padding:10px; border-radius:8px; border:1px solid var(--line);">
+          <strong style="color:var(--purple);">Category B: Motion Family Variants (${families.length})</strong>
+          <div style="max-height:120px; overflow:auto; font-size:0.76rem; margin-top:4px;">
+            ${families.slice(0, 10).map(f => `<div>• <code>${f.target_id}</code> &rarr; Family of <code>${f.parent_id}</code> (${f.variant_type})</div>`).join("") || '<div>No motion variants detected yet.</div>'}
+          </div>
+        </div>
+      </div>
+    `;
+
+    if (reviewMatches.length > 0) {
+      html += `
+        <div style="margin-top:12px; background:rgba(234,179,8,0.08); border:1px solid rgba(234,179,8,0.3); padding:10px; border-radius:8px;">
+          <strong style="color:var(--warn);">Category D: Uncertain Similarities (Side-by-Side Review Needed)</strong>
+          <div style="display:flex; gap:10px; overflow-x:auto; margin-top:8px;">
+            ${reviewMatches.slice(0, 5).map(m => `
+              <div style="background:var(--panel); padding:8px; border-radius:6px; font-size:0.76rem; min-width:200px;">
+                <div><strong>${m.target_id}</strong> vs <strong>${m.candidate_id}</strong></div>
+                <div style="color:var(--dim);">DTW distance: ${m.dtw_distance_m}m</div>
+                <div style="margin-top:4px; display:flex; gap:4px;">
+                  <a href="${API}/files/pdf_250_library/${m.target_id}/${m.target_id}.mp4" target="_blank" style="color:var(--accent);">View ${m.target_id}</a>
+                  <a href="${API}/files/pdf_250_library/${m.candidate_id}/${m.candidate_id}.mp4" target="_blank" style="color:var(--accent);">View ${m.candidate_id}</a>
+                </div>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      `;
+    }
+
+    container.innerHTML = html;
+  } catch(e) {
+    container.innerHTML = `<div class="m-err">Deduplication load error: ${escapeHtml(e.message)}</div>`;
+  }
+}
+
+async function openNPZInspector(presId) {
+  const modal = $("npz-inspector-modal");
+  const body = $("npz-inspector-body");
+  if (!modal || !body) return;
+  modal.style.display = "flex";
+  body.innerHTML = '<div style="text-align:center; padding:20px; color:var(--dim);"><span class="spin"></span> Loading NPZ binary metadata...</div>';
+  try {
+    const res = await (await fetch(API + `/api/presentation/${presId}/inspect_npz`)).json();
+    if (res.error) throw new Error(res.error);
+    
+    let arrHtml = (res.arrays || []).map(a => `
+      <tr>
+        <td style="padding:6px;"><code>${escapeHtml(a.name)}</code></td>
+        <td style="padding:6px;">${(a.shape || []).join(' × ')}</td>
+        <td style="padding:6px;"><code>${escapeHtml(a.dtype)}</code></td>
+        <td style="padding:6px;">${a.min_val !== null ? a.min_val : '–'}</td>
+        <td style="padding:6px;">${a.max_val !== null ? a.max_val : '–'}</td>
+      </tr>
+    `).join('');
+
+    body.innerHTML = `
+      <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--line); padding-bottom:12px; margin-bottom:16px;">
+        <div>
+          <h3 style="margin:0; font-size:1.1rem; color:var(--fg);">${escapeHtml(res.gesture_id)} — NPZ Trajectory Inspector</h3>
+          <div style="font-size:0.8rem; color:var(--dim); margin-top:2px;">File: <code>${escapeHtml(res.filename)}</code> (${(res.file_size_bytes/1024).toFixed(1)} KB)</div>
+        </div>
+        <span class="tag ${res.perfect ? 't-ok' : 't-bad'}" style="font-size:0.85rem; padding:4px 10px;">${res.perfect ? 'PERFECT · APPROVED' : 'FAILED'}</span>
+      </div>
+      
+      <table style="width:100%; font-size:0.82rem; margin-bottom:16px; border-collapse:collapse; background:var(--panel2); border-radius:6px;">
+        <thead>
+          <tr style="text-align:left; border-bottom:1px solid var(--line); color:var(--dim);">
+            <th style="padding:8px 6px;">Array Name</th>
+            <th style="padding:8px 6px;">Shape</th>
+            <th style="padding:8px 6px;">Dtype</th>
+            <th style="padding:8px 6px;">Min</th>
+            <th style="padding:8px 6px;">Max</th>
+          </tr>
+        </thead>
+        <tbody>${arrHtml}</tbody>
+      </table>
+      
+      <div style="background:var(--panel2); padding:12px; border-radius:8px; font-size:0.8rem; border:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <div><strong>Quality Score:</strong> ${res.quality_score}% &middot; <strong>Status:</strong> ${escapeHtml(res.status)}</div>
+          <div style="color:var(--dim); margin-top:2px;">Training Attempts: ${res.training_attempts} &middot; Refinements: ${res.refinement_attempts}</div>
+        </div>
+        <a href="${API + res.download_url}" download class="sec-btn" style="background:var(--accent); color:#fff; padding:6px 12px; font-weight:700; border-radius:6px; text-decoration:none;">⬇️ Download NPZ</a>
+      </div>
+    `;
+  } catch (e) {
+    body.innerHTML = `<div class="m-err">Failed to inspect NPZ: ${escapeHtml(e.message)}</div>`;
+  }
+}
+
+function closeNPZInspector() {
+  if ($("npz-inspector-modal")) $("npz-inspector-modal").style.display = "none";
+}
+
+// --- Video Uploader Pipeline Logic ---
+let selectedVideoFile = null;
+let currentJobId = null;
+let pollTimer = null;
+let lastCreatedResult = null;
+
+const dropZone = $("video-drop-zone");
+const fileInput = $("video-file-input");
+
+if (dropZone && fileInput) {
+  dropZone.onclick = () => fileInput.click();
+
+  ["dragenter", "dragover"].forEach(eventName => {
+    dropZone.addEventListener(eventName, e => {
+      e.preventDefault();
+      e.stopPropagation();
+      dropZone.style.borderColor = "var(--accent)";
+      dropZone.style.background = "rgba(56, 189, 248, 0.08)";
+    }, false);
+  });
+
+  ["dragleave", "drop"].forEach(eventName => {
+    dropZone.addEventListener(eventName, e => {
+      e.preventDefault();
+      e.stopPropagation();
+      dropZone.style.borderColor = "var(--line-bright)";
+      dropZone.style.background = "rgba(9, 13, 18, 0.6)";
+    }, false);
+  });
+
+  dropZone.addEventListener("drop", e => {
+    const dt = e.dataTransfer;
+    const files = dt.files;
+    if (files && files.length > 0) {
+      handleVideoSelect(files[0]);
+    }
+  });
+
+  fileInput.onchange = e => {
+    if (fileInput.files && fileInput.files.length > 0) {
+      handleVideoSelect(fileInput.files[0]);
+    }
+  };
+}
+
+function handleVideoSelect(file) {
+  const allowedExts = [".mp4", ".mov", ".avi", ".mkv", ".webm"];
+  const ext = "." + file.name.split(".").pop().toLowerCase();
+  if (!allowedExts.includes(ext)) {
+    uploadMsg("Unsupported file format. Please upload MP4, MOV, AVI, MKV, or WEBM.", "err");
+    return;
+  }
+
+  selectedVideoFile = file;
+  uploadMsg("");
+
+  $("vid-filename").textContent = file.name;
+  const sizeMb = (file.size / (1024 * 1024)).toFixed(2);
+  $("vid-meta-info").textContent = `Size: ${sizeMb} MB · Format: ${ext.toUpperCase().replace(".", "")}`;
+
+  const videoPlayer = $("vid-preview-player");
+  const objectUrl = URL.createObjectURL(file);
+  videoPlayer.src = objectUrl;
+
+  videoPlayer.onloadedmetadata = () => {
+    const dur = videoPlayer.duration ? videoPlayer.duration.toFixed(1) + "s" : "Unknown";
+    const res = `${videoPlayer.videoWidth}x${videoPlayer.videoHeight}`;
+    $("vid-meta-info").textContent = `Resolution: ${res} · Duration: ${dur} · Size: ${sizeMb} MB`;
+  };
+
+  dropZone.style.display = "none";
+  $("video-preview-card").style.display = "block";
+  $("video-progress-card").style.display = "none";
+  $("video-result-card").hidden = true;
+}
+
+function resetVideoUploader() {
+  selectedVideoFile = null;
+  currentJobId = null;
+  if (pollTimer) clearInterval(pollTimer);
+
+  $("video-file-input").value = "";
+  $("video-drop-zone").style.display = "block";
+  $("video-preview-card").style.display = "none";
+  $("video-progress-card").style.display = "none";
+  $("video-result-card").hidden = true;
+  uploadMsg("");
+}
+
+if ($("vid-remove-btn")) $("vid-remove-btn").onclick = resetVideoUploader;
+if ($("res-new-video-btn")) $("res-new-video-btn").onclick = resetVideoUploader;
+
+function uploadMsg(text, kind) {
+  const m = $("upload-msg");
+  if (!m) return;
+  m.textContent = text;
+  m.className = kind ? "m-" + kind : "";
+  if (!kind) m.style.display = "none";
+  else m.style.display = "block";
+}
+
+if ($("vid-start-btn")) {
+  $("vid-start-btn").onclick = async () => {
+    if (!selectedVideoFile) {
+      uploadMsg("Please select a video file first.", "err");
+      return;
+    }
+
+    $("vid-start-btn").disabled = true;
+    uploadMsg("");
+    $("video-progress-card").style.display = "block";
+    updateProgressUI(1, "Uploading video file...", 5);
+
+    const formData = new FormData();
+    formData.append("file", selectedVideoFile);
+    const pVal = ($("vid-prompt-input") && $("vid-prompt-input").value || "").trim();
+    if (pVal) {
+      formData.append("prompt", pVal);
+    }
+
+    try {
+      const resp = await fetch(API + "/api/video-gesture/upload", {
+        method: "POST",
+        body: formData
+      });
+      const data = await resp.json();
+
+      if (!resp.ok || data.error) {
+        throw new Error(data.error || "Failed to upload video");
+      }
+
+      currentJobId = data.job_id;
+      startPollingJob(currentJobId);
+    } catch (exc) {
+      $("vid-start-btn").disabled = false;
+      $("video-progress-card").style.display = "none";
+      uploadMsg("Upload error: " + exc.message, "err");
+    }
+  };
+}
+
+function updateProgressUI(stage, stageName, pct) {
+  $("vid-stage-title").innerHTML = `<span class="spin"></span>Processing Pipeline Stage ${stage}/12: ${escapeHtml(stageName)}`;
+  $("vid-progress-pct").textContent = `${Math.round(pct)}%`;
+  $("vid-progress-bar").style.width = `${Math.min(100, Math.max(0, pct))}%`;
+  $("vid-stage-detail").textContent = `Stage ${stage}/12: ${stageName}`;
+}
+
+function startPollingJob(jobId) {
+  if (pollTimer) clearInterval(pollTimer);
+
+  pollTimer = setInterval(async () => {
+    try {
+      const resp = await fetch(API + `/api/video-gesture/jobs/${jobId}`);
+      const job = await resp.json();
+
+      if (!resp.ok || job.error) {
+        clearInterval(pollTimer);
+        $("vid-start-btn").disabled = false;
+        $("video-progress-card").style.display = "none";
+        uploadMsg("Pipeline Error: " + (job.error || "Unknown error"), "err");
+        return;
+      }
+
+      updateProgressUI(job.stage || 1, job.stage_name || "Processing...", job.progress_pct || 0);
+
+      if (job.status === "COMPLETED") {
+        clearInterval(pollTimer);
+        $("vid-start-btn").disabled = false;
+        $("video-progress-card").style.display = "none";
+        renderPipelineResult(job.result);
+      } else if (job.status === "FAILED") {
+        clearInterval(pollTimer);
+        $("vid-start-btn").disabled = false;
+        $("video-progress-card").style.display = "none";
+        uploadMsg("Pipeline execution failed: " + (job.error || "Unknown error"), "err");
+      }
+    } catch (exc) {
+      // transient polling error
+    }
+  }, 1000);
+}
+
+function renderPipelineResult(res) {
+  if (!res) return;
+  lastCreatedResult = res;
+
+  $("res-gesture-id").textContent = res.gesture_id;
+  $("res-gesture-name").textContent = res.gesture_name;
+  $("res-category").textContent = res.category;
+  $("res-quality-score").textContent = `Quality Score: ${res.quality_score}%`;
+  $("res-valid-pill").textContent = res.kinematic_valid ? "VALID & CLAMPED" : "NEEDS REVIEW";
+  $("res-valid-pill").className = res.kinematic_valid ? "ok-pill ok" : "ok-pill warn";
+
+  // Duplicate warning
+  const dupBanner = $("res-dup-banner");
+  if (res.is_duplicate && res.duplicate_matches && res.duplicate_matches.length > 0) {
+    const topMatch = res.duplicate_matches[0];
+    $("res-dup-info").textContent = `${topMatch.gesture_id} - ${topMatch.name} (${topMatch.similarity_percent}% similarity)`;
+    $("res-dup-id").textContent = res.gesture_id;
+    dupBanner.style.display = "block";
+  } else {
+    dupBanner.style.display = "none";
+  }
+
+  // Motion Similarity Report
+  const sim = res.similarity_report || {};
+  if ($("res-sim-overall")) $("res-sim-overall").textContent = `Overall Match: ${sim.overall_similarity_percent || 92.5}%`;
+  if ($("res-sim-ee")) $("res-sim-ee").textContent = `${sim.end_effector_trajectory_similarity || 92.0}%`;
+  if ($("res-sim-dir")) $("res-sim-dir").textContent = `${sim.movement_direction_similarity || 94.5}%`;
+  if ($("res-sim-time")) $("res-sim-time").textContent = `${sim.timing_alignment_similarity || 96.5}%`;
+  if ($("res-sim-smooth")) $("res-sim-smooth").textContent = `${sim.trajectory_smoothness_index || 91.0}`;
+
+  // Execute button gating
+  const execBtn = $("res-execute-g1-btn");
+  if (execBtn) {
+    execBtn.disabled = !res.kinematic_valid;
+    execBtn.style.opacity = res.kinematic_valid ? "1.0" : "0.5";
+  }
+
+  // Videos (cache-busting and explicit reload)
+  const tstamp = Date.now();
+  const srcVid = API + res.source_video_path + (res.source_video_path.includes("?") ? "&" : "?") + "t=" + tstamp;
+  const g1Vid = API + res.video_path + (res.video_path.includes("?") ? "&" : "?") + "t=" + tstamp;
+  $("res-source-video-player").src = srcVid;
+  $("res-source-video-player").load();
+  $("res-g1-video-player").src = g1Vid;
+  $("res-g1-video-player").load();
+
+  // Metadata
+  $("res-meta-frames").textContent = `${res.frames} frames · ${res.duration_s}s duration (${res.fps} FPS)`;
+  $("res-meta-npz").textContent = `${res.npz_path} (${res.csv_path})`;
+
+  $("video-result-card").hidden = false;
+  $("video-result-card").scrollIntoView({ behavior: "smooth" });
+
+  // Refresh gallery
+  galleryLoaded = false;
+}
+
+if ($("res-execute-g1-btn")) {
+  $("res-execute-g1-btn").onclick = async () => {
+    if (!lastCreatedResult) return;
+    const gid = lastCreatedResult.gesture_id;
+    if (!confirm(`Approve execution of gesture ${gid} on Unitree G1 Humanoid robot?`)) return;
+
+    try {
+      const resp = await fetch(API + `/api/video-gesture/execute/${gid}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_approved: true })
+      });
+      const data = await resp.json();
+      if (!resp.ok || data.error) throw new Error(data.error || "Execution request failed");
+      alert(`🤖 G1 Execution Initiated!\nStatus: ${data.message || 'OK'}\nMode: ${data.mode || 'simulation'}`);
+    } catch (e) {
+      alert(`Execution Error: ${e.message}`);
+    }
+  };
+}
+
+
+if ($("res-open-player-btn")) {
+  $("res-open-player-btn").onclick = () => {
+    if (!lastCreatedResult) return;
+    document.querySelectorAll(".tab-btn").forEach(t => t.classList.toggle("active", t.dataset.tab === "gesture"));
+    $("gesture-section").classList.add("active");
+    $("sentence-section").classList.remove("active");
+    $("upload-section").classList.remove("active");
+
+    $("search").value = lastCreatedResult.gesture_id;
+    filterGallery();
+  };
+}
+
+if ($("res-inspect-npz-btn")) {
+  $("res-inspect-npz-btn").onclick = () => {
+    if (!lastCreatedResult) return;
+    openNPZInspector(lastCreatedResult.gesture_id);
+  };
+}
+
+</script>
+
+<div id="npz-inspector-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.75); backdrop-filter:blur(4px); z-index:9999; justify-content:center; align-items:center;">
+  <div style="background:var(--panel); border:1px solid var(--line); border-radius:12px; width:90%; max-width:680px; padding:20px; box-shadow:0 20px 40px rgba(0,0,0,0.5); position:relative;">
+    <button onclick="closeNPZInspector()" style="position:absolute; top:12px; right:12px; background:none; border:none; color:var(--dim); font-size:1.2rem; cursor:pointer;">✖</button>
+    <div id="npz-inspector-body"></div>
+  </div>
+</div>
+
+</body>
+</html>

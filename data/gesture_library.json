@@ -1,0 +1,169 @@
+{
+  "_comment": [
+    "Phase 2 output: distinct G1-executable motions for the Phase 1 candidate catalog.",
+    "83 semantic intents collapse to these motions -- many intents share one motion, which",
+    "is what the catalog's own rule (Hello/Hi/Good morning share GREETING) implies.",
+    "Prompts follow NVIDIA guidance in docs/source/key_concepts/limitations.md: begin with",
+    "'A person...' and use medium detail (too short is vague, too long overloads the model).",
+    "g1skel34 has no neck, head, finger or thumb joints -- 29 joints: 12 leg, 3 waist, 14 arm.",
+    "Anything relying on head or finger articulation is substituted, not omitted silently."
+  ],
+  "gestures": [
+    {
+      "gesture_id": "G001", "intent": "WAVE_GREETING", "priority": "High",
+      "example_phrases": ["Hello", "Hi", "Hey", "Good morning", "Good afternoon", "Good evening"],
+      "gesture_description": "Right hand raised, open palm, waving side to side.",
+      "kimodo_prompt": "A person raises their right hand up and waves it side to side to greet someone."
+    },
+    {
+      "gesture_id": "G002", "intent": "WAVE_FAREWELL", "priority": "High",
+      "example_phrases": ["Goodbye", "Bye", "See you", "See you later", "Take care"],
+      "gesture_description": "Slower, softer wave of farewell with the right hand.",
+      "kimodo_prompt": "A person lifts their right hand and waves slowly to say goodbye as someone leaves."
+    },
+    {
+      "gesture_id": "G003", "intent": "WELCOME_OPEN", "priority": "High",
+      "example_phrases": ["Welcome", "Welcome everyone", "You're welcome", "Nice to meet you", "That's okay", "No problem"],
+      "gesture_description": "Both arms open outward from the chest in an inviting motion.",
+      "kimodo_prompt": "A person opens both arms outward from their chest in a wide welcoming gesture."
+    },
+    {
+      "gesture_id": "G004", "intent": "THANK_YOU", "priority": "High",
+      "example_phrases": ["Thank you", "Thanks", "Thank you very much"],
+      "gesture_description": "Right hand placed on chest with a small forward bow.",
+      "kimodo_prompt": "A person places their right hand on their chest and bows their upper body slightly in thanks."
+    },
+    {
+      "gesture_id": "G005", "intent": "PLEASE", "priority": "High",
+      "example_phrases": ["Please", "Please do", "If you would"],
+      "gesture_description": "Both open palms extended forward in polite request.",
+      "kimodo_prompt": "A person extends both hands forward with open palms in a polite requesting gesture."
+    },
+    {
+      "gesture_id": "G006", "intent": "SORRY", "priority": "High",
+      "example_phrases": ["Sorry", "I'm sorry", "My apologies"],
+      "gesture_description": "Upper body bows forward, arms held low.",
+      "kimodo_prompt": "A person bows their upper body forward with both arms lowered in an apology."
+    },
+    {
+      "gesture_id": "G007", "intent": "APPLAUD", "priority": "High",
+      "example_phrases": ["Congratulations", "Well done", "Good job", "Great", "Excellent"],
+      "gesture_description": "Hands brought together repeatedly in applause. Substitute for thumbs-up, which g1skel34 cannot form.",
+      "kimodo_prompt": "A person claps their hands together repeatedly in front of their chest in applause."
+    },
+    {
+      "gesture_id": "G008", "intent": "BECKON", "priority": "High",
+      "example_phrases": ["Come here", "Follow me", "Come with me", "This way"],
+      "gesture_description": "Right arm sweeps inward toward the body, calling someone over.",
+      "kimodo_prompt": "A person raises their right arm and sweeps it inward toward their body to call someone over."
+    },
+    {
+      "gesture_id": "G009", "intent": "STOP_PALM", "priority": "High",
+      "example_phrases": ["Stop", "Wait", "Hold on", "Wait a moment", "Be careful"],
+      "gesture_description": "Right arm raised, palm facing forward, held still.",
+      "kimodo_prompt": "A person raises their right arm forward with the palm facing out to signal someone to stop."
+    },
+    {
+      "gesture_id": "G010", "intent": "POINT_FORWARD", "priority": "High",
+      "example_phrases": ["Go there", "There", "That", "Forward", "Look", "Look here", "Look at this", "Notice this"],
+      "gesture_description": "Right arm extended straight forward, indicating ahead.",
+      "kimodo_prompt": "A person extends their right arm straight forward to point at something ahead of them."
+    },
+    {
+      "gesture_id": "G011", "intent": "POINT_SELF", "priority": "High",
+      "example_phrases": ["Here", "This", "Me", "Right here"],
+      "gesture_description": "Right hand brought to own chest, indicating self or a nearby spot.",
+      "kimodo_prompt": "A person brings their right hand to their own chest to indicate themselves."
+    },
+    {
+      "gesture_id": "G012", "intent": "POINT_UP", "priority": "High",
+      "example_phrases": ["Up", "Above", "Upward"],
+      "gesture_description": "Right arm raised overhead pointing upward.",
+      "kimodo_prompt": "A person raises their right arm straight above their head to point upward."
+    },
+    {
+      "gesture_id": "G013", "intent": "POINT_DOWN", "priority": "High",
+      "example_phrases": ["Down", "Below", "Downward"],
+      "gesture_description": "Right arm angled down toward the floor.",
+      "kimodo_prompt": "A person lowers their right arm and points down toward the ground."
+    },
+    {
+      "gesture_id": "G014", "intent": "POINT_LEFT", "priority": "High",
+      "example_phrases": ["Left", "To the left", "Over there on the left"],
+      "gesture_description": "Left arm extended sideways to the robot's left.",
+      "kimodo_prompt": "A person extends their left arm out to the side to point to their left."
+    },
+    {
+      "gesture_id": "G015", "intent": "POINT_RIGHT", "priority": "High",
+      "example_phrases": ["Right", "To the right", "Over there on the right"],
+      "gesture_description": "Right arm extended sideways to the robot's right.",
+      "kimodo_prompt": "A person extends their right arm out to the side to point to their right."
+    },
+    {
+      "gesture_id": "G016", "intent": "POINT_BACK", "priority": "Medium",
+      "example_phrases": ["Back", "Backward", "Behind"],
+      "gesture_description": "Right arm swings back over the shoulder indicating behind.",
+      "kimodo_prompt": "A person turns their upper body and points backward over their shoulder with their right arm."
+    },
+    {
+      "gesture_id": "G017", "intent": "GUIDE_DOWN", "priority": "High",
+      "example_phrases": ["Calm down", "Sit down", "Less", "Lower", "Settle down"],
+      "gesture_description": "Both palms pressed slowly downward.",
+      "kimodo_prompt": "A person lowers both hands slowly with palms facing down in a calming gesture."
+    },
+    {
+      "gesture_id": "G018", "intent": "GUIDE_UP", "priority": "Medium",
+      "example_phrases": ["Stand up", "More", "Raise", "Get up"],
+      "gesture_description": "Both palms lifted upward, inviting someone to rise.",
+      "kimodo_prompt": "A person lifts both hands upward with palms facing up to invite someone to stand."
+    },
+    {
+      "gesture_id": "G019", "intent": "SHRUG", "priority": "Medium",
+      "example_phrases": ["I don't know", "Maybe", "Perhaps", "Really?", "Not sure"],
+      "gesture_description": "Shoulders lifted with both forearms turned outward, palms up.",
+      "kimodo_prompt": "A person shrugs their shoulders and turns both palms upward to show they do not know."
+    },
+    {
+      "gesture_id": "G020", "intent": "SIZE_LARGE", "priority": "High",
+      "example_phrases": ["Big", "Large", "Long", "Many", "A lot", "Far"],
+      "gesture_description": "Hands start together then spread wide apart.",
+      "kimodo_prompt": "A person holds both hands together then spreads them far apart to show something large."
+    },
+    {
+      "gesture_id": "G021", "intent": "SIZE_SMALL", "priority": "Medium",
+      "example_phrases": ["Small", "Little", "Short", "Near"],
+      "gesture_description": "Hands brought close together in front of the body. Approximate: a finger pinch is impossible on g1skel34.",
+      "kimodo_prompt": "A person brings both hands close together in front of their body to show something small."
+    },
+    {
+      "gesture_id": "G022", "intent": "PRESENT", "priority": "High",
+      "example_phrases": ["Let me show you", "For example", "As you can see", "Let me explain", "Finally"],
+      "gesture_description": "Right arm sweeps outward, open palm up, presenting.",
+      "kimodo_prompt": "A person sweeps their right arm outward with the palm facing up to present something."
+    },
+    {
+      "gesture_id": "G023", "intent": "REQUEST_HELP", "priority": "High",
+      "example_phrases": ["Help", "Can you help?", "I need help"],
+      "gesture_description": "Both arms reach forward, palms up, asking for assistance.",
+      "kimodo_prompt": "A person reaches both arms forward with open palms asking for help."
+    },
+    {
+      "gesture_id": "G024", "intent": "WARN_DANGER", "priority": "High",
+      "example_phrases": ["Danger", "Watch out", "Careful"],
+      "gesture_description": "Both arms raised sharply in warning.",
+      "kimodo_prompt": "A person raises both arms up sharply in front of them to warn of danger."
+    },
+    {
+      "gesture_id": "G025", "intent": "NEGATE", "priority": "High",
+      "example_phrases": ["No", "Wrong", "That's incorrect", "I don't like it", "None", "Nothing", "Bad"],
+      "gesture_description": "Both arms cross in front of the chest. Substitute for a head shake, which g1skel34 cannot perform.",
+      "kimodo_prompt": "A person crosses both arms in front of their chest to refuse something."
+    },
+    {
+      "gesture_id": "G026", "intent": "AFFIRM", "priority": "High",
+      "example_phrases": ["Yes", "I agree", "Exactly", "Correct", "That's right", "Good"],
+      "gesture_description": "Upper body leans forward and back in an agreeing motion. Substitute for a nod: g1skel34 has no neck joint.",
+      "kimodo_prompt": "A person leans their upper body forward and back in a clear nodding motion of agreement."
+    }
+  ]
+}

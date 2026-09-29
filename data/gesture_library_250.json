@@ -1,0 +1,2010 @@
+{
+  "title": "Unitree G1 250 Distinct Gesture Prompt Library (V2)",
+  "count": 250,
+  "gestures": [
+    {
+      "gesture_id": "PDF_001",
+      "number": 1,
+      "category": "Greetings & Polite Interaction",
+      "intent": "Hello",
+      "motion_prompt": "A person raises the right hand beside the shoulder and waves side to side three times.",
+      "kimodo_prompt": "A person raises the right hand beside the shoulder and waves side to side three times."
+    },
+    {
+      "gesture_id": "PDF_002",
+      "number": 2,
+      "category": "Greetings & Polite Interaction",
+      "intent": "Hi",
+      "motion_prompt": "A person lifts the right forearm beside the chest once, pauses briefly, then lowers it.",
+      "kimodo_prompt": "A person lifts the right forearm beside the chest once, pauses briefly, then lowers it."
+    },
+    {
+      "gesture_id": "PDF_003",
+      "number": 3,
+      "category": "Greetings & Polite Interaction",
+      "intent": "Hey",
+      "motion_prompt": "A person raises the right arm high above the shoulder in one quick attention-getting motion.",
+      "kimodo_prompt": "A person raises the right arm high above the shoulder in one quick attention-getting motion."
+    },
+    {
+      "gesture_id": "PDF_004",
+      "number": 4,
+      "category": "Greetings & Polite Interaction",
+      "intent": "Good Morning",
+      "motion_prompt": "A person begins by pressing both palms together at the chest in a respectful Namaste position. From there, they smoothly stretch both arms straight upward overhead into a grand upward salute, and then gracefully open them outward to shoulder width with palms facing forward to welcome the morning.",
+      "kimodo_prompt": "A person stretches both arms upward, then opens them outward to shoulder width.",
+      "prompt": "Good Morning \u2014 A person begins by pressing both palms together at the chest in a respectful Namaste position. From there, they smoothly stretch both arms straight upward overhead into a grand upward salute, and then gracefully open them outward to shoulder width with palms facing forward to welcome the morning.",
+      "source_action": "A person brings the right hand to the forehead in a brief, upbeat salute before sweeping it outward to the side with an open palm.",
+      "status": "READY",
+      "valid": true
+    },
+    {
+      "gesture_id": "PDF_005",
+      "number": 5,
+      "category": "Greetings & Polite Interaction",
+      "intent": "Good Afternoon",
+      "motion_prompt": "A person brings the right forearm across the chest, then sweeps it outward to the right.",
+      "kimodo_prompt": "A person brings the right forearm across the chest, then sweeps it outward to the right."
+    },
+    {
+      "gesture_id": "PDF_006",
+      "number": 6,
+      "category": "Greetings & Polite Interaction",
+      "intent": "Good Evening",
+      "motion_prompt": "A person raises both forearms to chest height, then lowers them slowly together.",
+      "kimodo_prompt": "A person raises both forearms to chest height, then lowers them slowly together."
+    },
+    {
+      "gesture_id": "PDF_007",
+      "number": 7,
+      "category": "Greetings & Polite Interaction",
+      "intent": "Welcome",
+      "motion_prompt": "A person opens both arms wide from the chest, then draws them slightly inward as an invitation.",
+      "kimodo_prompt": "A person opens both arms wide from the chest, then draws them slightly inward as an invitation."
+    },
+    {
+      "gesture_id": "PDF_008",
+      "number": 8,
+      "category": "Greetings & Polite Interaction",
+      "intent": "Namaste",
+      "motion_prompt": "A person brings both hands together at chest height and holds the joined-hands pose briefly.",
+      "kimodo_prompt": "A person brings both hands together at chest height and holds the joined-hands pose briefly."
+    },
+    {
+      "gesture_id": "PDF_009",
+      "number": 9,
+      "category": "Greetings & Polite Interaction",
+      "intent": "Goodbye",
+      "motion_prompt": "A person raises the right hand for a large slow wave while taking one small step backward.",
+      "kimodo_prompt": "A person raises the right hand for a large slow wave while taking one small step backward."
+    },
+    {
+      "gesture_id": "PDF_010",
+      "number": 10,
+      "category": "Greetings & Polite Interaction",
+      "intent": "Bye",
+      "motion_prompt": "A person gives two short waves with the left hand beside the shoulder.",
+      "kimodo_prompt": "A person gives two short waves with the left hand beside the shoulder."
+    },
+    {
+      "gesture_id": "PDF_011",
+      "number": 11,
+      "category": "Greetings & Polite Interaction",
+      "intent": "See You",
+      "motion_prompt": "A person points forward with the right arm, then gives one small right-hand wave.",
+      "kimodo_prompt": "A person points forward with the right arm, then gives one small right-hand wave."
+    },
+    {
+      "gesture_id": "PDF_012",
+      "number": 12,
+      "category": "Greetings & Polite Interaction",
+      "intent": "Come Again",
+      "motion_prompt": "A person extends both arms forward, then draws both forearms inward toward the chest twice.",
+      "kimodo_prompt": "A person extends both arms forward, then draws both forearms inward toward the chest twice."
+    },
+    {
+      "gesture_id": "PDF_013",
+      "number": 13,
+      "category": "Greetings & Polite Interaction",
+      "intent": "Nice to Meet You",
+      "motion_prompt": "A person touches the right hand to the chest, then extends the right arm forward for a greeting.",
+      "kimodo_prompt": "A person touches the right hand to the chest, then extends the right arm forward for a greeting."
+    },
+    {
+      "gesture_id": "PDF_014",
+      "number": 14,
+      "category": "Greetings & Polite Interaction",
+      "intent": "Thank You",
+      "motion_prompt": "A person places the right hand on the chest, then moves that hand gently forward and down.",
+      "kimodo_prompt": "A person places the right hand on the chest, then moves that hand gently forward and down."
+    },
+    {
+      "gesture_id": "PDF_015",
+      "number": 15,
+      "category": "Greetings & Polite Interaction",
+      "intent": "Thanks",
+      "motion_prompt": "A person dips both forearms slightly downward from chest height in one short appreciative motion.",
+      "kimodo_prompt": "A person dips both forearms slightly downward from chest height in one short appreciative motion."
+    },
+    {
+      "gesture_id": "PDF_016",
+      "number": 16,
+      "category": "Greetings & Polite Interaction",
+      "intent": "Please",
+      "motion_prompt": "A person holds both forearms forward at waist height, then gently draws them inward once.",
+      "kimodo_prompt": "A person holds both forearms forward at waist height, then gently draws them inward once."
+    },
+    {
+      "gesture_id": "PDF_017",
+      "number": 17,
+      "category": "Greetings & Polite Interaction",
+      "intent": "Sorry",
+      "motion_prompt": "A person brings both hands together low at the chest and bends the torso forward once.",
+      "kimodo_prompt": "A person brings both hands together low at the chest and bends the torso forward once."
+    },
+    {
+      "gesture_id": "PDF_018",
+      "number": 18,
+      "category": "Greetings & Polite Interaction",
+      "intent": "Excuse Me",
+      "motion_prompt": "A person raises the left forearm vertically beside the chest and holds it still to get attention.",
+      "kimodo_prompt": "A person raises the left forearm vertically beside the chest and holds it still to get attention."
+    },
+    {
+      "gesture_id": "PDF_019",
+      "number": 19,
+      "category": "Greetings & Polite Interaction",
+      "intent": "Congratulations",
+      "motion_prompt": "A person raises both arms overhead, then lowers them outward in a wide celebratory arc.",
+      "kimodo_prompt": "A person raises both arms overhead, then lowers them outward in a wide celebratory arc."
+    },
+    {
+      "gesture_id": "PDF_020",
+      "number": 20,
+      "category": "Greetings & Polite Interaction",
+      "intent": "Best Wishes",
+      "motion_prompt": "A person crosses both forearms lightly over the chest, then opens both arms forward.",
+      "kimodo_prompt": "A person crosses both forearms lightly over the chest, then opens both arms forward."
+    },
+    {
+      "gesture_id": "PDF_021",
+      "number": 21,
+      "category": "Answers & Conversation",
+      "intent": "Yes",
+      "motion_prompt": "A person raises the right forearm to chest height and makes one firm downward confirmation beat.",
+      "kimodo_prompt": "A person raises the right forearm to chest height and makes one firm downward confirmation beat."
+    },
+    {
+      "gesture_id": "PDF_022",
+      "number": 22,
+      "category": "Answers & Conversation",
+      "intent": "No",
+      "motion_prompt": "A person crosses both forearms into an X in front of the chest, then opens them apart.",
+      "kimodo_prompt": "A person crosses both forearms into an X in front of the chest, then opens them apart."
+    },
+    {
+      "gesture_id": "PDF_023",
+      "number": 23,
+      "category": "Answers & Conversation",
+      "intent": "Okay",
+      "motion_prompt": "A person raises both forearms slightly from the waist and settles them down together once.",
+      "kimodo_prompt": "A person raises both forearms slightly from the waist and settles them down together once."
+    },
+    {
+      "gesture_id": "PDF_024",
+      "number": 24,
+      "category": "Answers & Conversation",
+      "intent": "Correct",
+      "motion_prompt": "A person keeps the left hand near the chest while the right arm extends forward and finishes with one downward beat.",
+      "kimodo_prompt": "A person keeps the left hand near the chest while the right arm extends forward and finishes with one downward beat."
+    },
+    {
+      "gesture_id": "PDF_025",
+      "number": 25,
+      "category": "Answers & Conversation",
+      "intent": "Wrong",
+      "motion_prompt": "A person sweeps the right forearm horizontally from right to left across the front of the body.",
+      "kimodo_prompt": "A person sweeps the right forearm horizontally from right to left across the front of the body."
+    },
+    {
+      "gesture_id": "PDF_026",
+      "number": 26,
+      "category": "Answers & Conversation",
+      "intent": "Maybe",
+      "motion_prompt": "A person holds both forearms out at waist height and alternates one up while the other moves down.",
+      "kimodo_prompt": "A person holds both forearms out at waist height and alternates one up while the other moves down."
+    },
+    {
+      "gesture_id": "PDF_027",
+      "number": 27,
+      "category": "Answers & Conversation",
+      "intent": "I Don't Know",
+      "motion_prompt": "A person lifts both forearms outward with elbows bent and holds a brief shrug-like pose.",
+      "kimodo_prompt": "A person lifts both forearms outward with elbows bent and holds a brief shrug-like pose."
+    },
+    {
+      "gesture_id": "PDF_028",
+      "number": 28,
+      "category": "Answers & Conversation",
+      "intent": "I Know",
+      "motion_prompt": "A person taps the chest once with the right hand, then holds the right forearm upright confidently.",
+      "kimodo_prompt": "A person taps the chest once with the right hand, then holds the right forearm upright confidently."
+    },
+    {
+      "gesture_id": "PDF_029",
+      "number": 29,
+      "category": "Answers & Conversation",
+      "intent": "Understand",
+      "motion_prompt": "A person brings both hands inward toward the chest, then lowers them together in one calm motion.",
+      "kimodo_prompt": "A person brings both hands inward toward the chest, then lowers them together in one calm motion."
+    },
+    {
+      "gesture_id": "PDF_030",
+      "number": 30,
+      "category": "Answers & Conversation",
+      "intent": "I Understand",
+      "motion_prompt": "A person points to the chest with the right hand, then extends both forearms forward evenly.",
+      "kimodo_prompt": "A person points to the chest with the right hand, then extends both forearms forward evenly."
+    },
+    {
+      "gesture_id": "PDF_031",
+      "number": 31,
+      "category": "Answers & Conversation",
+      "intent": "I Don't Understand",
+      "motion_prompt": "A person opens both arms outward from the waist, then rotates the forearms slightly upward in a questioning pose.",
+      "kimodo_prompt": "A person opens both arms outward from the waist, then rotates the forearms slightly upward in a questioning pose."
+    },
+    {
+      "gesture_id": "PDF_032",
+      "number": 32,
+      "category": "Answers & Conversation",
+      "intent": "Really?",
+      "motion_prompt": "A person leans the torso slightly forward while lifting both forearms quickly to chest height.",
+      "kimodo_prompt": "A person leans the torso slightly forward while lifting both forearms quickly to chest height."
+    },
+    {
+      "gesture_id": "PDF_033",
+      "number": 33,
+      "category": "Answers & Conversation",
+      "intent": "What?",
+      "motion_prompt": "A person opens both forearms outward from the center and holds them apart at waist height.",
+      "kimodo_prompt": "A person opens both forearms outward from the center and holds them apart at waist height."
+    },
+    {
+      "gesture_id": "PDF_034",
+      "number": 34,
+      "category": "Answers & Conversation",
+      "intent": "Why?",
+      "motion_prompt": "A person raises the right forearm near the chest while the left arm opens outward to the side.",
+      "kimodo_prompt": "A person raises the right forearm near the chest while the left arm opens outward to the side."
+    },
+    {
+      "gesture_id": "PDF_035",
+      "number": 35,
+      "category": "Answers & Conversation",
+      "intent": "Where?",
+      "motion_prompt": "A person scans space by sweeping the right arm slowly from left to right across the front.",
+      "kimodo_prompt": "A person scans space by sweeping the right arm slowly from left to right across the front."
+    },
+    {
+      "gesture_id": "PDF_036",
+      "number": 36,
+      "category": "Answers & Conversation",
+      "intent": "Who?",
+      "motion_prompt": "A person points forward once with the right arm, then opens the left arm outward in a questioning pose.",
+      "kimodo_prompt": "A person points forward once with the right arm, then opens the left arm outward in a questioning pose."
+    },
+    {
+      "gesture_id": "PDF_037",
+      "number": 37,
+      "category": "Answers & Conversation",
+      "intent": "When?",
+      "motion_prompt": "A person brings the right hand toward the left wrist area, pauses, then lowers both arms.",
+      "kimodo_prompt": "A person brings the right hand toward the left wrist area, pauses, then lowers both arms."
+    },
+    {
+      "gesture_id": "PDF_038",
+      "number": 38,
+      "category": "Answers & Conversation",
+      "intent": "How?",
+      "motion_prompt": "A person brings both hands close together in front, then separates them diagonally outward.",
+      "kimodo_prompt": "A person brings both hands close together in front, then separates them diagonally outward."
+    },
+    {
+      "gesture_id": "PDF_039",
+      "number": 39,
+      "category": "Answers & Conversation",
+      "intent": "Which?",
+      "motion_prompt": "A person points left with the left arm, then points right with the right arm.",
+      "kimodo_prompt": "A person points left with the left arm, then points right with the right arm."
+    },
+    {
+      "gesture_id": "PDF_040",
+      "number": 40,
+      "category": "Answers & Conversation",
+      "intent": "Again",
+      "motion_prompt": "A person makes one large forward circle with the right forearm and ends with the hand facing forward.",
+      "kimodo_prompt": "A person makes one large forward circle with the right forearm and ends with the hand facing forward."
+    },
+    {
+      "gesture_id": "PDF_041",
+      "number": 41,
+      "category": "Answers & Conversation",
+      "intent": "Repeat",
+      "motion_prompt": "A person makes two small circular motions with both forearms together in front of the chest.",
+      "kimodo_prompt": "A person makes two small circular motions with both forearms together in front of the chest."
+    },
+    {
+      "gesture_id": "PDF_042",
+      "number": 42,
+      "category": "Answers & Conversation",
+      "intent": "Speak",
+      "motion_prompt": "A person raises the right hand near the lower face area, then moves it forward twice in short pulses.",
+      "kimodo_prompt": "A person raises the right hand near the lower face area, then moves it forward twice in short pulses."
+    },
+    {
+      "gesture_id": "PDF_043",
+      "number": 43,
+      "category": "Answers & Conversation",
+      "intent": "Listen",
+      "motion_prompt": "A person raises the right hand beside the ear area and holds the pose without moving the head.",
+      "kimodo_prompt": "A person raises the right hand beside the ear area and holds the pose without moving the head."
+    },
+    {
+      "gesture_id": "PDF_044",
+      "number": 44,
+      "category": "Answers & Conversation",
+      "intent": "Quiet",
+      "motion_prompt": "A person raises the right forearm vertically in front of the chest and freezes in place.",
+      "kimodo_prompt": "A person raises the right forearm vertically in front of the chest and freezes in place."
+    },
+    {
+      "gesture_id": "PDF_045",
+      "number": 45,
+      "category": "Answers & Conversation",
+      "intent": "Wait",
+      "motion_prompt": "A person extends the left arm forward at chest height and holds it still as a stop-like pause signal.",
+      "kimodo_prompt": "A person extends the left arm forward at chest height and holds it still as a stop-like pause signal."
+    },
+    {
+      "gesture_id": "PDF_046",
+      "number": 46,
+      "category": "Directions & Navigation",
+      "intent": "Left",
+      "motion_prompt": "A person extends only the left arm straight to the left and holds the direction.",
+      "kimodo_prompt": "A person extends only the left arm straight to the left and holds the direction."
+    },
+    {
+      "gesture_id": "PDF_047",
+      "number": 47,
+      "category": "Directions & Navigation",
+      "intent": "Right",
+      "motion_prompt": "A person extends only the right arm straight to the right and holds the direction.",
+      "kimodo_prompt": "A person extends only the right arm straight to the right and holds the direction."
+    },
+    {
+      "gesture_id": "PDF_048",
+      "number": 48,
+      "category": "Directions & Navigation",
+      "intent": "Forward",
+      "motion_prompt": "A person extends both forearms straight forward together and holds them parallel.",
+      "kimodo_prompt": "A person extends both forearms straight forward together and holds them parallel."
+    },
+    {
+      "gesture_id": "PDF_049",
+      "number": 49,
+      "category": "Directions & Navigation",
+      "intent": "Backward",
+      "motion_prompt": "A person bends both elbows and pulls both forearms backward beside the torso.",
+      "kimodo_prompt": "A person bends both elbows and pulls both forearms backward beside the torso."
+    },
+    {
+      "gesture_id": "PDF_050",
+      "number": 50,
+      "category": "Directions & Navigation",
+      "intent": "Up",
+      "motion_prompt": "A person raises the right arm straight overhead and holds it vertically.",
+      "kimodo_prompt": "A person raises the right arm straight overhead and holds it vertically."
+    },
+    {
+      "gesture_id": "PDF_051",
+      "number": 51,
+      "category": "Directions & Navigation",
+      "intent": "Down",
+      "motion_prompt": "A person extends the left arm diagonally downward toward the ground.",
+      "kimodo_prompt": "A person extends the left arm diagonally downward toward the ground."
+    },
+    {
+      "gesture_id": "PDF_052",
+      "number": 52,
+      "category": "Directions & Navigation",
+      "intent": "Here",
+      "motion_prompt": "A person points both forearms downward toward the floor directly in front of the feet.",
+      "kimodo_prompt": "A person points both forearms downward toward the floor directly in front of the feet."
+    },
+    {
+      "gesture_id": "PDF_053",
+      "number": 53,
+      "category": "Directions & Navigation",
+      "intent": "There",
+      "motion_prompt": "A person extends the right arm diagonally forward toward a distant target and holds it.",
+      "kimodo_prompt": "A person extends the right arm diagonally forward toward a distant target and holds it."
+    },
+    {
+      "gesture_id": "PDF_054",
+      "number": 54,
+      "category": "Directions & Navigation",
+      "intent": "Near",
+      "motion_prompt": "A person brings both hands close together in front of the chest and holds the small gap.",
+      "kimodo_prompt": "A person brings both hands close together in front of the chest and holds the small gap."
+    },
+    {
+      "gesture_id": "PDF_055",
+      "number": 55,
+      "category": "Directions & Navigation",
+      "intent": "Far",
+      "motion_prompt": "A person starts with both hands near the chest and pushes both arms far forward.",
+      "kimodo_prompt": "A person starts with both hands near the chest and pushes both arms far forward."
+    },
+    {
+      "gesture_id": "PDF_056",
+      "number": 56,
+      "category": "Directions & Navigation",
+      "intent": "Straight",
+      "motion_prompt": "A person keeps the left arm by the side while extending the right arm directly forward in a straight line.",
+      "kimodo_prompt": "A person keeps the left arm by the side while extending the right arm directly forward in a straight line."
+    },
+    {
+      "gesture_id": "PDF_057",
+      "number": 57,
+      "category": "Directions & Navigation",
+      "intent": "Turn Left",
+      "motion_prompt": "A person points left with the left arm while rotating the torso and hips about a quarter turn left.",
+      "kimodo_prompt": "A person points left with the left arm while rotating the torso and hips about a quarter turn left."
+    },
+    {
+      "gesture_id": "PDF_058",
+      "number": 58,
+      "category": "Directions & Navigation",
+      "intent": "Turn Right",
+      "motion_prompt": "A person points right with the right arm while rotating the torso and hips about a quarter turn right.",
+      "kimodo_prompt": "A person points right with the right arm while rotating the torso and hips about a quarter turn right."
+    },
+    {
+      "gesture_id": "PDF_059",
+      "number": 59,
+      "category": "Directions & Navigation",
+      "intent": "Go Left",
+      "motion_prompt": "A person points left with the left arm and takes one controlled side step to the left.",
+      "kimodo_prompt": "A person points left with the left arm and takes one controlled side step to the left."
+    },
+    {
+      "gesture_id": "PDF_060",
+      "number": 60,
+      "category": "Directions & Navigation",
+      "intent": "Go Right",
+      "motion_prompt": "A person points right with the right arm and takes one controlled side step to the right.",
+      "kimodo_prompt": "A person points right with the right arm and takes one controlled side step to the right."
+    },
+    {
+      "gesture_id": "PDF_061",
+      "number": 61,
+      "category": "Directions & Navigation",
+      "intent": "Go Forward",
+      "motion_prompt": "A person sweeps the right arm forward and takes two controlled steps straight ahead.",
+      "kimodo_prompt": "A person sweeps the right arm forward and takes two controlled steps straight ahead."
+    },
+    {
+      "gesture_id": "PDF_062",
+      "number": 62,
+      "category": "Directions & Navigation",
+      "intent": "Go Back",
+      "motion_prompt": "A person draws both hands toward the torso and takes one controlled step backward.",
+      "kimodo_prompt": "A person draws both hands toward the torso and takes one controlled step backward."
+    },
+    {
+      "gesture_id": "PDF_063",
+      "number": 63,
+      "category": "Directions & Navigation",
+      "intent": "Come Here",
+      "motion_prompt": "A person extends the right arm forward and draws the forearm inward toward the chest three times.",
+      "kimodo_prompt": "A person extends the right arm forward and draws the forearm inward toward the chest three times."
+    },
+    {
+      "gesture_id": "PDF_064",
+      "number": 64,
+      "category": "Directions & Navigation",
+      "intent": "Go There",
+      "motion_prompt": "A person points toward a forward-right destination, then makes one outward pushing sweep with the same arm.",
+      "kimodo_prompt": "A person points toward a forward-right destination, then makes one outward pushing sweep with the same arm."
+    },
+    {
+      "gesture_id": "PDF_065",
+      "number": 65,
+      "category": "Directions & Navigation",
+      "intent": "Follow Me",
+      "motion_prompt": "A person points to the chest with the left hand, then takes one forward step while sweeping the right arm ahead.",
+      "kimodo_prompt": "A person points to the chest with the left hand, then takes one forward step while sweeping the right arm ahead."
+    },
+    {
+      "gesture_id": "PDF_066",
+      "number": 66,
+      "category": "Directions & Navigation",
+      "intent": "This Way",
+      "motion_prompt": "A person extends the left arm diagonally forward-left and sweeps it once along that direction.",
+      "kimodo_prompt": "A person extends the left arm diagonally forward-left and sweeps it once along that direction."
+    },
+    {
+      "gesture_id": "PDF_067",
+      "number": 67,
+      "category": "Directions & Navigation",
+      "intent": "Other Way",
+      "motion_prompt": "A person points briefly to one side, then crosses the right arm over the body to indicate the opposite side.",
+      "kimodo_prompt": "A person points briefly to one side, then crosses the right arm over the body to indicate the opposite side."
+    },
+    {
+      "gesture_id": "PDF_068",
+      "number": 68,
+      "category": "Directions & Navigation",
+      "intent": "Inside",
+      "motion_prompt": "A person starts with both arms wide and brings both forearms inward until they meet near the center.",
+      "kimodo_prompt": "A person starts with both arms wide and brings both forearms inward until they meet near the center."
+    },
+    {
+      "gesture_id": "PDF_069",
+      "number": 69,
+      "category": "Directions & Navigation",
+      "intent": "Outside",
+      "motion_prompt": "A person starts with both hands near the chest and opens both arms widely to the sides.",
+      "kimodo_prompt": "A person starts with both hands near the chest and opens both arms widely to the sides."
+    },
+    {
+      "gesture_id": "PDF_070",
+      "number": 70,
+      "category": "Directions & Navigation",
+      "intent": "Entrance",
+      "motion_prompt": "A person opens both arms outward, then sweeps both forearms inward toward the center like guiding someone in.",
+      "kimodo_prompt": "A person opens both arms outward, then sweeps both forearms inward toward the center like guiding someone in."
+    },
+    {
+      "gesture_id": "PDF_071",
+      "number": 71,
+      "category": "Directions & Navigation",
+      "intent": "Exit",
+      "motion_prompt": "A person extends the left arm sideways and makes one long outward guiding sweep toward the left.",
+      "kimodo_prompt": "A person extends the left arm sideways and makes one long outward guiding sweep toward the left."
+    },
+    {
+      "gesture_id": "PDF_072",
+      "number": 72,
+      "category": "Directions & Navigation",
+      "intent": "Stop Here",
+      "motion_prompt": "A person holds the right forearm forward, then points the left forearm down toward the current spot.",
+      "kimodo_prompt": "A person holds the right forearm forward, then points the left forearm down toward the current spot."
+    },
+    {
+      "gesture_id": "PDF_073",
+      "number": 73,
+      "category": "Directions & Navigation",
+      "intent": "Move Aside",
+      "motion_prompt": "A person places both forearms in front, then sweeps them together toward the right side.",
+      "kimodo_prompt": "A person places both forearms in front, then sweeps them together toward the right side."
+    },
+    {
+      "gesture_id": "PDF_074",
+      "number": 74,
+      "category": "Directions & Navigation",
+      "intent": "Around",
+      "motion_prompt": "A person traces one wide horizontal circle in front of the body with the right arm.",
+      "kimodo_prompt": "A person traces one wide horizontal circle in front of the body with the right arm."
+    },
+    {
+      "gesture_id": "PDF_075",
+      "number": 75,
+      "category": "Directions & Navigation",
+      "intent": "Return",
+      "motion_prompt": "A person extends the right arm outward, then draws it back toward the chest in one long reverse sweep.",
+      "kimodo_prompt": "A person extends the right arm outward, then draws it back toward the chest in one long reverse sweep."
+    },
+    {
+      "gesture_id": "PDF_076",
+      "number": 76,
+      "category": "Commands & Instructions",
+      "intent": "Stop",
+      "motion_prompt": "A person quickly extends the right arm forward and holds it rigidly at chest height.",
+      "kimodo_prompt": "A person quickly extends the right arm forward and holds it rigidly at chest height."
+    },
+    {
+      "gesture_id": "PDF_077",
+      "number": 77,
+      "category": "Commands & Instructions",
+      "intent": "Go",
+      "motion_prompt": "A person starts with the right hand near the chest and makes one strong forward sweep.",
+      "kimodo_prompt": "A person starts with the right hand near the chest and makes one strong forward sweep."
+    },
+    {
+      "gesture_id": "PDF_078",
+      "number": 78,
+      "category": "Commands & Instructions",
+      "intent": "Come",
+      "motion_prompt": "A person extends both forearms forward and pulls them inward together twice.",
+      "kimodo_prompt": "A person extends both forearms forward and pulls them inward together twice."
+    },
+    {
+      "gesture_id": "PDF_079",
+      "number": 79,
+      "category": "Commands & Instructions",
+      "intent": "Start",
+      "motion_prompt": "A person raises the left forearm beside the chest, then snaps it forward in one clear starting signal.",
+      "kimodo_prompt": "A person raises the left forearm beside the chest, then snaps it forward in one clear starting signal."
+    },
+    {
+      "gesture_id": "PDF_080",
+      "number": 80,
+      "category": "Commands & Instructions",
+      "intent": "Finish",
+      "motion_prompt": "A person brings both arms inward across the front of the body, then lowers them to the sides.",
+      "kimodo_prompt": "A person brings both arms inward across the front of the body, then lowers them to the sides."
+    },
+    {
+      "gesture_id": "PDF_081",
+      "number": 81,
+      "category": "Commands & Instructions",
+      "intent": "Continue",
+      "motion_prompt": "A person makes two smooth forward rolling motions with both forearms, one after the other.",
+      "kimodo_prompt": "A person makes two smooth forward rolling motions with both forearms, one after the other."
+    },
+    {
+      "gesture_id": "PDF_082",
+      "number": 82,
+      "category": "Commands & Instructions",
+      "intent": "Pause",
+      "motion_prompt": "A person lifts both forearms vertically to chest height and holds a completely still pose.",
+      "kimodo_prompt": "A person lifts both forearms vertically to chest height and holds a completely still pose."
+    },
+    {
+      "gesture_id": "PDF_083",
+      "number": 83,
+      "category": "Commands & Instructions",
+      "intent": "Slow",
+      "motion_prompt": "A person moves both forearms from chest height down to waist height very slowly.",
+      "kimodo_prompt": "A person moves both forearms from chest height down to waist height very slowly."
+    },
+    {
+      "gesture_id": "PDF_084",
+      "number": 84,
+      "category": "Commands & Instructions",
+      "intent": "Fast",
+      "motion_prompt": "A person makes three quick short forward beats with the right forearm.",
+      "kimodo_prompt": "A person makes three quick short forward beats with the right forearm."
+    },
+    {
+      "gesture_id": "PDF_085",
+      "number": 85,
+      "category": "Commands & Instructions",
+      "intent": "Move",
+      "motion_prompt": "A person shifts the body one small step to the right while both arms stay relaxed.",
+      "kimodo_prompt": "A person shifts the body one small step to the right while both arms stay relaxed."
+    },
+    {
+      "gesture_id": "PDF_086",
+      "number": 86,
+      "category": "Commands & Instructions",
+      "intent": "Stay",
+      "motion_prompt": "A person lowers both forearms toward the floor and holds the whole body still.",
+      "kimodo_prompt": "A person lowers both forearms toward the floor and holds the whole body still."
+    },
+    {
+      "gesture_id": "PDF_087",
+      "number": 87,
+      "category": "Commands & Instructions",
+      "intent": "Stand",
+      "motion_prompt": "A person rises into a fully upright stance with both arms resting beside the body.",
+      "kimodo_prompt": "A person rises into a fully upright stance with both arms resting beside the body."
+    },
+    {
+      "gesture_id": "PDF_088",
+      "number": 88,
+      "category": "Commands & Instructions",
+      "intent": "Sit",
+      "motion_prompt": "A person bends the knees and hips and lowers the body into a controlled seated posture.",
+      "kimodo_prompt": "A person bends the knees and hips and lowers the body into a controlled seated posture."
+    },
+    {
+      "gesture_id": "PDF_089",
+      "number": 89,
+      "category": "Commands & Instructions",
+      "intent": "Get Up",
+      "motion_prompt": "A person rises from a seated posture to a fully upright standing posture.",
+      "kimodo_prompt": "A person rises from a seated posture to a fully upright standing posture."
+    },
+    {
+      "gesture_id": "PDF_090",
+      "number": 90,
+      "category": "Commands & Instructions",
+      "intent": "Walk",
+      "motion_prompt": "A person walks forward three natural steps with alternating arm swings.",
+      "kimodo_prompt": "A person walks forward three natural steps with alternating arm swings."
+    },
+    {
+      "gesture_id": "PDF_091",
+      "number": 91,
+      "category": "Commands & Instructions",
+      "intent": "Run",
+      "motion_prompt": "A person runs forward with short quick steps and coordinated bent-arm swings.",
+      "kimodo_prompt": "A person runs forward with short quick steps and coordinated bent-arm swings."
+    },
+    {
+      "gesture_id": "PDF_092",
+      "number": 92,
+      "category": "Commands & Instructions",
+      "intent": "Turn",
+      "motion_prompt": "A person rotates the entire body about half a turn to the left without stepping forward.",
+      "kimodo_prompt": "A person rotates the entire body about half a turn to the left without stepping forward."
+    },
+    {
+      "gesture_id": "PDF_093",
+      "number": 93,
+      "category": "Commands & Instructions",
+      "intent": "Look",
+      "motion_prompt": "A person leans slightly forward and extends the right arm toward a target while the head stays fixed.",
+      "kimodo_prompt": "A person leans slightly forward and extends the right arm toward a target while the head stays fixed."
+    },
+    {
+      "gesture_id": "PDF_094",
+      "number": 94,
+      "category": "Commands & Instructions",
+      "intent": "Watch",
+      "motion_prompt": "A person holds the left forearm across the torso while the right arm remains extended toward a target.",
+      "kimodo_prompt": "A person holds the left forearm across the torso while the right arm remains extended toward a target."
+    },
+    {
+      "gesture_id": "PDF_095",
+      "number": 95,
+      "category": "Commands & Instructions",
+      "intent": "Show Me",
+      "motion_prompt": "A person holds both forearms forward with hands level, then lifts them slightly as a request.",
+      "kimodo_prompt": "A person holds both forearms forward with hands level, then lifts them slightly as a request."
+    },
+    {
+      "gesture_id": "PDF_096",
+      "number": 96,
+      "category": "Commands & Instructions",
+      "intent": "Give",
+      "motion_prompt": "A person brings both hands from the chest straight forward together as if offering an object.",
+      "kimodo_prompt": "A person brings both hands from the chest straight forward together as if offering an object."
+    },
+    {
+      "gesture_id": "PDF_097",
+      "number": 97,
+      "category": "Commands & Instructions",
+      "intent": "Take",
+      "motion_prompt": "A person reaches both hands forward together, then draws them back toward the waist.",
+      "kimodo_prompt": "A person reaches both hands forward together, then draws them back toward the waist."
+    },
+    {
+      "gesture_id": "PDF_098",
+      "number": 98,
+      "category": "Commands & Instructions",
+      "intent": "Bring",
+      "motion_prompt": "A person reaches forward with both arms, draws them to the chest, then keeps them close.",
+      "kimodo_prompt": "A person reaches forward with both arms, draws them to the chest, then keeps them close."
+    },
+    {
+      "gesture_id": "PDF_099",
+      "number": 99,
+      "category": "Commands & Instructions",
+      "intent": "Put",
+      "motion_prompt": "A person moves both hands from chest height downward onto an imaginary surface in front.",
+      "kimodo_prompt": "A person moves both hands from chest height downward onto an imaginary surface in front."
+    },
+    {
+      "gesture_id": "PDF_100",
+      "number": 100,
+      "category": "Commands & Instructions",
+      "intent": "Pick Up",
+      "motion_prompt": "A person bends the knees, reaches both hands toward the ground, then rises while lifting the hands.",
+      "kimodo_prompt": "A person bends the knees, reaches both hands toward the ground, then rises while lifting the hands."
+    },
+    {
+      "gesture_id": "PDF_101",
+      "number": 101,
+      "category": "Commands & Instructions",
+      "intent": "Drop",
+      "motion_prompt": "A person holds both forearms forward, then opens the arms downward quickly toward the ground.",
+      "kimodo_prompt": "A person holds both forearms forward, then opens the arms downward quickly toward the ground."
+    },
+    {
+      "gesture_id": "PDF_102",
+      "number": 102,
+      "category": "Commands & Instructions",
+      "intent": "Open",
+      "motion_prompt": "A person brings both hands together in front of the chest, then pulls them apart horizontally.",
+      "kimodo_prompt": "A person brings both hands together in front of the chest, then pulls them apart horizontally."
+    },
+    {
+      "gesture_id": "PDF_103",
+      "number": 103,
+      "category": "Commands & Instructions",
+      "intent": "Close",
+      "motion_prompt": "A person starts with both arms apart and brings both hands together at the center of the chest.",
+      "kimodo_prompt": "A person starts with both arms apart and brings both hands together at the center of the chest."
+    },
+    {
+      "gesture_id": "PDF_104",
+      "number": 104,
+      "category": "Commands & Instructions",
+      "intent": "Push",
+      "motion_prompt": "A person places both hands near the chest and drives both arms straight forward together.",
+      "kimodo_prompt": "A person places both hands near the chest and drives both arms straight forward together."
+    },
+    {
+      "gesture_id": "PDF_105",
+      "number": 105,
+      "category": "Commands & Instructions",
+      "intent": "Pull",
+      "motion_prompt": "A person reaches both arms forward and pulls both elbows strongly backward beside the torso.",
+      "kimodo_prompt": "A person reaches both arms forward and pulls both elbows strongly backward beside the torso."
+    },
+    {
+      "gesture_id": "PDF_106",
+      "number": 106,
+      "category": "Commands & Instructions",
+      "intent": "Lift",
+      "motion_prompt": "A person starts with both hands near the thighs and raises both forearms together to chest height.",
+      "kimodo_prompt": "A person starts with both hands near the thighs and raises both forearms together to chest height."
+    },
+    {
+      "gesture_id": "PDF_107",
+      "number": 107,
+      "category": "Commands & Instructions",
+      "intent": "Lower",
+      "motion_prompt": "A person starts with both forearms at shoulder height and lowers them together to the thighs.",
+      "kimodo_prompt": "A person starts with both forearms at shoulder height and lowers them together to the thighs."
+    },
+    {
+      "gesture_id": "PDF_108",
+      "number": 108,
+      "category": "Commands & Instructions",
+      "intent": "Hold",
+      "motion_prompt": "A person keeps both elbows bent and holds both forearms fixed horizontally in front of the waist.",
+      "kimodo_prompt": "A person keeps both elbows bent and holds both forearms fixed horizontally in front of the waist."
+    },
+    {
+      "gesture_id": "PDF_109",
+      "number": 109,
+      "category": "Commands & Instructions",
+      "intent": "Leave",
+      "motion_prompt": "A person turns the torso slightly right and takes one step away while the left arm sweeps behind.",
+      "kimodo_prompt": "A person turns the torso slightly right and takes one step away while the left arm sweeps behind."
+    },
+    {
+      "gesture_id": "PDF_110",
+      "number": 110,
+      "category": "Commands & Instructions",
+      "intent": "Follow",
+      "motion_prompt": "A person makes one forward guiding sweep with the left arm, then begins two walking steps.",
+      "kimodo_prompt": "A person makes one forward guiding sweep with the left arm, then begins two walking steps."
+    },
+    {
+      "gesture_id": "PDF_111",
+      "number": 111,
+      "category": "Emotions & Reactions",
+      "intent": "Happy",
+      "motion_prompt": "A person lifts both forearms outward to shoulder height and makes two light upward bounces.",
+      "kimodo_prompt": "A person lifts both forearms outward to shoulder height and makes two light upward bounces."
+    },
+    {
+      "gesture_id": "PDF_112",
+      "number": 112,
+      "category": "Emotions & Reactions",
+      "intent": "Sad",
+      "motion_prompt": "A person lets both arms hang low and bends the upper torso forward for a brief drooping pose.",
+      "kimodo_prompt": "A person lets both arms hang low and bends the upper torso forward for a brief drooping pose."
+    },
+    {
+      "gesture_id": "PDF_113",
+      "number": 113,
+      "category": "Emotions & Reactions",
+      "intent": "Excited",
+      "motion_prompt": "A person rapidly raises both arms overhead twice with a small upward body bounce.",
+      "kimodo_prompt": "A person rapidly raises both arms overhead twice with a small upward body bounce."
+    },
+    {
+      "gesture_id": "PDF_114",
+      "number": 114,
+      "category": "Emotions & Reactions",
+      "intent": "Angry",
+      "motion_prompt": "A person bends both elbows tightly beside the torso and makes two forceful downward arm strikes.",
+      "kimodo_prompt": "A person bends both elbows tightly beside the torso and makes two forceful downward arm strikes."
+    },
+    {
+      "gesture_id": "PDF_115",
+      "number": 115,
+      "category": "Emotions & Reactions",
+      "intent": "Surprised",
+      "motion_prompt": "A person quickly throws both forearms outward to the sides while leaning the torso slightly backward.",
+      "kimodo_prompt": "A person quickly throws both forearms outward to the sides while leaning the torso slightly backward."
+    },
+    {
+      "gesture_id": "PDF_116",
+      "number": 116,
+      "category": "Emotions & Reactions",
+      "intent": "Confused",
+      "motion_prompt": "A person keeps the left forearm raised while the right forearm alternates between inward and outward positions.",
+      "kimodo_prompt": "A person keeps the left forearm raised while the right forearm alternates between inward and outward positions."
+    },
+    {
+      "gesture_id": "PDF_117",
+      "number": 117,
+      "category": "Emotions & Reactions",
+      "intent": "Scared",
+      "motion_prompt": "A person quickly crosses both forearms protectively in front of the upper chest and leans backward.",
+      "kimodo_prompt": "A person quickly crosses both forearms protectively in front of the upper chest and leans backward."
+    },
+    {
+      "gesture_id": "PDF_118",
+      "number": 118,
+      "category": "Emotions & Reactions",
+      "intent": "Afraid",
+      "motion_prompt": "A person draws both elbows tightly inward near the ribs and takes one small step backward.",
+      "kimodo_prompt": "A person draws both elbows tightly inward near the ribs and takes one small step backward."
+    },
+    {
+      "gesture_id": "PDF_119",
+      "number": 119,
+      "category": "Emotions & Reactions",
+      "intent": "Brave",
+      "motion_prompt": "A person stands tall with both forearms bent beside the waist and elbows pushed slightly outward.",
+      "kimodo_prompt": "A person stands tall with both forearms bent beside the waist and elbows pushed slightly outward."
+    },
+    {
+      "gesture_id": "PDF_120",
+      "number": 120,
+      "category": "Emotions & Reactions",
+      "intent": "Proud",
+      "motion_prompt": "A person expands the chest, places both hands near the hips, and holds a broad upright stance.",
+      "kimodo_prompt": "A person expands the chest, places both hands near the hips, and holds a broad upright stance."
+    },
+    {
+      "gesture_id": "PDF_121",
+      "number": 121,
+      "category": "Emotions & Reactions",
+      "intent": "Shy",
+      "motion_prompt": "A person brings both hands together low in front of the torso and turns the body slightly to the left.",
+      "kimodo_prompt": "A person brings both hands together low in front of the torso and turns the body slightly to the left."
+    },
+    {
+      "gesture_id": "PDF_122",
+      "number": 122,
+      "category": "Emotions & Reactions",
+      "intent": "Tired",
+      "motion_prompt": "A person bends the torso forward slightly and lets both arms swing loosely down once.",
+      "kimodo_prompt": "A person bends the torso forward slightly and lets both arms swing loosely down once."
+    },
+    {
+      "gesture_id": "PDF_123",
+      "number": 123,
+      "category": "Emotions & Reactions",
+      "intent": "Sleepy",
+      "motion_prompt": "A person brings both hands together beside the left side of the upper chest and leans gently toward them.",
+      "kimodo_prompt": "A person brings both hands together beside the left side of the upper chest and leans gently toward them."
+    },
+    {
+      "gesture_id": "PDF_124",
+      "number": 124,
+      "category": "Emotions & Reactions",
+      "intent": "Bored",
+      "motion_prompt": "A person shifts weight slowly from left to right while both arms remain hanging low.",
+      "kimodo_prompt": "A person shifts weight slowly from left to right while both arms remain hanging low."
+    },
+    {
+      "gesture_id": "PDF_125",
+      "number": 125,
+      "category": "Emotions & Reactions",
+      "intent": "Interested",
+      "motion_prompt": "A person leans forward and extends both forearms toward the target, holding them steady.",
+      "kimodo_prompt": "A person leans forward and extends both forearms toward the target, holding them steady."
+    },
+    {
+      "gesture_id": "PDF_126",
+      "number": 126,
+      "category": "Emotions & Reactions",
+      "intent": "Curious",
+      "motion_prompt": "A person leans slightly forward while opening the right arm to the side and keeping the left hand near the chest.",
+      "kimodo_prompt": "A person leans slightly forward while opening the right arm to the side and keeping the left hand near the chest."
+    },
+    {
+      "gesture_id": "PDF_127",
+      "number": 127,
+      "category": "Emotions & Reactions",
+      "intent": "Worried",
+      "motion_prompt": "A person clasps both hands near the center of the chest and makes a small forward torso bend.",
+      "kimodo_prompt": "A person clasps both hands near the center of the chest and makes a small forward torso bend."
+    },
+    {
+      "gesture_id": "PDF_128",
+      "number": 128,
+      "category": "Emotions & Reactions",
+      "intent": "Nervous",
+      "motion_prompt": "A person keeps both elbows close to the body and alternates the forearms in small quick up-down motions.",
+      "kimodo_prompt": "A person keeps both elbows close to the body and alternates the forearms in small quick up-down motions."
+    },
+    {
+      "gesture_id": "PDF_129",
+      "number": 129,
+      "category": "Emotions & Reactions",
+      "intent": "Relax",
+      "motion_prompt": "A person slowly rolls both shoulders back and lets both arms fall outward to a loose resting position.",
+      "kimodo_prompt": "A person slowly rolls both shoulders back and lets both arms fall outward to a loose resting position."
+    },
+    {
+      "gesture_id": "PDF_130",
+      "number": 130,
+      "category": "Emotions & Reactions",
+      "intent": "Calm",
+      "motion_prompt": "A person raises both forearms to chest height and slowly presses them downward to waist height.",
+      "kimodo_prompt": "A person raises both forearms to chest height and slowly presses them downward to waist height."
+    },
+    {
+      "gesture_id": "PDF_131",
+      "number": 131,
+      "category": "Emotions & Reactions",
+      "intent": "Love",
+      "motion_prompt": "A person crosses both arms gently over the chest and holds the embrace-like pose.",
+      "kimodo_prompt": "A person crosses both arms gently over the chest and holds the embrace-like pose."
+    },
+    {
+      "gesture_id": "PDF_132",
+      "number": 132,
+      "category": "Emotions & Reactions",
+      "intent": "Like",
+      "motion_prompt": "A person touches the right hand to the chest, then extends that arm forward with a small upward finish.",
+      "kimodo_prompt": "A person touches the right hand to the chest, then extends that arm forward with a small upward finish."
+    },
+    {
+      "gesture_id": "PDF_133",
+      "number": 133,
+      "category": "Emotions & Reactions",
+      "intent": "Dislike",
+      "motion_prompt": "A person brings both forearms forward, then pushes them diagonally down and away from the body.",
+      "kimodo_prompt": "A person brings both forearms forward, then pushes them diagonally down and away from the body."
+    },
+    {
+      "gesture_id": "PDF_134",
+      "number": 134,
+      "category": "Emotions & Reactions",
+      "intent": "Amazing",
+      "motion_prompt": "A person opens both arms very wide and lifts them from shoulder height into a high V shape.",
+      "kimodo_prompt": "A person opens both arms very wide and lifts them from shoulder height into a high V shape."
+    },
+    {
+      "gesture_id": "PDF_135",
+      "number": 135,
+      "category": "Emotions & Reactions",
+      "intent": "Great",
+      "motion_prompt": "A person bends both elbows and pumps both forearms upward once beside the shoulders.",
+      "kimodo_prompt": "A person bends both elbows and pumps both forearms upward once beside the shoulders."
+    },
+    {
+      "gesture_id": "PDF_136",
+      "number": 136,
+      "category": "Emotions & Reactions",
+      "intent": "Excellent",
+      "motion_prompt": "A person raises the left arm high while the right forearm stays firmly across the chest.",
+      "kimodo_prompt": "A person raises the left arm high while the right forearm stays firmly across the chest."
+    },
+    {
+      "gesture_id": "PDF_137",
+      "number": 137,
+      "category": "Emotions & Reactions",
+      "intent": "Wow",
+      "motion_prompt": "A person quickly opens both arms from the chest to full width and leans the torso back briefly.",
+      "kimodo_prompt": "A person quickly opens both arms from the chest to full width and leans the torso back briefly."
+    },
+    {
+      "gesture_id": "PDF_138",
+      "number": 138,
+      "category": "Emotions & Reactions",
+      "intent": "Funny",
+      "motion_prompt": "A person places the left hand near the abdomen and rocks the upper torso gently side to side twice.",
+      "kimodo_prompt": "A person places the left hand near the abdomen and rocks the upper torso gently side to side twice."
+    },
+    {
+      "gesture_id": "PDF_139",
+      "number": 139,
+      "category": "Emotions & Reactions",
+      "intent": "Laugh",
+      "motion_prompt": "A person holds both forearms near the abdomen and makes three small rhythmic forward torso pulses.",
+      "kimodo_prompt": "A person holds both forearms near the abdomen and makes three small rhythmic forward torso pulses."
+    },
+    {
+      "gesture_id": "PDF_140",
+      "number": 140,
+      "category": "Emotions & Reactions",
+      "intent": "Cry",
+      "motion_prompt": "A person raises both hands near the face area, then slowly drags them downward toward the chest.",
+      "kimodo_prompt": "A person raises both hands near the face area, then slowly drags them downward toward the chest."
+    },
+    {
+      "gesture_id": "PDF_141",
+      "number": 141,
+      "category": "Emotions & Reactions",
+      "intent": "Pain",
+      "motion_prompt": "A person grabs the right side of the torso with both hands and bends toward that side.",
+      "kimodo_prompt": "A person grabs the right side of the torso with both hands and bends toward that side."
+    },
+    {
+      "gesture_id": "PDF_142",
+      "number": 142,
+      "category": "Emotions & Reactions",
+      "intent": "Strong",
+      "motion_prompt": "A person raises both elbows to shoulder height with forearms bent upward in a double-flex pose.",
+      "kimodo_prompt": "A person raises both elbows to shoulder height with forearms bent upward in a double-flex pose."
+    },
+    {
+      "gesture_id": "PDF_143",
+      "number": 143,
+      "category": "Emotions & Reactions",
+      "intent": "Weak",
+      "motion_prompt": "A person lowers both shoulders, lets both forearms droop, and bends the knees slightly.",
+      "kimodo_prompt": "A person lowers both shoulders, lets both forearms droop, and bends the knees slightly."
+    },
+    {
+      "gesture_id": "PDF_144",
+      "number": 144,
+      "category": "Emotions & Reactions",
+      "intent": "Victory",
+      "motion_prompt": "A person raises both arms overhead into a wide V and holds the pose.",
+      "kimodo_prompt": "A person raises both arms overhead into a wide V and holds the pose."
+    },
+    {
+      "gesture_id": "PDF_145",
+      "number": 145,
+      "category": "Emotions & Reactions",
+      "intent": "Celebrate",
+      "motion_prompt": "A person pumps the right arm overhead twice while the left arm swings outward at shoulder height.",
+      "kimodo_prompt": "A person pumps the right arm overhead twice while the left arm swings outward at shoulder height."
+    },
+    {
+      "gesture_id": "PDF_146",
+      "number": 146,
+      "category": "Social Interaction",
+      "intent": "Me",
+      "motion_prompt": "A person touches the center of the chest once with the right hand.",
+      "kimodo_prompt": "A person touches the center of the chest once with the right hand."
+    },
+    {
+      "gesture_id": "PDF_147",
+      "number": 147,
+      "category": "Social Interaction",
+      "intent": "You",
+      "motion_prompt": "A person extends the left arm straight toward the person in front and holds it briefly.",
+      "kimodo_prompt": "A person extends the left arm straight toward the person in front and holds it briefly."
+    },
+    {
+      "gesture_id": "PDF_148",
+      "number": 148,
+      "category": "Social Interaction",
+      "intent": "Us",
+      "motion_prompt": "A person points to the chest with both hands, then opens both forearms slightly outward to include others.",
+      "kimodo_prompt": "A person points to the chest with both hands, then opens both forearms slightly outward to include others."
+    },
+    {
+      "gesture_id": "PDF_149",
+      "number": 149,
+      "category": "Social Interaction",
+      "intent": "Everyone",
+      "motion_prompt": "A person sweeps both arms in a broad semicircle from the center to both sides.",
+      "kimodo_prompt": "A person sweeps both arms in a broad semicircle from the center to both sides."
+    },
+    {
+      "gesture_id": "PDF_150",
+      "number": 150,
+      "category": "Social Interaction",
+      "intent": "Friend",
+      "motion_prompt": "A person extends the right hand forward, then brings that hand back over the heart area.",
+      "kimodo_prompt": "A person extends the right hand forward, then brings that hand back over the heart area."
+    },
+    {
+      "gesture_id": "PDF_151",
+      "number": 151,
+      "category": "Social Interaction",
+      "intent": "Together",
+      "motion_prompt": "A person starts with both arms apart and brings both forearms together until the hands meet at center.",
+      "kimodo_prompt": "A person starts with both arms apart and brings both forearms together until the hands meet at center."
+    },
+    {
+      "gesture_id": "PDF_152",
+      "number": 152,
+      "category": "Social Interaction",
+      "intent": "Separate",
+      "motion_prompt": "A person starts with both hands together and moves both arms apart to full shoulder width.",
+      "kimodo_prompt": "A person starts with both hands together and moves both arms apart to full shoulder width."
+    },
+    {
+      "gesture_id": "PDF_153",
+      "number": 153,
+      "category": "Social Interaction",
+      "intent": "Help",
+      "motion_prompt": "A person raises both forearms forward from the waist and holds them slightly upward as a request.",
+      "kimodo_prompt": "A person raises both forearms forward from the waist and holds them slightly upward as a request."
+    },
+    {
+      "gesture_id": "PDF_154",
+      "number": 154,
+      "category": "Social Interaction",
+      "intent": "Help Me",
+      "motion_prompt": "A person points to the chest with the left hand, then reaches both arms forward.",
+      "kimodo_prompt": "A person points to the chest with the left hand, then reaches both arms forward."
+    },
+    {
+      "gesture_id": "PDF_155",
+      "number": 155,
+      "category": "Social Interaction",
+      "intent": "I Will Help",
+      "motion_prompt": "A person touches the chest with the right hand, then reaches both arms toward the other person.",
+      "kimodo_prompt": "A person touches the chest with the right hand, then reaches both arms toward the other person."
+    },
+    {
+      "gesture_id": "PDF_156",
+      "number": 156,
+      "category": "Social Interaction",
+      "intent": "Share",
+      "motion_prompt": "A person holds both hands together at center, then sends the left arm left and the right arm right.",
+      "kimodo_prompt": "A person holds both hands together at center, then sends the left arm left and the right arm right."
+    },
+    {
+      "gesture_id": "PDF_157",
+      "number": 157,
+      "category": "Social Interaction",
+      "intent": "Give Me",
+      "motion_prompt": "A person reaches both hands forward, then draws them slowly inward toward the chest.",
+      "kimodo_prompt": "A person reaches both hands forward, then draws them slowly inward toward the chest."
+    },
+    {
+      "gesture_id": "PDF_158",
+      "number": 158,
+      "category": "Social Interaction",
+      "intent": "For You",
+      "motion_prompt": "A person brings both hands together at the chest and extends them directly toward the other person.",
+      "kimodo_prompt": "A person brings both hands together at the chest and extends them directly toward the other person."
+    },
+    {
+      "gesture_id": "PDF_159",
+      "number": 159,
+      "category": "Social Interaction",
+      "intent": "Handshake",
+      "motion_prompt": "A person extends the right arm forward at waist height and makes one short vertical shake motion.",
+      "kimodo_prompt": "A person extends the right arm forward at waist height and makes one short vertical shake motion."
+    },
+    {
+      "gesture_id": "PDF_160",
+      "number": 160,
+      "category": "Social Interaction",
+      "intent": "High Five",
+      "motion_prompt": "A person raises the left arm high in front of the body and gives one short forward tap motion.",
+      "kimodo_prompt": "A person raises the left arm high in front of the body and gives one short forward tap motion."
+    },
+    {
+      "gesture_id": "PDF_161",
+      "number": 161,
+      "category": "Social Interaction",
+      "intent": "Hug",
+      "motion_prompt": "A person opens both arms wide, then wraps them inward around an imaginary person.",
+      "kimodo_prompt": "A person opens both arms wide, then wraps them inward around an imaginary person."
+    },
+    {
+      "gesture_id": "PDF_162",
+      "number": 162,
+      "category": "Social Interaction",
+      "intent": "Respect",
+      "motion_prompt": "A person brings both hands together at chest height and makes one shallow forward bow.",
+      "kimodo_prompt": "A person brings both hands together at chest height and makes one shallow forward bow."
+    },
+    {
+      "gesture_id": "PDF_163",
+      "number": 163,
+      "category": "Social Interaction",
+      "intent": "Bow",
+      "motion_prompt": "A person keeps both arms straight beside the body and bends the torso forward from the hips.",
+      "kimodo_prompt": "A person keeps both arms straight beside the body and bends the torso forward from the hips."
+    },
+    {
+      "gesture_id": "PDF_164",
+      "number": 164,
+      "category": "Social Interaction",
+      "intent": "Clap",
+      "motion_prompt": "A person brings both hands together once at chest height, then separates them.",
+      "kimodo_prompt": "A person brings both hands together once at chest height, then separates them."
+    },
+    {
+      "gesture_id": "PDF_165",
+      "number": 165,
+      "category": "Social Interaction",
+      "intent": "Applause",
+      "motion_prompt": "A person claps both hands together three times at chest height.",
+      "kimodo_prompt": "A person claps both hands together three times at chest height."
+    },
+    {
+      "gesture_id": "PDF_166",
+      "number": 166,
+      "category": "Social Interaction",
+      "intent": "Invite",
+      "motion_prompt": "A person opens the left arm outward, then sweeps it inward toward the body in one welcoming motion.",
+      "kimodo_prompt": "A person opens the left arm outward, then sweeps it inward toward the body in one welcoming motion."
+    },
+    {
+      "gesture_id": "PDF_167",
+      "number": 167,
+      "category": "Social Interaction",
+      "intent": "Meet",
+      "motion_prompt": "A person moves the left and right hands from opposite sides until they meet at the center.",
+      "kimodo_prompt": "A person moves the left and right hands from opposite sides until they meet at the center."
+    },
+    {
+      "gesture_id": "PDF_168",
+      "number": 168,
+      "category": "Social Interaction",
+      "intent": "Join",
+      "motion_prompt": "A person extends both forearms forward separately, then brings them side by side and holds them together.",
+      "kimodo_prompt": "A person extends both forearms forward separately, then brings them side by side and holds them together."
+    },
+    {
+      "gesture_id": "PDF_169",
+      "number": 169,
+      "category": "Social Interaction",
+      "intent": "Leave Me",
+      "motion_prompt": "A person pushes both arms straight outward, then turns the torso slightly away.",
+      "kimodo_prompt": "A person pushes both arms straight outward, then turns the torso slightly away."
+    },
+    {
+      "gesture_id": "PDF_170",
+      "number": 170,
+      "category": "Social Interaction",
+      "intent": "Trust Me",
+      "motion_prompt": "A person places the right hand firmly on the chest and extends the left forearm calmly forward.",
+      "kimodo_prompt": "A person places the right hand firmly on the chest and extends the left forearm calmly forward."
+    },
+    {
+      "gesture_id": "PDF_171",
+      "number": 171,
+      "category": "Daily Actions",
+      "intent": "Eat",
+      "motion_prompt": "A person repeatedly moves the right hand from waist height toward the mouth area twice.",
+      "kimodo_prompt": "A person repeatedly moves the right hand from waist height toward the mouth area twice."
+    },
+    {
+      "gesture_id": "PDF_172",
+      "number": 172,
+      "category": "Daily Actions",
+      "intent": "Drink",
+      "motion_prompt": "A person lifts the left hand from chest height toward the mouth and tilts the forearm upward once.",
+      "kimodo_prompt": "A person lifts the left hand from chest height toward the mouth and tilts the forearm upward once."
+    },
+    {
+      "gesture_id": "PDF_173",
+      "number": 173,
+      "category": "Daily Actions",
+      "intent": "Sleep",
+      "motion_prompt": "A person places both hands together beside the right side of the chest and leans the torso toward them.",
+      "kimodo_prompt": "A person places both hands together beside the right side of the chest and leans the torso toward them."
+    },
+    {
+      "gesture_id": "PDF_174",
+      "number": 174,
+      "category": "Daily Actions",
+      "intent": "Wake Up",
+      "motion_prompt": "A person straightens the body and stretches both arms high overhead in one long motion.",
+      "kimodo_prompt": "A person straightens the body and stretches both arms high overhead in one long motion."
+    },
+    {
+      "gesture_id": "PDF_175",
+      "number": 175,
+      "category": "Daily Actions",
+      "intent": "Wash",
+      "motion_prompt": "A person holds both hands together in front of the waist and rubs them back and forth three times.",
+      "kimodo_prompt": "A person holds both hands together in front of the waist and rubs them back and forth three times."
+    },
+    {
+      "gesture_id": "PDF_176",
+      "number": 176,
+      "category": "Daily Actions",
+      "intent": "Clean",
+      "motion_prompt": "A person extends the right arm down and sweeps it horizontally across an imaginary surface twice.",
+      "kimodo_prompt": "A person extends the right arm down and sweeps it horizontally across an imaginary surface twice."
+    },
+    {
+      "gesture_id": "PDF_177",
+      "number": 177,
+      "category": "Daily Actions",
+      "intent": "Brush",
+      "motion_prompt": "A person raises the right hand near the mouth and makes three short vertical brushing strokes.",
+      "kimodo_prompt": "A person raises the right hand near the mouth and makes three short vertical brushing strokes."
+    },
+    {
+      "gesture_id": "PDF_178",
+      "number": 178,
+      "category": "Daily Actions",
+      "intent": "Cook",
+      "motion_prompt": "A person holds the left forearm steady like a bowl while the right forearm makes one wide stirring circle.",
+      "kimodo_prompt": "A person holds the left forearm steady like a bowl while the right forearm makes one wide stirring circle."
+    },
+    {
+      "gesture_id": "PDF_179",
+      "number": 179,
+      "category": "Daily Actions",
+      "intent": "Cut",
+      "motion_prompt": "A person holds the left hand flat in front and makes three controlled downward chopping motions with the right hand.",
+      "kimodo_prompt": "A person holds the left hand flat in front and makes three controlled downward chopping motions with the right hand."
+    },
+    {
+      "gesture_id": "PDF_180",
+      "number": 180,
+      "category": "Daily Actions",
+      "intent": "Mix",
+      "motion_prompt": "A person holds the left hand at waist height while the right forearm makes two small circular stirring motions.",
+      "kimodo_prompt": "A person holds the left hand at waist height while the right forearm makes two small circular stirring motions."
+    },
+    {
+      "gesture_id": "PDF_181",
+      "number": 181,
+      "category": "Daily Actions",
+      "intent": "Write",
+      "motion_prompt": "A person holds the left forearm flat and moves the right hand in three short left-to-right writing strokes above it.",
+      "kimodo_prompt": "A person holds the left forearm flat and moves the right hand in three short left-to-right writing strokes above it."
+    },
+    {
+      "gesture_id": "PDF_182",
+      "number": 182,
+      "category": "Daily Actions",
+      "intent": "Read",
+      "motion_prompt": "A person holds both hands apart in front of the chest like an open book and keeps the pose steady.",
+      "kimodo_prompt": "A person holds both hands apart in front of the chest like an open book and keeps the pose steady."
+    },
+    {
+      "gesture_id": "PDF_183",
+      "number": 183,
+      "category": "Daily Actions",
+      "intent": "Book",
+      "motion_prompt": "A person brings both hands together at chest height, then opens them outward like opening a book.",
+      "kimodo_prompt": "A person brings both hands together at chest height, then opens them outward like opening a book."
+    },
+    {
+      "gesture_id": "PDF_184",
+      "number": 184,
+      "category": "Daily Actions",
+      "intent": "Phone",
+      "motion_prompt": "A person raises the left hand beside the side of the face and holds it there.",
+      "kimodo_prompt": "A person raises the left hand beside the side of the face and holds it there."
+    },
+    {
+      "gesture_id": "PDF_185",
+      "number": 185,
+      "category": "Daily Actions",
+      "intent": "Call",
+      "motion_prompt": "A person raises the right hand beside the face, then extends the left arm forward to signal another person.",
+      "kimodo_prompt": "A person raises the right hand beside the face, then extends the left arm forward to signal another person."
+    },
+    {
+      "gesture_id": "PDF_186",
+      "number": 186,
+      "category": "Daily Actions",
+      "intent": "Type",
+      "motion_prompt": "A person holds both hands forward at waist height and makes rapid alternating downward taps.",
+      "kimodo_prompt": "A person holds both hands forward at waist height and makes rapid alternating downward taps."
+    },
+    {
+      "gesture_id": "PDF_187",
+      "number": 187,
+      "category": "Daily Actions",
+      "intent": "Computer",
+      "motion_prompt": "A person holds both forearms forward and alternates between short typing taps and a brief right-hand reach.",
+      "kimodo_prompt": "A person holds both forearms forward and alternates between short typing taps and a brief right-hand reach."
+    },
+    {
+      "gesture_id": "PDF_188",
+      "number": 188,
+      "category": "Daily Actions",
+      "intent": "Work",
+      "motion_prompt": "A person alternates both forearms forward and back in a steady task-like rhythm.",
+      "kimodo_prompt": "A person alternates both forearms forward and back in a steady task-like rhythm."
+    },
+    {
+      "gesture_id": "PDF_189",
+      "number": 189,
+      "category": "Daily Actions",
+      "intent": "Carry",
+      "motion_prompt": "A person keeps both forearms horizontal in front of the abdomen and walks forward two slow steps.",
+      "kimodo_prompt": "A person keeps both forearms horizontal in front of the abdomen and walks forward two slow steps."
+    },
+    {
+      "gesture_id": "PDF_190",
+      "number": 190,
+      "category": "Daily Actions",
+      "intent": "Throw",
+      "motion_prompt": "A person draws the right arm back beside the shoulder, then swings it forward in one throwing arc.",
+      "kimodo_prompt": "A person draws the right arm back beside the shoulder, then swings it forward in one throwing arc."
+    },
+    {
+      "gesture_id": "PDF_191",
+      "number": 191,
+      "category": "Daily Actions",
+      "intent": "Catch",
+      "motion_prompt": "A person reaches both arms forward, then quickly draws both hands inward toward the chest.",
+      "kimodo_prompt": "A person reaches both arms forward, then quickly draws both hands inward toward the chest."
+    },
+    {
+      "gesture_id": "PDF_192",
+      "number": 192,
+      "category": "Daily Actions",
+      "intent": "Kick",
+      "motion_prompt": "A person shifts weight to the left leg and makes one controlled forward kick with the right leg.",
+      "kimodo_prompt": "A person shifts weight to the left leg and makes one controlled forward kick with the right leg."
+    },
+    {
+      "gesture_id": "PDF_193",
+      "number": 193,
+      "category": "Daily Actions",
+      "intent": "Walk Slowly",
+      "motion_prompt": "A person takes three small slow forward steps with minimal arm swing.",
+      "kimodo_prompt": "A person takes three small slow forward steps with minimal arm swing."
+    },
+    {
+      "gesture_id": "PDF_194",
+      "number": 194,
+      "category": "Daily Actions",
+      "intent": "Walk Fast",
+      "motion_prompt": "A person takes four quick forward walking steps with stronger alternating arm swings.",
+      "kimodo_prompt": "A person takes four quick forward walking steps with stronger alternating arm swings."
+    },
+    {
+      "gesture_id": "PDF_195",
+      "number": 195,
+      "category": "Daily Actions",
+      "intent": "Dance",
+      "motion_prompt": "A person steps side to side twice while swinging both arms in opposite directions.",
+      "kimodo_prompt": "A person steps side to side twice while swinging both arms in opposite directions."
+    },
+    {
+      "gesture_id": "PDF_196",
+      "number": 196,
+      "category": "Daily Actions",
+      "intent": "Exercise",
+      "motion_prompt": "A person performs two controlled arm raises from the sides to overhead and back down.",
+      "kimodo_prompt": "A person performs two controlled arm raises from the sides to overhead and back down."
+    },
+    {
+      "gesture_id": "PDF_197",
+      "number": 197,
+      "category": "Daily Actions",
+      "intent": "Stretch",
+      "motion_prompt": "A person reaches both arms overhead, then leans the torso gently to the left side.",
+      "kimodo_prompt": "A person reaches both arms overhead, then leans the torso gently to the left side."
+    },
+    {
+      "gesture_id": "PDF_198",
+      "number": 198,
+      "category": "Daily Actions",
+      "intent": "Rest",
+      "motion_prompt": "A person relaxes both arms beside the body and shifts weight into a comfortable still stance.",
+      "kimodo_prompt": "A person relaxes both arms beside the body and shifts weight into a comfortable still stance."
+    },
+    {
+      "gesture_id": "PDF_199",
+      "number": 199,
+      "category": "Daily Actions",
+      "intent": "Search",
+      "motion_prompt": "A person sweeps the left arm from right to left, then the right arm from left to right.",
+      "kimodo_prompt": "A person sweeps the left arm from right to left, then the right arm from left to right."
+    },
+    {
+      "gesture_id": "PDF_200",
+      "number": 200,
+      "category": "Daily Actions",
+      "intent": "Find",
+      "motion_prompt": "A person performs one searching arm sweep, then stops with the right arm pointing directly at the target.",
+      "kimodo_prompt": "A person performs one searching arm sweep, then stops with the right arm pointing directly at the target."
+    },
+    {
+      "gesture_id": "PDF_201",
+      "number": 201,
+      "category": "Daily Actions",
+      "intent": "Take Photo",
+      "motion_prompt": "A person raises both hands together in front of the upper chest and holds a camera-like pose.",
+      "kimodo_prompt": "A person raises both hands together in front of the upper chest and holds a camera-like pose."
+    },
+    {
+      "gesture_id": "PDF_202",
+      "number": 202,
+      "category": "Daily Actions",
+      "intent": "Drive",
+      "motion_prompt": "A person holds both hands forward like a steering wheel and rotates both forearms left then right.",
+      "kimodo_prompt": "A person holds both hands forward like a steering wheel and rotates both forearms left then right."
+    },
+    {
+      "gesture_id": "PDF_203",
+      "number": 203,
+      "category": "Daily Actions",
+      "intent": "Open Door",
+      "motion_prompt": "A person reaches forward with the right hand, pulls it back, then sweeps the right arm outward to the side.",
+      "kimodo_prompt": "A person reaches forward with the right hand, pulls it back, then sweeps the right arm outward to the side."
+    },
+    {
+      "gesture_id": "PDF_204",
+      "number": 204,
+      "category": "Daily Actions",
+      "intent": "Close Door",
+      "motion_prompt": "A person reaches the right arm to the side and sweeps it inward across the body to the front.",
+      "kimodo_prompt": "A person reaches the right arm to the side and sweeps it inward across the body to the front."
+    },
+    {
+      "gesture_id": "PDF_205",
+      "number": 205,
+      "category": "Daily Actions",
+      "intent": "Knock",
+      "motion_prompt": "A person raises the right forearm forward and makes three short forward tapping motions.",
+      "kimodo_prompt": "A person raises the right forearm forward and makes three short forward tapping motions."
+    },
+    {
+      "gesture_id": "PDF_206",
+      "number": 206,
+      "category": "Learning, Work & Communication",
+      "intent": "Learn",
+      "motion_prompt": "A person holds both hands like an open book, then brings the right hand from the book position to the chest.",
+      "kimodo_prompt": "A person holds both hands like an open book, then brings the right hand from the book position to the chest."
+    },
+    {
+      "gesture_id": "PDF_207",
+      "number": 207,
+      "category": "Learning, Work & Communication",
+      "intent": "Study",
+      "motion_prompt": "A person holds an open-book pose and leans the torso slightly forward for focused attention.",
+      "kimodo_prompt": "A person holds an open-book pose and leans the torso slightly forward for focused attention."
+    },
+    {
+      "gesture_id": "PDF_208",
+      "number": 208,
+      "category": "Learning, Work & Communication",
+      "intent": "Teach",
+      "motion_prompt": "A person keeps the left hand near the chest while the right arm makes two clear outward explaining sweeps.",
+      "kimodo_prompt": "A person keeps the left hand near the chest while the right arm makes two clear outward explaining sweeps."
+    },
+    {
+      "gesture_id": "PDF_209",
+      "number": 209,
+      "category": "Learning, Work & Communication",
+      "intent": "Explain",
+      "motion_prompt": "A person alternates the left and right forearms forward in two measured descriptive motions.",
+      "kimodo_prompt": "A person alternates the left and right forearms forward in two measured descriptive motions."
+    },
+    {
+      "gesture_id": "PDF_210",
+      "number": 210,
+      "category": "Learning, Work & Communication",
+      "intent": "Question",
+      "motion_prompt": "A person raises both forearms outward to waist height and holds a clear questioning pose.",
+      "kimodo_prompt": "A person raises both forearms outward to waist height and holds a clear questioning pose."
+    },
+    {
+      "gesture_id": "PDF_211",
+      "number": 211,
+      "category": "Learning, Work & Communication",
+      "intent": "Answer",
+      "motion_prompt": "A person raises the right forearm beside the chest, then extends it forward in one confident motion.",
+      "kimodo_prompt": "A person raises the right forearm beside the chest, then extends it forward in one confident motion."
+    },
+    {
+      "gesture_id": "PDF_212",
+      "number": 212,
+      "category": "Learning, Work & Communication",
+      "intent": "Think",
+      "motion_prompt": "A person brings the right hand near the side of the forehead area and holds it still.",
+      "kimodo_prompt": "A person brings the right hand near the side of the forehead area and holds it still."
+    },
+    {
+      "gesture_id": "PDF_213",
+      "number": 213,
+      "category": "Learning, Work & Communication",
+      "intent": "Idea",
+      "motion_prompt": "A person brings the left hand near the forehead area, then raises that arm upward in a sudden realization motion.",
+      "kimodo_prompt": "A person brings the left hand near the forehead area, then raises that arm upward in a sudden realization motion."
+    },
+    {
+      "gesture_id": "PDF_214",
+      "number": 214,
+      "category": "Learning, Work & Communication",
+      "intent": "Remember",
+      "motion_prompt": "A person touches the side of the forehead area with the right hand, then brings the same hand to the chest.",
+      "kimodo_prompt": "A person touches the side of the forehead area with the right hand, then brings the same hand to the chest."
+    },
+    {
+      "gesture_id": "PDF_215",
+      "number": 215,
+      "category": "Learning, Work & Communication",
+      "intent": "Forget",
+      "motion_prompt": "A person brings the right hand near the forehead area, then flicks the forearm outward away from the body.",
+      "kimodo_prompt": "A person brings the right hand near the forehead area, then flicks the forearm outward away from the body."
+    },
+    {
+      "gesture_id": "PDF_216",
+      "number": 216,
+      "category": "Learning, Work & Communication",
+      "intent": "Read This",
+      "motion_prompt": "A person points down toward an imaginary page with the right hand, then forms an open-book pose with both hands.",
+      "kimodo_prompt": "A person points down toward an imaginary page with the right hand, then forms an open-book pose with both hands."
+    },
+    {
+      "gesture_id": "PDF_217",
+      "number": 217,
+      "category": "Learning, Work & Communication",
+      "intent": "Write This",
+      "motion_prompt": "A person points down with the left hand, then makes three short writing strokes with the right hand.",
+      "kimodo_prompt": "A person points down with the left hand, then makes three short writing strokes with the right hand."
+    },
+    {
+      "gesture_id": "PDF_218",
+      "number": 218,
+      "category": "Learning, Work & Communication",
+      "intent": "Show",
+      "motion_prompt": "A person brings both hands from the chest forward and holds them apart as if displaying an item.",
+      "kimodo_prompt": "A person brings both hands from the chest forward and holds them apart as if displaying an item."
+    },
+    {
+      "gesture_id": "PDF_219",
+      "number": 219,
+      "category": "Learning, Work & Communication",
+      "intent": "Demonstrate",
+      "motion_prompt": "A person extends the right arm forward, then traces one clear horizontal motion across the front.",
+      "kimodo_prompt": "A person extends the right arm forward, then traces one clear horizontal motion across the front."
+    },
+    {
+      "gesture_id": "PDF_220",
+      "number": 220,
+      "category": "Learning, Work & Communication",
+      "intent": "Present",
+      "motion_prompt": "A person stands upright and opens both arms symmetrically toward the audience at shoulder height.",
+      "kimodo_prompt": "A person stands upright and opens both arms symmetrically toward the audience at shoulder height."
+    },
+    {
+      "gesture_id": "PDF_221",
+      "number": 221,
+      "category": "Learning, Work & Communication",
+      "intent": "Ask",
+      "motion_prompt": "A person extends both forearms forward with elbows bent, then lifts them slightly once.",
+      "kimodo_prompt": "A person extends both forearms forward with elbows bent, then lifts them slightly once."
+    },
+    {
+      "gesture_id": "PDF_222",
+      "number": 222,
+      "category": "Learning, Work & Communication",
+      "intent": "Tell Me",
+      "motion_prompt": "A person points outward with the right arm, then draws the left forearm inward toward the chest.",
+      "kimodo_prompt": "A person points outward with the right arm, then draws the left forearm inward toward the chest."
+    },
+    {
+      "gesture_id": "PDF_223",
+      "number": 223,
+      "category": "Learning, Work & Communication",
+      "intent": "Good Job",
+      "motion_prompt": "A person raises both bent forearms beside the shoulders and gives one strong upward pump.",
+      "kimodo_prompt": "A person raises both bent forearms beside the shoulders and gives one strong upward pump."
+    },
+    {
+      "gesture_id": "PDF_224",
+      "number": 224,
+      "category": "Learning, Work & Communication",
+      "intent": "Try Again",
+      "motion_prompt": "A person makes one circular repeat motion with the right forearm, then gives one short forward start signal.",
+      "kimodo_prompt": "A person makes one circular repeat motion with the right forearm, then gives one short forward start signal."
+    },
+    {
+      "gesture_id": "PDF_225",
+      "number": 225,
+      "category": "Learning, Work & Communication",
+      "intent": "Done",
+      "motion_prompt": "A person brings both hands together at the center, lowers both arms to the sides, and becomes still.",
+      "kimodo_prompt": "A person brings both hands together at the center, lowers both arms to the sides, and becomes still."
+    },
+    {
+      "gesture_id": "PDF_226",
+      "number": 226,
+      "category": "Safety & Emergency",
+      "intent": "Danger",
+      "motion_prompt": "A person quickly throws both forearms up in front of the chest in a protective barrier pose.",
+      "kimodo_prompt": "A person quickly throws both forearms up in front of the chest in a protective barrier pose."
+    },
+    {
+      "gesture_id": "PDF_227",
+      "number": 227,
+      "category": "Safety & Emergency",
+      "intent": "Warning",
+      "motion_prompt": "A person raises the left forearm forward and makes two short downward warning beats.",
+      "kimodo_prompt": "A person raises the left forearm forward and makes two short downward warning beats."
+    },
+    {
+      "gesture_id": "PDF_228",
+      "number": 228,
+      "category": "Safety & Emergency",
+      "intent": "Emergency",
+      "motion_prompt": "A person raises both arms high overhead and waves them widely outward and inward twice.",
+      "kimodo_prompt": "A person raises both arms high overhead and waves them widely outward and inward twice."
+    },
+    {
+      "gesture_id": "PDF_229",
+      "number": 229,
+      "category": "Safety & Emergency",
+      "intent": "Help!",
+      "motion_prompt": "A person lifts the right arm overhead and the left arm outward, then waves both arms urgently.",
+      "kimodo_prompt": "A person lifts the right arm overhead and the left arm outward, then waves both arms urgently."
+    },
+    {
+      "gesture_id": "PDF_230",
+      "number": 230,
+      "category": "Safety & Emergency",
+      "intent": "Stay Back",
+      "motion_prompt": "A person pushes both arms forward twice while taking one small step backward.",
+      "kimodo_prompt": "A person pushes both arms forward twice while taking one small step backward."
+    },
+    {
+      "gesture_id": "PDF_231",
+      "number": 231,
+      "category": "Safety & Emergency",
+      "intent": "Don't Move",
+      "motion_prompt": "A person extends both forearms straight forward and freezes the entire body in place.",
+      "kimodo_prompt": "A person extends both forearms straight forward and freezes the entire body in place."
+    },
+    {
+      "gesture_id": "PDF_232",
+      "number": 232,
+      "category": "Safety & Emergency",
+      "intent": "Careful",
+      "motion_prompt": "A person holds both forearms forward and lowers them very slowly as a caution signal.",
+      "kimodo_prompt": "A person holds both forearms forward and lowers them very slowly as a caution signal."
+    },
+    {
+      "gesture_id": "PDF_233",
+      "number": 233,
+      "category": "Safety & Emergency",
+      "intent": "Be Careful",
+      "motion_prompt": "A person raises the right forearm, then slowly sweeps it downward and slightly outward.",
+      "kimodo_prompt": "A person raises the right forearm, then slowly sweeps it downward and slightly outward."
+    },
+    {
+      "gesture_id": "PDF_234",
+      "number": 234,
+      "category": "Safety & Emergency",
+      "intent": "Safe",
+      "motion_prompt": "A person crosses both arms lightly over the chest, then opens them into a relaxed low position.",
+      "kimodo_prompt": "A person crosses both arms lightly over the chest, then opens them into a relaxed low position."
+    },
+    {
+      "gesture_id": "PDF_235",
+      "number": 235,
+      "category": "Safety & Emergency",
+      "intent": "Unsafe",
+      "motion_prompt": "A person forms a firm X with both forearms in front of the upper chest and holds it.",
+      "kimodo_prompt": "A person forms a firm X with both forearms in front of the upper chest and holds it."
+    },
+    {
+      "gesture_id": "PDF_236",
+      "number": 236,
+      "category": "Safety & Emergency",
+      "intent": "Fire",
+      "motion_prompt": "A person points sharply downward with the left arm, then waves the right arm overhead in alarm.",
+      "kimodo_prompt": "A person points sharply downward with the left arm, then waves the right arm overhead in alarm."
+    },
+    {
+      "gesture_id": "PDF_237",
+      "number": 237,
+      "category": "Safety & Emergency",
+      "intent": "Call Help",
+      "motion_prompt": "A person brings the left hand beside the face, then raises the right arm overhead and waves once.",
+      "kimodo_prompt": "A person brings the left hand beside the face, then raises the right arm overhead and waves once."
+    },
+    {
+      "gesture_id": "PDF_238",
+      "number": 238,
+      "category": "Safety & Emergency",
+      "intent": "Move Away",
+      "motion_prompt": "A person pushes both arms diagonally outward while taking one controlled backward step.",
+      "kimodo_prompt": "A person pushes both arms diagonally outward while taking one controlled backward step."
+    },
+    {
+      "gesture_id": "PDF_239",
+      "number": 239,
+      "category": "Safety & Emergency",
+      "intent": "Come Quickly",
+      "motion_prompt": "A person pulls both forearms inward toward the chest three times in quick succession.",
+      "kimodo_prompt": "A person pulls both forearms inward toward the chest three times in quick succession."
+    },
+    {
+      "gesture_id": "PDF_240",
+      "number": 240,
+      "category": "Safety & Emergency",
+      "intent": "Stop Immediately",
+      "motion_prompt": "A person snaps both arms straight forward at chest height and holds the rigid stop pose.",
+      "kimodo_prompt": "A person snaps both arms straight forward at chest height and holds the rigid stop pose."
+    },
+    {
+      "gesture_id": "PDF_241",
+      "number": 241,
+      "category": "Time & Sequence",
+      "intent": "Now",
+      "motion_prompt": "A person points both hands sharply downward toward the space directly in front of the feet.",
+      "kimodo_prompt": "A person points both hands sharply downward toward the space directly in front of the feet."
+    },
+    {
+      "gesture_id": "PDF_242",
+      "number": 242,
+      "category": "Time & Sequence",
+      "intent": "Later",
+      "motion_prompt": "A person moves the right forearm from the chest forward and then sweeps it slowly to the right side.",
+      "kimodo_prompt": "A person moves the right forearm from the chest forward and then sweeps it slowly to the right side."
+    },
+    {
+      "gesture_id": "PDF_243",
+      "number": 243,
+      "category": "Time & Sequence",
+      "intent": "Before",
+      "motion_prompt": "A person extends the left forearm forward, then sweeps it backward past the side of the torso.",
+      "kimodo_prompt": "A person extends the left forearm forward, then sweeps it backward past the side of the torso."
+    },
+    {
+      "gesture_id": "PDF_244",
+      "number": 244,
+      "category": "Time & Sequence",
+      "intent": "After",
+      "motion_prompt": "A person starts with the right hand beside the torso and sweeps the arm forward beyond the chest.",
+      "kimodo_prompt": "A person starts with the right hand beside the torso and sweeps the arm forward beyond the chest."
+    },
+    {
+      "gesture_id": "PDF_245",
+      "number": 245,
+      "category": "Time & Sequence",
+      "intent": "First",
+      "motion_prompt": "A person raises the left forearm straight up beside the shoulder and holds it as the first marker.",
+      "kimodo_prompt": "A person raises the left forearm straight up beside the shoulder and holds it as the first marker."
+    },
+    {
+      "gesture_id": "PDF_246",
+      "number": 246,
+      "category": "Time & Sequence",
+      "intent": "Next",
+      "motion_prompt": "A person points forward-left with the left arm, then sweeps the right arm past it toward forward-right.",
+      "kimodo_prompt": "A person points forward-left with the left arm, then sweeps the right arm past it toward forward-right."
+    },
+    {
+      "gesture_id": "PDF_247",
+      "number": 247,
+      "category": "Time & Sequence",
+      "intent": "Last",
+      "motion_prompt": "A person draws both forearms inward to the center, then lowers them together to finish.",
+      "kimodo_prompt": "A person draws both forearms inward to the center, then lowers them together to finish."
+    },
+    {
+      "gesture_id": "PDF_248",
+      "number": 248,
+      "category": "Time & Sequence",
+      "intent": "Start Now",
+      "motion_prompt": "A person gives one sharp downward beat with the left forearm, then immediately steps forward once.",
+      "kimodo_prompt": "A person gives one sharp downward beat with the left forearm, then immediately steps forward once."
+    },
+    {
+      "gesture_id": "PDF_249",
+      "number": 249,
+      "category": "Time & Sequence",
+      "intent": "Wait Here",
+      "motion_prompt": "A person extends the right arm forward while the left forearm points down toward the current position.",
+      "kimodo_prompt": "A person extends the right arm forward while the left forearm points down toward the current position."
+    },
+    {
+      "gesture_id": "PDF_250",
+      "number": 250,
+      "category": "Time & Sequence",
+      "intent": "Let's Go",
+      "motion_prompt": "A person raises the right arm high, sweeps it forward, and begins two energetic forward steps.",
+      "kimodo_prompt": "A person raises the right arm high, sweeps it forward, and begins two energetic forward steps."
+    }
+  ]
+}

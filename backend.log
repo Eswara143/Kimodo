@@ -1,0 +1,74 @@
+WARNING: merged encoder missing (/home/eswar/.cache/kimodo/llm2vec_merged).
+         Presentation & Sentence tabs work immediately.
+         To enable live diffusion generation, run: /home/eswar/Downloads/kimodo/venv/bin/python scripts/download_models.py && /home/eswar/Downloads/kimodo/venv/bin/python scripts/merge_llm2vec_lora.py
+WARNING: merged encoder missing (/home/eswar/.cache/kimodo/llm2vec_merged).
+         Presentation & Sentence tabs work immediately.
+         To enable live diffusion generation, run: /home/eswar/Downloads/kimodo/venv/bin/python scripts/download_models.py && /home/eswar/Downloads/kimodo/venv/bin/python scripts/merge_llm2vec_lora.py
+==============================================
+ Kimodo-G1 backend   http://0.0.0.0:8000
+ logs: /home/eswar/Downloads/kimodo/backend.log
+ Ctrl-C to stop
+==============================================
+[14:58:07] starting backend (attempt 1)
+/home/eswar/Downloads/kimodo/src/webapp.py:726: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+
+  Kimodo-G1 UI -> http://0.0.0.0:8000
+
+Notice: Merged live diffusion encoder not found at /home/eswar/.cache/kimodo/llm2vec_merged.
+  -> Precomputed 1,500 gesture library, Gallery API, Presentation Mode & Video Server READY.
+/home/eswar/Downloads/kimodo/venv/lib/python3.10/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+/home/eswar/Downloads/kimodo/venv/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1790674211.684426   10873 gl_context_egl.cc:85] Successfully initialized EGL. Major : 1 Minor: 5
+I0000 00:00:1790674211.688329   10978 gl_context.cc:357] GL version: 3.2 (OpenGL ES 3.2 Mesa 23.2.1-1ubuntu3.1~22.04.4), renderer: Mesa Intel(R) Arc(tm) Graphics (MTL)
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+W0000 00:00:1790674211.740412   10945 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1790674211.759733   10940 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+/home/eswar/Downloads/kimodo/venv/lib/python3.10/site-packages/google/protobuf/symbol_database.py:55: UserWarning: SymbolDatabase.GetPrototype() is deprecated. Please use message_factory.GetMessageClass() instead. SymbolDatabase.GetPrototype() will be removed soon.
+  warnings.warn('SymbolDatabase.GetPrototype() is deprecated. Please '
+I0000 00:00:1790676308.910907   18080 gl_context_egl.cc:85] Successfully initialized EGL. Major : 1 Minor: 5
+I0000 00:00:1790676308.916933   18153 gl_context.cc:357] GL version: 3.2 (OpenGL ES 3.2 Mesa 23.2.1-1ubuntu3.1~22.04.4), renderer: Mesa Intel(R) Arc(tm) Graphics (MTL)
+W0000 00:00:1790676308.970252   18141 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1790676308.988822   18139 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+I0000 00:00:1790676777.114874   18478 gl_context_egl.cc:85] Successfully initialized EGL. Major : 1 Minor: 5
+I0000 00:00:1790676777.116509   18551 gl_context.cc:357] GL version: 3.2 (OpenGL ES 3.2 Mesa 23.2.1-1ubuntu3.1~22.04.4), renderer: Mesa Intel(R) Arc(tm) Graphics (MTL)
+W0000 00:00:1790676777.166183   18527 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1790676777.182569   18542 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+Terminated
+[15:58:40] backend exited with code 143 — restarting in 5s
+[15:58:45] starting backend (attempt 2)
+/home/eswar/Downloads/kimodo/src/webapp.py:826: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+
+  Kimodo-G1 UI -> http://0.0.0.0:8000
+
+Notice: Merged live diffusion encoder not found at /home/eswar/.cache/kimodo/llm2vec_merged.
+  -> Precomputed 1,500 gesture library, Gallery API, Presentation Mode & Video Server READY.
+/home/eswar/Downloads/kimodo/venv/lib/python3.10/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+/home/eswar/Downloads/kimodo/venv/lib/python3.10/site-packages/matplotlib/projections/__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1790677759.246802   19105 gl_context_egl.cc:85] Successfully initialized EGL. Major : 1 Minor: 5
+I0000 00:00:1790677759.248526   19225 gl_context.cc:357] GL version: 3.2 (OpenGL ES 3.2 Mesa 23.2.1-1ubuntu3.1~22.04.4), renderer: Mesa Intel(R) Arc(tm) Graphics (MTL)
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+W0000 00:00:1790677759.312095   19199 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1790677759.330271   19205 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+/home/eswar/Downloads/kimodo/venv/lib/python3.10/site-packages/google/protobuf/symbol_database.py:55: UserWarning: SymbolDatabase.GetPrototype() is deprecated. Please use message_factory.GetMessageClass() instead. SymbolDatabase.GetPrototype() will be removed soon.
+  warnings.warn('SymbolDatabase.GetPrototype() is deprecated. Please '
+ inference. Disabling support for feedback tensors.
+/home/eswar/Downloads/kimodo/venv/lib/python3.10/site-packages/google/protobuf/symbol_database.py:55: UserWarning: SymbolDatabase.GetPrototype() is deprecated. Please use message_factory.GetMessageClass() instead. SymbolDatabase.GetPrototype() will be removed soon.
+  warnings.warn('SymbolDatabase.GetPrototype() is deprecated. Please '
